@@ -9,14 +9,14 @@ Trail.delete_all
 
 
 
-t1 = Trail.create!(name:"Tarn Hows",county:"Cumbria",description:"x",rating:8,distance:11.2)
+t1 = Trail.create!(name:"Tarn Hows",county:"Cumbria",description:"x",lat:55.1833,lng:-2.5000,rating:8,distance:11.2)
 
 
   t2 = Trail.create!(name:"Kielder Forest",county:"Northumberland",description:"x",lat:55.1833,lng:-2.5000,postcode:"CA16 6QP",rating:9,distance:17.7)
 
  t3 = Trail.create!(name:"Ullswater",county:"Cumbria",description:"x",lat:54.57467,lng:-2.8715,postcode:"bd24 9qw",rating:10,distance:9.7)
 
- t4 = Trail.create!(name:"Forest of Bowland",county:"Lancashire",description:"x",rating:8,distance:8.7)
+ t4 = Trail.create!(name:"Forest of Bowland",county:"Lancashire",description:"x",lat:55.1833,lng:-2.5000,rating:8,distance:8.7)
 
 t5 = Trail.create!(name:"Todmorden Way",county:"West Yorkshire",description:"x",lat:53.7130,lng:-2.0960,postcode:"OL14 7BU",rating:7,distance:9.2)
 

@@ -1,0 +1,1039 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+body {
+  margin: 0;
+}
+
+a {
+  color: rgba(70,105,149,1.0);
+  text-decoration: none;
+}
+
+li {
+  list-style:none;
+}
+
+.column-25 {
+  width: 25%;
+}
+
+.column-32 {
+  width: 32%;
+}
+
+.column-50 {
+  width: 50%;
+}
+
+.column-75 {
+  width: 75%;
+}
+
+.column-90 {
+  width: 90%;
+}
+
+.column-100 {
+  width: 100%;
+}
+
+.intro {
+  bottom: 0;
+  width: 100%;
+  top: 0;
+  position: fixed;
+}
+
+.mainloginbox {
+
+  margin-top: 10%;
+}
+
+.login {
+  position: relative;
+  padding-left: 25px;
+  padding-bottom: 8px;
+  background-color: rgba(0,0,0,0.7);
+  width: 250px;
+  margin: 0 auto;
+  font-weight: 400;
+  font-family: 'raleway';
+  font-size: 2.5em;
+  text-align: left;
+  color:#f5f6f1;
+}
+
+
+.loginfirst {
+  border-radius: 6px 6px 0 0;
+  padding-top: 25px;
+}
+
+.loginlast {
+  border-radius: 0 0 6px 6px;
+  padding-bottom: 35px;
+}
+
+.socialsignin {
+  border-radius: 6px;
+}
+
+/* trailsindexpage and header  */
+
+
+.backgroundimage {
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.background {
+  position:relative;
+  z-index:2;
+}
+
+.backgroundimage img {
+  min-width: 100%;
+  min-height: 100%;
+  
+}
+
+.header{
+/*  border-top: 5px solid rgba(70,105,149,1.0);*/
+  margin-bottom:60px;
+  width:1200px;
+  margin:0 auto;
+  height:48px;
+}
+
+.toplinks {
+  display:block;
+  padding-top:20px;
+}
+
+.toplinks li {
+  float: left;
+  display: block;
+  width: 20%;
+  text-align: center;
+  font-size:24px;
+}
+
+.toplinks a {
+  display: block;
+  color: rgba(70,105,149,1.0);
+  text-transform: uppercase;
+  padding: 1px 9px 1px 1px;
+}
+
+.toplinks a.active, .toplinks a:hover, .footerlinks a.active, .footerlinks a:hover {
+  color:#f5f6f1;
+}
+
+.toplinks a:hover, .footerlinks a:hover{
+  letter-spacing:8px;
+}
+
+/* phonestuff */
+
+.phonemenu {
+  opacity: 0;
+  display: none;
+}
+
+
+/* trailsindexpage main*/
+
+.bendychair, .bendychairactive{
+  position: relative;
+  clear: both;
+  display: block;
+  width: 1200px;
+  margin: 0 auto;
+
+  background-color: rgba(0,0,0,0.74);
+}
+
+.bendychair {
+
+}
+
+.everytrail {
+  background-color: #f5f6f1;
+  padding-top: 16px;
+  text-align: center;
+  max-width: 1200px;
+  padding-right: 1%;
+  padding-bottom: 25px;
+  border-radius: 0 0 0 25px;
+}
+
+.index-photobox {
+  display: inline-block;
+  overflow: hidden;
+  margin-left: 0.2%;
+  margin-top: 0.3%;
+  position: relative;
+}
+
+
+.index-photobox img {
+  width: 100%;
+}
+
+.everytrail img {
+  margin-bottom: -18px;
+}
+
+.everytrail_photofooter {
+  height: 41px;
+  margin-top: -26px;
+  background-color: rgba(0,0,0,0.7);
+  width: 100%;
+  color: cornflowerblue;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+}
+
+.everytrail_photofooter_name {
+  vertical-align: top;
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  color: #ffffff;
+  font-size: 17px;
+  padding-left: 2%;
+  margin-top: 1.5%;
+}
+
+.everytrail_photofooter a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.everytrail_photofooter_county {
+  text-decoration: none;
+  vertical-align: bottom;
+  font-family: sans-serif;
+  font-weight: 900;
+  display: inline-block;
+  font-size: 12px;
+  padding-left: 1.3%;
+  margin-top: 3%;
+  margin-bottom: 0;
+  margin-right: 1%;
+  text-align: right;
+  height: 100%;
+  padding-top: 2.2%;
+  padding-right: 2%;
+  color: rgb(70,105,149);
+  margin-top: 1%;
+  padding-left: 2%;
+}
+
+
+
+/* footer */
+
+.footer, .footeractive{
+
+  clear: both;
+
+  width: 1200px;
+  padding-bottom: 20px;
+  margin:0 auto;
+  background-color: rgba(0,0,0,0.74);
+
+}
+
+.footer a, .footeractive a {
+  color: #e5e7e1;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.big {
+  font-size: 72px;
+  color: #f5f6f1;
+  padding-left:1%;
+}
+
+.footerlinks{
+  clear: both;
+  display: block;
+
+
+  border-style: dashed;
+  border-color: #6E768A;
+  border-width: 1px 0;
+  padding-bottom: 20px;
+}
+
+.footerlinks ul {
+  margin-left:25%;
+  padding: 15px 0;
+}
+
+.footerlinks li {
+  float:left;
+  text-align:center;
+  width:25%;
+  list-style:none;
+}
+
+.whoami {
+  float: left;
+  color: #a5a5a5;
+  font-size: 1em;
+
+  margin-top: 15px;
+  margin-bottom: 0;
+  font-size: 12px;
+  margin-left: 2%;
+}
+
+.socials {
+  padding-top:10px;
+}
+
+
+/* indiv trail stuff */
+
+.periscope{
+  display: block;
+  width: 1200px;
+  margin: 50px auto 0;
+}
+
+.trailname {
+
+  width: 220px;
+  padding: 30px 40px 0 20px;
+  margin: 0;
+  font-size: 32px;
+  min-width: 160px;
+  color: #7AA06D;
+  border-radius: 4px 11px 0 0;
+  background-color: rgba(0,0,0,0.74);
+}
+
+
+.sidebar, .sidebarthin {
+  float: left;
+  width: 180px;
+  padding: 30px 0 20px 20px;
+  font-size: 60%;
+}
+
+.sidebarthin {
+  width:1px;
+}
+
+/*.sidenav {
+  display:block;
+  font-size:1em;
+  margin:0 0 50px;
+  }*/
+  .sidebar ul li {
+    border-bottom:1px dashed #535353;
+    padding:4px 0;
+    background:none;
+    list-style:none;
+  }
+  .sidebar ul li:last-child { border:0; }
+  .sidebar ul a {
+    display:block;
+    font-size:1.6em;
+    color:#9b9b9b;
+    padding:.2em 0;
+  }
+  .sidebar ul a:hover,
+  .sidebar ul a.current {
+    color:#f5f6f1;
+    text-decoration:none;
+  }
+
+
+
+  i.fa.fa-heart.red {
+    color: #F04545
+  }
+
+  i.fa.fa-check.green {
+    color: #86C690
+  }
+
+  i.fa.fa-upload.blue {
+    color: cornflowerblue
+  }
+
+  .clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+  }
+  .trailcontent, .usercontent, .trailcontentpassive {
+    position: relative;
+    float: right;
+    width: 100%;
+    min-height:800px;
+    max-width: 980px;
+    padding-top: 30px;
+    color: #585858;
+    background: #f5f6f1;
+    border-radius: 0 0 0 25px;
+  }
+
+  .trailcontentpassive{
+    max-width:1176px;
+  }
+
+  .wrapper {
+    padding-right: 5%;
+    padding-left: 5%;
+    background-color: #f5f6f1;
+  }
+
+  .trailcontainer{
+    background-color: #f5f6f1;
+    margin: 0 auto;
+    margin-top: 32px;
+    min-height:800px;
+    border-radius: 0 0 0 25px;
+    padding-bottom: 24px;
+    min-height:980px;
+  }
+
+  .mainphoto{
+    max-width: 1200px;
+    display: inline-block;
+    margin-bottom: 3%;
+    text-align: center;
+  }
+
+  .trailphoto {
+    margin-bottom: -18px;
+  }
+
+  .individual_trail_photofooter {
+    height: 41px;
+    margin-top: -26px;
+    background-color: rgba(0,0,0,0.65);
+    width: 100%;
+    display: inline-block;
+  }
+
+  .individual_trail_photofooter_left {
+    text-decoration: none;
+    vertical-align: top;
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+    float: left;
+    font-size: 17px;
+    padding-left: 2%;
+    margin-top: 1.5%;
+  }
+
+  .individual_trail_photofooter_right {
+    float: right;
+    margin-top: -34px;
+    min-width: 100px;
+    max-width: 200px;
+    display: inline-block;
+  }
+
+
+  .individual_trail_photofooter_right ul {
+    margin-right: 2%;
+    list-style: none;
+    margin-bottom: -14px;
+  }
+
+  .individual_trail_photofooter_right ul li {
+    float: right;
+    margin-top: -10px;
+  }
+
+  .uploadedby {
+    margin-bottom:5px;
+  }
+
+  .individual_trail_photofooter_right a {
+    text-decoration: none;
+    vertical-align: bottom;
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+    font-size: 12px;
+  }
+
+  .userphoto {
+    border-radius: 50%;
+    margin-top: 2%;
+    z-index: 28;
+    top: -40px;
+    float: right;
+  }
+
+  .individual_trail_photofooter_mid {
+    text-decoration: none;
+    vertical-align: bottom;
+    font-family: "Raleway Dots", sans-serif;
+    color: #ffffff;
+    float: right;
+    display: inline-block;
+    height: 100%;
+    padding-right: 1;
+  }
+
+  .individual_trail_photofooter_mid ul {
+    margin-top: 2px;
+    margin-right: -51px;
+  }
+
+  .morephotos {
+    margin-top: 45px;
+    margin-left: 2%;
+    clear: both;
+  }
+
+  .extraphoto {
+    border: 1px solid #f5f6f1;
+    display: inline-block;
+  }
+
+  .extraphoto img {
+    width: 100%;
+  }
+
+
+  .moreinfo {
+    float: left;
+    padding-top: 25px;
+    margin-top: 50px;
+    color: grey;
+    font: 'raleway';
+    display: block;
+  }
+
+  .dropzone {
+    float: left;
+    position: relative;
+    background: url(photouploadwide.png) repeat-x 0 0;
+    z-index: 5;
+    height: 120px;
+    margin-left: 5%;
+    margin-top: 50px;
+    margin-bottom: 2px;
+    width: 500px;
+  }
+
+
+  /* userpage */
+
+  .profilephoto {
+    border-radius:50%;
+  }
+
+  .eachphoto {
+    border: 1px solid #f5f6f1;
+    display: inline-block;
+    max-width: 300px;
+    min-width: 212px;
+  }
+
+  .eachphoto img {
+    max-width: 100%;
+    max-height: 100%;
+    margin-bottom: -18px;
+  }
+
+  .little_photofooter {
+    height: 25px;
+    margin-top: -17px;
+    background-color: rgba(0,0,0,0.65);
+    width: 100%;
+    display: inline-block;
+  }
+
+  .little_photofooter_left {
+    text-decoration: none;
+    vertical-align: top;
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+    float: left;
+    font-size: 14px;
+    padding-left: 2%;
+    margin-top: 1.5%;
+  }
+
+  .little_photofooter_right {
+    text-decoration: none;
+    vertical-align: bottom;
+    font-family: "Raleway", sans-serif;
+    color: #ffffff;
+    float: right;
+    display: inline-block;
+    height: 100%;
+    padding-right: 1;
+  }
+
+  .little_photofooter_right ul {
+    margin-top: 2px;
+  }
+
+  .little_photofooter_right ul li {
+    display: inline;
+  }
+
+  .showcompleted, .showadded {
+    display:none;
+  }
+
+  .profile_trailphotos {
+    text-align:center;
+    padding-bottom:25px;
+  }
+
+  /* newtrail */
+
+
+
+  .newtrailinfobox {
+    float: left;
+    font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.43;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-bottom: 5%;
+    color: #565a5c;
+    border: 1px solid #B8C4A1;
+    background-color: #f5f6f1;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .trailupload {
+    position: relative;
+    width: 440px;
+    margin-top: 168px;
+    padding-top: 1%;
+    margin-left: 0%;
+    margin-left: 8px;
+    padding-bottom: 1%;
+    border: 4px solid rgba(176,196,222,1);
+    border-left: 0px;
+  }
+
+
+  .trailuploadinfo {
+    margin-left: 76px;
+    margin-bottom: 12px;
+    color: grey;
+  }
+
+  .newtrailform {
+    position: relative;
+    float: left;
+    margin-left: 6%;
+    width: 420px;
+    background: url(photoupload2.png) repeat-x 0 0;
+    background-position: calc(110% - 28px) 72px;
+    z-index: 5;
+  }
+
+  input {
+    width: 108px;
+    padding: 0px 12px;
+    height: 38px;
+    color: lightsteelblue;
+    border-radius: 6px;
+    margin-bottom: 1px;
+    font: 14px enzo_otmedium;
+    border: 2px solid rgba(176,196,222,0.9);
+  }
+  .rating1 {
+    height: 38px;
+    width: 108px;
+    margin-top: 2px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 16px 60px 16px 20px;
+    border: 2px solid rgba(176,196,222,1);
+    color: lightsteelblue;
+    font: 15px/18px Verdana, Geneva, sans-serif;
+    -webkit-transition: background-color 0.2s;
+    -moz-transition: background-color 0.2s;
+    -o-transition: background-color 0.2s;
+    -ms-transition: background-color 0.2s;
+    transition: background-color 0.2s;
+    background: transparent;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  .newtrailbutton {
+    padding: 0 0;
+    width: 398px;
+    height: 50px;
+    margin-top: 150px;
+    color: #000;
+    font: 18px/26px 'enzo_otmedium';
+    -webkit-transition: background-color 0.2s;
+    -moz-transition: background-color 0.2s;
+    -o-transition: background-color 0.2s;
+    -ms-transition: background-color 0.2s;
+    transition: background-color 0.2s;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: -1px;
+    border: none;
+    background: rgba(176,196,222,0.9);
+    cursor: pointer;
+  }
+
+  .add_trail_map {
+    border: 4px solid rgba(176,196,222,1);
+    margin-top: -540px;
+    margin-left: 8px;
+  }
+
+
+  /* map */
+  .ukmapcontainer {
+    margin-top: 24px;
+    background: #f5f6f1;
+  }
+
+  #pac-input {
+    background-color: #f5f6f1;
+    padding: 0 11px 0 13px;
+    width: 200;
+    font-family: Roboto;
+    float: left;
+    margin-top: 32px;
+    font-size: 15px;
+    margin-left: 9%;
+    font-weight: 300;
+    z-index: 500;
+    text-overflow: ellipsis;
+  }
+
+  .numberoftrails {
+    margin-top: 55px;
+    float: right;
+    margin-right: 12%;
+    z-index: 6000;
+    color: #9dadb4;
+    text-align: left;
+  }
+  .ukmap {
+    height: 800px;
+    width: 80%;
+    margin: auto;
+    margin-left: 9%;
+    margin-right: 9%;
+    margin-top: 2%;
+    margin-bottom: 144px;
+  }
+
+  .trails_map {
+    border: 4px solid rgba(176,196,222,1);
+  }
+
+  @media only screen and (max-width: 879px) {
+
+    .bendychair, .footer, .header,  {
+      width:100%;
+    }
+
+    .footer {
+      width:100%;
+    }
+
+
+  }
+
+
+  @media only screen and (max-width: 650px) { 
+
+    .bendychair, .footer, .header, .bendychairactive, .footeractive, .periscope, .trailname {
+      width:100%;
+    }
+
+    .trailname {
+      padding:30px 0 0 0;
+      border-radius:0;
+    }
+
+
+    .header {
+      position:relative;
+      min-width:1px;
+      width:100%;
+      z-index:9000;
+
+      max-width:1020px;
+    }
+
+    .index-photobox{
+      width:49%;
+    }
+
+    .userbox {
+      width:100%;
+      left:inherit;
+    }
+
+    .profile_trailphotos {
+      
+      margin-top:2px;
+      width:100%;
+    }
+
+
+    .navleft {
+      margin-left:-28px;
+    }
+
+    .navright a:link,.navright a:visited,.trailfooter a:link,.trailfooter a:visited {
+      font-size: 16px;
+    }
+
+    .container {
+     margin-left:0px;
+   }
+
+   .navright ul, .trailfooter ul {
+    display:none;
+  }
+
+  .add_trail_map {
+    margin-top:14%;
+  }
+
+  .trailupload {
+    border-left: 4px solid rgba(176,196,222,1);
+    margin-top:10px;
+  }
+
+  .navright  {
+    display:none;
+  }
+
+  .everytrail_photofooter_name{
+    font-size:15px;
+  }
+
+  .everytrail_photofooter_county{
+    font-size:8px;
+  }
+
+  .everytrail {
+    margin-top:40px;
+  }
+
+  .mainphoto {
+    margin-top:40px;
+  }
+
+  .thetrailmap {
+    width:90%;
+  }
+
+  .usercontent, .trailcontent, .trailcontentpassive{
+    width:100%;
+  }
+
+  .toplinks a {
+    font-size:70%;
+  }
+
+  .infobox {
+    min-width: 160px;
+    margin-left: 5%;
+  }
+
+  .phonemenu .phonelinks a .primary {
+    font-size: 45px;
+    color: #e5e7e1;
+    text-transform:uppercase;
+    letter-spacing: 3px;
+    margin-left: -2px;
+    margin-bottom: -7px;
+    display:block;
+  }
+
+  a.btn-navbar {
+   height: 15px; 
+   margin-left:23px;
+   padding: 0px 9px; 
+   font-weight: bold; 
+   color: #333; 
+   background: none;
+   text-shadow: none; 
+   margin-left: -1;
+   margin-top: -1;
+   -webkit-box-shadow: none;
+   -moz-box-shadow: none;
+   box-shadow: none; 
+   float: left;
+   padding-top:8px;
+   height:55;
+   position: absolute;
+   display: block;
+ }
+
+ span.icon-bar, span.home-icon-bar {
+  display: block;
+  width: 22px;
+  margin-top: 3px;
+  height: 4px;
+  background-color: rgb(70, 105, 149);
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
+}
+
+.phonemenu {
+  position: fixed;
+  z-index: 9;
+  opacity:1;
+  display:inline-block;
+  margin-top:48px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding: 12px 0 0;
+  background: url('../j14.jpg');
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: opacity 0.2s linear;
+  -moz-transition: opacity 0.2s linear;
+  -o-transition: opacity 0.2s linear;
+  transition: opacity 0.2s linear;
+}
+
+.phonemenu.inactive {
+  opacity: 0;
+  visibility: hidden
+}
+
+a.btn-navbar.dark.hamActive {
+  height:55px;
+  z-index:22;
+  background-color: #e5e7e1;
+  top:0;
+  margin-left:0px;
+  position:fixed;
+  padding-top:1.5%;
+  left:0;
+  margin-top: -1;
+  width:100%;
+}
+
+.phonemenu .phonelinks a .secondary {
+  font-size: 12px;
+  color: #5ba542
+  margin-bottom: 18px;
+  letter-spacing: 2px;
+  display:block;
+  color: lightsteelblue;
+}
+
+.phonemenu .phonelinks {
+  text-align: center;
+  display: block;
+  background-color: rgba(0,0,0,0.4);
+  margin-top:-2px;
+  height:100%;
+}
+
+.phonemenu .phonelinks a {
+  -webkit-transform: translateY(0px);
+  -moz-transform: translateY(0px);
+  -ms-transform: translateY(0px);
+  -o-transform: translateY(0px);
+  transform: translateY(0px);
+  opacity: 1;
+  padding: 23px;
+}
+
+.toplinks {
+  display:none;
+}
+
+.trailcontainer{
+  margin-top:54px;
+}
+
+
+.trailupload {
+  width:332px;
+}
+
+.trailuploadinfo {
+  margin-left:24px;
+}
+
+.newtrailform {
+  margin-left: 6%;
+  width: 280px;
+  background-position: calc(110% - 6px) 97px;
+}
+
+.newtrailbutton {
+  width:260px;
+}
+
+.dropzone {
+  width:340px;
+}
+
+.footeractive, .footer {  
+  font-size:10px;
+}
+
+.periscope {
+  visibility:hidden;
+}
+
+}

@@ -7,7 +7,60 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="backgroundimage">
+    <img src="./j14.jpg">
+  </div>
+  <div class="background">
+   <div class="header">
+    <div class="navleft" ><!-- for tablets-->
+      <a class="btn-navbar dark" href="#" class="hamburger hamInactive">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <div class="phonemenu inactive">
+        <nav class="phonelinks" > 
+          <a href="newtrail.html">
+            <div class="primary">New</div>
+            <div class="secondary">Upload your own trail to the site</div>
+          </a>
+          <a href="map.html">
+            <div class="primary">Map</div>
+            <div class="secondary">Systemwide trail map</div>
+          </a>
+          <a href="trailsindex.html">
+            <div class="primary">Trails</div>
+            <div class="secondary">All available trails</div>
+          </a>
+          <a href="profile.html">
+            <div class="primary">My Profile</div>
+            <div class="secondary">Bookmarks, Completed and Uploaded Trails</div>
+          </a>
+          <a href="index.html">
+            <div class="primary">Home</div>
+            <div class="secondary">Back to home page</div>
+          </a>
+          <a href="logout.html">
+            <div class="primary">Logout</div>
+          </a>
+    <!--               <a href="google.html">
+                    <div class="primary">Login with Google</div>
+                  </a>
+                  <a href="twitter.html">
+                    <div class="primary">Login with Twitter</div>
+                  </a>
+                  <a href="facebook.html">
+                    <div class="primary">Login with Facebook</div>
+                  </a> -->
+                </nav><!-- close of links -->
+              </div><!-- close of nav-menu max-width isActive-->
+            </div><!-- close of navleft-->
 
+
+            <ul class="toplinks">
+              <li><a href="newtrail.html">Add New</a></li><li><a href="map.html">Map</a></li><li><a class="active" href="trailsindex.html">Trails</a></li><li><a href="profile.html">Profile</a></li><li><a href="index.html">Sign out</a></li></ul>
+
+            </div>
 <%= yield %>
 
 </body>
