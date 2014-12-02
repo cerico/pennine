@@ -1,4 +1,7 @@
 Pennine::Application.routes.draw do
+  resources :photos
+
+
   resources :trails
 
 
