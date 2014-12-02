@@ -36,4 +36,58 @@
 
 <br />
 
+<div class="main">
+              <div class="periscope">
+                <h1 class="trailname"></h1>
+              </div>
+
+              <div class="bendychair clearfix">
+
+                <div class="sidebarthin">
+
+
+
+                </div>
+                <div class="trailcontentpassive">
+                  <div class="everytrail">
+                    <% @trails.each do |trail| %>
+                    <div class="index-photobox column-32">
+                      <a href="trail.html"><img src="https://calderscenic.s3.amazonaws.com/uploads/photo/image/2/frontpage_tod1.jpg"></a>
+                      <div class="everytrail_photofooter">
+                        <p class="everytrail_photofooter_name"><a href="trail.html">Calderdale Way</a> </p>
+                        <p class="everytrail_photofooter_county">West Yorkshire</p>
+                      </div>
+                    </div>
+<%end%>
+
+            
+  
+
+                </div>
+
+              </div>
+              <div class="footer">
+
+                <div class="big">scen.ic</div>
+
+                <div class="footerlinks column-100">
+                  <ul class="column-75">
+                   <li><a href="newtrail.html">Add New</a></li><li><a href="map.html">Map</a></li><li><a class="active" href="trailsindex.html">Trails</a></li><li><a href="profile.html">Profile</a></li></ul></div>
+                   <div class="whoami column-32">
+                    garethrobertlee@gmail.com<br>
+                    www.salterhebble.com
+                  </div>
+                  <div class="whoami column-32">
+                    made in todmorden and honley, 2014
+                  </div>
+
+                  <ul class="socials">
+                    <a class="lowerlink" href="http://www.twitter.com/crcvch"><i class="fa fa-twitter fa-2x"></i></a>
+                    <a class="lowerlink" href="https://github.com/cerico"><i class="fa fa-github fa-2x"></i></a>
+                    <a class="lowerlink" href="https://www.linkedin.com/in/garethrobertlee"><i class="fa fa-linkedin fa-2x"></i></a>
+                    <a class="lowerlink" href="https://soundcloud.com/crcvch"><i class="fa fa-soundcloud fa-2x"></i></a>
+                  </ul>
+                </div>
+              </div>
+
 <%= link_to 'New Trail', new_trail_path %>
