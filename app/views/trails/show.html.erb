@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @trail.name %>
+</p>
+
+<p>
+  <b>County:</b>
+  <%= @trail.county %>
+</p>
+
+<p>
+  <b>Postcode:</b>
+  <%= @trail.postcode %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @trail.description %>
+</p>
+
+<p>
+  <b>Lat:</b>
+  <%= @trail.lat %>
+</p>
+
+<p>
+  <b>Lng:</b>
+  <%= @trail.lng %>
+</p>
+
+<p>
+  <b>Rating:</b>
+  <%= @trail.rating %>
+</p>
+
+<p>
+  <b>Distance:</b>
+  <%= @trail.distance %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @trail.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_trail_path(@trail) %> |
+<%= link_to 'Back', trails_path %>
