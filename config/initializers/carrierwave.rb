@@ -6,7 +6,7 @@ CarrierWave.configure do |config|
     :region  => 'eu-west-1',  # optional, defaults to 'us-east-1'
   }
   config.fog_directory  = 'scenicone'  # required
-  config.fog_host = 'https://s3-eu-west-1.amazonaws.com/scenicone'
+  config.asset_host = 'https://s3-eu-west-1.amazonaws.com/scenicone'
   config.fog_public  = true  # optional, defaults to true
 end
 
