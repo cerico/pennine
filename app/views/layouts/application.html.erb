@@ -49,7 +49,20 @@
 
 
     <ul class="toplinks">
-      <li><a href="newtrail.html">Add New</a></li><li><a href="map.html">Map</a></li><li><a class="active" href="trailsindex.html">Trails</a></li><li><a href="profile.html">Profile</a></li><li><a href="index.html">Sign out</a></li>
+      <li><a href="newtrail.html">Add New</a></li><li><a href="map.html">Map</a></li><li><a class="active" href="trailsindex.html">Trails</a></li><li><a href="profile.html">Profile</a></li>
+
+ <% if user_signed_in? %>
+   <li>
+     <%= link_to "sign out", destroy_user_session_path, :method => :delete %>
+   </li>
+
+ <% else %>
+   
+   <li>
+     <%= link_to "sign in", user_omniauth_authorize_path(:google_oauth2)%>
+   </li>
+ 
+ <% end %> 
     </ul>
 
   
