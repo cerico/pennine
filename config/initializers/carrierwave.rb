@@ -3,10 +3,10 @@ CarrierWave.configure do |config|
     :provider  => 'AWS',  # required
     :aws_access_key_id  => ENV['aws_access_key_id'],  # required
     :aws_secret_access_key => ENV['aws_secret_access_key'],  # required
-    :region  => 'eu-west-1',  # optional, defaults to 'us-east-1'
+
   }
-  config.fog_directory  = 'scenicone'  # required
-  config.asset_host = 'https://s3-eu-west-1.amazonaws.com/scenicone'
+  config.fog_directory  = 'scenic'  # required
+
   config.fog_public  = true  # optional, defaults to true
 end
 
