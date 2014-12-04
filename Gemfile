@@ -10,6 +10,9 @@ gem 'carrierwave'
 gem 'rmagick', :require => 'RMagick'
 gem 'fog', '~> 1.3.1'
 
+gem 'devise'
+gem 'omniauth-google-oauth2'
+
 
 # Gems used only for assets and not required
 # in production environments by default.
