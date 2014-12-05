@@ -1,50 +1,82 @@
-<p id="notice"><%= notice %></p>
+<div class="main">
 
-<p>
-  <b>Name:</b>
-  <%= @trail.name %>
-</p>
+  <div class="periscope">
+    <h1 class="trailname"><%= @trail.name %></h1>
+  </div>
+  <div class="bendychairactive clearfix">
 
-<p>
-  <b>County:</b>
-  <%= @trail.county %>
-</p>
+    <div class="sidebar">
+      <ul>
+        <li><a class="current" href="#"><%= @trail.distance %> miles</a></li><li><a href="#"><%= @trail.rating %></a></li><li><a href="#">Ranking (4)</a></li><li><a href="#">12 Hikers <i class="fa fa-check circle green"></i></a></li><li><a href="#">21 Hikers <i class="fa fa-heart red"></i></a></li></ul>
+        
 
-<p>
-  <b>Postcode:</b>
-  <%= @trail.postcode %>
-</p>
+      </div>
+      <div class="trailcontent">
 
-<p>
-  <b>Description:</b>
-  <%= @trail.description %>
-</p>
+        <div class="trailcontainer column-100" >
+          <div class="wrapper clearfix">
+            <% if @trail.photos.first %>
+            <div class="mainphoto column-100"><%= image_tag(@trail.photos.first.image.trailpage , :class => "trailphoto column-100") %>
+              <div class="individual_trail_photofooter">
+                <span class="individual_trail_photofooter_left" ><%= @trail.name %></span>   
+                <div class="individual_trail_photofooter_right">
+                  <ul>
+                    <li class="uploadedby"><a href="profile.html"><img class="userphoto" src="gareth.jpg"></a></li>
+                    <li><a href="profile.html">By gareth</a> </li>
+                  </ul>
+                </div> <!--close of footerright-->
+                <div class="individual_trail_photofooter_mid">
+                  <ul>
+                    <li><i class="fa fa-heart-o"></i></li>
+                    <li><i class="fa fa-check circle"></i></li>
+                  </ul>
+                </div> <!-- close of footermid-->
+              </div><!-- close of photofooter-->
+            </div> <!--close of mainphoto-->
+<% end %>
 
-<p>
-  <b>Lat:</b>
-  <%= @trail.lat %>
-</p>
+            <div id="map_canvas" class="thetrailmap column-100">
+              <iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://my.ctrlq.org/maps/#roadmap|14|53.70910162841865|-2.095017117077651"></iframe>
+            </div>
 
-<p>
-  <b>Lng:</b>
-  <%= @trail.lng %>
-</p>
-
-<p>
-  <b>Rating:</b>
-  <%= @trail.rating %>
-</p>
-
-<p>
-  <b>Distance:</b>
-  <%= @trail.distance %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @trail.user_id %>
-</p>
+            <div class="morephotos column-100">
+              <% @trail.photos.each do |photo| %>
+              <div class="extraphoto column-25"><%= image_tag(photo.image.detail) %></a>
+              </div>
+              <% end %>
+              <photo></photo>
 
 
-<%= link_to 'Edit', edit_trail_path(@trail) %> |
-<%= link_to 'Back', trails_path %>
+            </div><!-- close of morephotos-->
+            <div class="moreinfo column-100">Add more photos by clicking on, or dragging to, the area below</div>
+            <form  id="media-dropzone" class="dropzone column-50" enctype="multipart/form-data"></form>
+          </div><!-- close of wrapper clearfix-->
+        </div><!--close of trailcontainer column-75--> 
+
+      </div>
+
+    </div>
+    <div class="footeractive">
+
+     <div class="big">scen.ic</div>
+
+     <div class="footerlinks column-100">
+       <ul class="column-75">
+        <li><a href="newtrail.html">Add New</a></li><li><a href="map.html">Map</a></li><li><a class="active" href="trailsindex.html">Trails</a></li><li><a href="profile.html">Profile</a></li></ul></div>
+        <div class="whoami column-32">
+         garethrobertlee@gmail.com<br>
+         www.salterhebble.com
+       </div>
+       <div class="whoami column-32">
+         made in todmorden and honley, 2014
+       </div>
+
+       <ul class="socials">
+         <a class="lowerlink" href="http://www.twitter.com/crcvch"><i class="fa fa-twitter fa-2x"></i></a>
+         <a class="lowerlink" href="https://github.com/cerico"><i class="fa fa-github fa-2x"></i></a>
+         <a class="lowerlink" href="https://www.linkedin.com/in/garethrobertlee"><i class="fa fa-linkedin fa-2x"></i></a>
+         <a class="lowerlink" href="https://soundcloud.com/crcvch"><i class="fa fa-soundcloud fa-2x"></i></a>
+       </ul>
+     </div>
+   </div>
+ </div>
