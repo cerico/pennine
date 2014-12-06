@@ -20,8 +20,8 @@
                 <span class="individual_trail_photofooter_left" ><%= @trail.name %></span>   
                 <div class="individual_trail_photofooter_right">
                   <ul>
-                    <li class="uploadedby"><a href="profile.html"><img class="userphoto" src="gareth.jpg"></a></li>
-                    <li><a href="profile.html">By gareth</a> </li>
+                    <li class="uploadedby"><a href="profile.html"><%= image_tag(@uploader.photo, :class => "userphoto") %></a></li>
+                    <li><a href="profile.html">By <%= @uploader.name %></a> </li>
                   </ul>
                 </div> <!--close of footerright-->
                 <div class="individual_trail_photofooter_mid">
