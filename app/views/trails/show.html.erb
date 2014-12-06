@@ -15,6 +15,7 @@
 
         <div class="trailcontainer column-100" >
           <div class="wrapper clearfix">
+            <% if @trail.photos.first %>
             <div class="mainphoto column-100"><%= image_tag(@trail.photos.first.image.trailpage, :class => "trailphoto column-100") %>>
               <div class="individual_trail_photofooter">
                 <span class="individual_trail_photofooter_left" ><%= @trail.name %></span>   
@@ -32,6 +33,7 @@
                 </div> <!-- close of footermid-->
               </div><!-- close of photofooter-->
             </div> <!--close of mainphoto-->
+            <% end %>
 
 
             <div id="map_canvas" class="thetrailmap column-100">

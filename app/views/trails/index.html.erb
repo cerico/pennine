@@ -15,14 +15,16 @@
                 <div class="trailcontentpassive">
                   <div class="everytrail">
                     <% @trails.each do |trail| %>
-                    <div class="index-photobox column-32">
-                      <%= link_to image_tag(trail.photos.first.image.frontpage.url), trail %>
-                      <div class="everytrail_photofooter">
-                        <p class="everytrail_photofooter_name"><%= link_to trail.name, trail %> </p>
-                        <p class="everytrail_photofooter_county"><%= trail.county %></p>
-                      </div>
-                    </div>
-<% end %>
+                      <% if trail.photos.first %>
+                        <div class="index-photobox column-32">
+                        <%= link_to image_tag(trail.photos.first.image.frontpage.url), trail %>
+                          <div class="everytrail_photofooter">
+                            <p class="everytrail_photofooter_name"><%= link_to trail.name, trail %> </p>
+                            <p class="everytrail_photofooter_county"><%= trail.county %></p>
+                          </div>
+                        </div>
+                      <% end %>
+                    <% end %>
 
             
   
