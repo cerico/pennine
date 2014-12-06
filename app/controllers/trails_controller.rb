@@ -26,7 +26,7 @@ class TrailsController < ApplicationController
   # GET /trails/new.json
   def new
     @trail = Trail.new
-
+ 
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @trail }

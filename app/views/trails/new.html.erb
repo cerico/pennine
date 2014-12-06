@@ -1,5 +1,9 @@
-<h1>New trail</h1>
+<%if current_user %>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', trails_path %>
+<% else %>
+
+lets put our sign in stuff here, later
+
+<% end %>
