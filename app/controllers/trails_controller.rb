@@ -45,6 +45,9 @@ class TrailsController < ApplicationController
 
     respond_to do |format|
       if @trail.save
+         params[:file].each do |photo|
+           @trail.photos << Photo.create(image: photo)   
+         end
         format.html { redirect_to @trail, notice: 'Trail was successfully created.' }
         format.json { render json: @trail, status: :created, location: @trail }
       else

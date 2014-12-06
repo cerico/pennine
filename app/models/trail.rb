@@ -6,4 +6,6 @@ class Trail < ActiveRecord::Base
   has_many :comments
   belongs_to :user
   accepts_nested_attributes_for :photos, allow_destroy: true
+
+  
 end
