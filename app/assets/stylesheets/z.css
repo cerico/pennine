@@ -360,12 +360,14 @@ li {
     border-bottom:1px dashed #535353;
     padding:4px 0;
     background:none;
+    color:#9b9b9b;
+    font-size:1.6em;
     list-style:none;
   }
   .sidebar ul li:last-child { border:0; }
   .sidebar ul a {
     display:block;
-    font-size:1.6em;
+    
     color:#9b9b9b;
     padding:.2em 0;
   }

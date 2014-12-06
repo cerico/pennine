@@ -24,17 +24,17 @@
       <div class="phonemenu inactive">
         <nav class="phonelinks" > 
           
-            <div class="primary"><%= link_to "new", new_trail_path %></div>
-            <div class="secondary">Upload your own trail to the site</div>
+          <div class="primary"><%= link_to "new", new_trail_path %></div>
+          <div class="secondary">Upload your own trail to the site</div>
           
           <a href="map.html">
             <div class="primary">Map</div>
             <div class="secondary">Systemwide trail map</div>
           </a>
           
-            <div class="primary"><%= link_to "trails", trails_path, :class => "active" %></div>
-            <div class="secondary">All available trails</div>
-         
+          <div class="primary"><%= link_to "trails", trails_path, :class => "active" %></div>
+          <div class="secondary">All available trails</div>
+          
           <a href="profile.html">
             <div class="primary">My Profile</div>
             <div class="secondary">Bookmarks, Completed and Uploaded Trails</div>
@@ -52,24 +52,27 @@
 
 
     <ul class="toplinks">
-      <li><%= link_to "new", new_trail_path %></li><li><a href="map.html">Map</a></li><li><%= link_to "trails", trails_path, :class => "active" %></li><li><a href="profile.html">Profile</a></li>
+      <li><%= link_to "new", new_trail_path %></li><li><a href="map.html">Map</a></li><li><%= link_to "trails", trails_path, :class => "active" %></li>
+      <% if user_signed_in? %>
+      
+      <li><%= link_to current_user.name.split[0], current_user%></li>
+      <% end %> 
+      <% if user_signed_in? %>
+      <li>
+       <%= link_to "sign out", destroy_user_session_path, :method => :delete %>
+     </li>
 
- <% if user_signed_in? %>
-   <li>
-     <%= link_to "sign out", destroy_user_session_path, :method => :delete %>
-   </li>
+     <% else %>
+     
+     <li>
+       <%= link_to "sign in", user_omniauth_authorize_path(:google_oauth2)%>
+     </li>
+     
+     <% end %> 
+   </ul>
 
- <% else %>
    
-   <li>
-     <%= link_to "sign in", user_omniauth_authorize_path(:google_oauth2)%>
-   </li>
- 
- <% end %> 
-    </ul>
-
-  
-  <%= yield %>
-</div>
+   <%= yield %>
+ </div>
 </body>
 </html>

@@ -1,4 +1,6 @@
 Pennine::Application.routes.draw do
+  get "users/show"
+
   devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
 
   
@@ -7,6 +9,8 @@ Pennine::Application.routes.draw do
   resources :trails 
 
   resources :photos
+
+  resources :users
 
 
   # The priority is based upon order of creation:
