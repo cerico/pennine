@@ -14,6 +14,7 @@ class TrailsController < ApplicationController
   # GET /trails/1.json
   def show
     @trail = Trail.find(params[:id])
+    @uploader = User.find_by_id(@trail.user_id)
 
     respond_to do |format|
       format.html # show.html.erb
