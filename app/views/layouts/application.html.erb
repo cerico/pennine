@@ -20,18 +20,18 @@
       </a>
       <div class="phonemenu inactive">
         <nav class="phonelinks" > 
-          <a href="newtrail.html">
-            <div class="primary">New</div>
+          
+            <div class="primary"><%= link_to "new", new_trail_path %></div>
             <div class="secondary">Upload your own trail to the site</div>
-          </a>
+          
           <a href="map.html">
             <div class="primary">Map</div>
             <div class="secondary">Systemwide trail map</div>
           </a>
-          <a href="trailsindex.html">
-            <div class="primary">Trails</div>
+          
+            <div class="primary"><%= link_to "trails", trails_path, :class => "active" %></div>
             <div class="secondary">All available trails</div>
-          </a>
+         
           <a href="profile.html">
             <div class="primary">My Profile</div>
             <div class="secondary">Bookmarks, Completed and Uploaded Trails</div>
@@ -49,7 +49,7 @@
 
 
     <ul class="toplinks">
-      <li><a href="newtrail.html">Add New</a></li><li><a href="map.html">Map</a></li><li><a class="active" href="trailsindex.html">Trails</a></li><li><a href="profile.html">Profile</a></li>
+      <li><%= link_to "new", new_trail_path %></li><li><a href="map.html">Map</a></li><li><%= link_to "trails", trails_path, :class => "active" %></li><li><a href="profile.html">Profile</a></li>
 
  <% if user_signed_in? %>
    <li>
