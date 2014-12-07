@@ -7,8 +7,9 @@
 
     <div class="sidebar">
       <ul>
-        <li><a class="current" href="#"><%= @trail.distance %> Miles</a></li><li><a href="#">Ave Rating: <%= @trail.rating %> </a></li><li><a href="#">Ranking (4)</a></li><li><a href="#">12 Hikers <i class="fa fa-check circle green"></i></a></li><li><a href="#">21 Hikers <i class="fa fa-heart red"></i></a></li></ul>
+        <li><a class="current" href="#"><%= @trail.distance %> Miles</a></li><li><a href="#">Ave Rating: <%= @trail.rating %> </a></li><li><a href="#">Ranking (4)</a></li><li><a href="#"><%= @favourites.length %>  Hikers <i class="fa fa-check circle green"></i></a></li><li><a href="#"><%= @favourites.length %> Hikers <i class="fa fa-heart red"></i></a></li></ul>
         
+
 
       </div>
       <div class="trailcontent">
@@ -27,8 +28,16 @@
                 </div> <!--close of footerright-->
                 <div class="individual_trail_photofooter_mid">
                   <ul>
-                    <li><i class="fa fa-heart-o"></i></li>
-                    <li><i class="fa fa-check circle"></i></li>
+                    <% if @bookmark.present? && @bookmark.favourited? %>
+                      <li><i class="fa fa-heart red"></i></li>
+                    <% else %>
+                      <li><i class="fa fa-heart-o"></i></li>
+                    <% end %>
+                    <% if @bookmark.present? && @bookmark.completed? %>
+                      <li><i class="fa fa-check circle green"></i></li>
+                    <% else %>
+                      <li><i class="fa fa-check circle"></i></li>
+                    <% end %>
                   </ul>
                 </div> <!-- close of footermid-->
               </div><!-- close of photofooter-->
