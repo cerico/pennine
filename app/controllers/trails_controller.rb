@@ -3,7 +3,7 @@ class TrailsController < ApplicationController
   # GET /trails.json
   def index
     @trails = Trail.all
-
+# binding.pry
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @trails }
