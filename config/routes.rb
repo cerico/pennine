@@ -1,4 +1,7 @@
 Pennine::Application.routes.draw do
+  resources :bookmarks
+
+
   get "users/show"
 
   devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }

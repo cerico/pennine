@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  trail_id: 1
+  user_id: 1
+  completed: false
+  favourited: false
+  rating: 1
+
+two:
+  trail_id: 1
+  user_id: 1
+  completed: false
+  favourited: false
+  rating: 1
