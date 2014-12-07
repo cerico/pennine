@@ -15,6 +15,8 @@ gem 'omniauth-google-oauth2'
 
 gem "nested_form"
 
+gem 'bower-rails'
+
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -26,6 +28,13 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+end
+
+gem "foreman"
+group :production, :staging do
+  gem "rails_12factor"
+  gem "rails_stdout_logging"
+  gem "rails_serve_static_assets"
 end
 
 
