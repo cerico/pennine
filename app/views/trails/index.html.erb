@@ -13,21 +13,37 @@
 
                 </div>
                 <div class="trailcontentpassive">
-                  <div class="everytrail">
-                    <% @trails.each do |trail| %>
-                      <% if trail.photos.first %>
-                        <div class="index-photobox column-32">
-                        <%= link_to image_tag(trail.photos.first.image.frontpage.url), trail %>
-                          <div class="everytrail_photofooter">
-                            <p class="everytrail_photofooter_name"><%= link_to trail.name, trail %> </p>
-                            <p class="everytrail_photofooter_county"><%= trail.county %></p>
-                          </div>
-                        </div>
-                      <% end %>
-                    <% end %>
+            <div class="everytrail">
+              <% @trails.each do |trail| %>
+                <% if trail.photos.first %>
+                <div class="index-photobox column-32">
 
-            
-  
+                <%= link_to image_tag(trail.photos.first.image.frontpage.url), trail %>
+                  <div class="everytrail_photofooter">
+                    <p class="everytrail_photofooter_name"><%= link_to trail.name, trail %> </p>
+                    <p class="everytrail_photofooter_county"><%= trail.county %></p>
+                    <div class="everytrail_photofooter_userinfo">
+                      <ul>
+                        <li><i class="fa fa-check circle"></i><%= trail.bookmarks.where(completed:true).length %></li>
+                        <li><i class="fa fa-heart-o"></i><%= trail.bookmarks.where(favourited:true).length %></li>
+                      </ul>
+                    </div>
+                    <div class="everytrail_photofooter_userinfo">
+                      <ul>
+                        <% if trail.bookmarks.present? && trail.bookmarks.find_by_user_id(current_user.id).completed %>
+                          <li><i class="fa fa-heart red"></i></li>
+                        <% end %>
+                        <% if trail.bookmarks.present? && trail.bookmarks.find_by_user_id(current_user.id).favourited %>
+                          <li><i class="fa fa-check circle green"></i></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <% end %>
+              <% end %>
+              
+            </div>
 
                 </div>
 
