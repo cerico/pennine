@@ -14,14 +14,16 @@ class TrailsController < ApplicationController
   # GET /trails/1.json
   def show
     @trail = Trail.find(params[:id])
+   
     @uploader = User.find_by_id(@trail.user_id)
-    @bookmark = current_user.bookmarks.find_by_trail_id(@trail.id)
-    @favourites = @trail.bookmarks.where(favourited:true)
-    @completeds = @trail.bookmarks.where(completed:true)
-
+    if current_user
+      @bookmark = current_user.bookmarks.find_by_trail_id(@trail.id)
+      @favourites = @trail.bookmarks.where(favourited:true)
+      @completeds = @trail.bookmarks.where(completed:true)
+    end
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @trail }
+      format.json { render json: @trail, root: false  }
     end
   end
 
