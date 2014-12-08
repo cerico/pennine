@@ -16,6 +16,9 @@ gem 'omniauth-google-oauth2'
 gem "nested_form"
 
 gem 'bower-rails'
+
+gem 'active_model_serializers'
+
 gem "foreman"
 group :production, :staging do
   gem "rails_12factor"
