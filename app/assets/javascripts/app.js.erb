@@ -7,6 +7,7 @@ controllers = angular.module('controllers',[])
  
     $http.get($location.$$absUrl + '.json').success (function (data){
     $scope.message = data
+    console.log(data)
     })
 
 }])
