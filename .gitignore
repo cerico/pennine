@@ -13,3 +13,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+
+vendor/assets/bower_components/angular/angular.min.js.gzip
+vendor/assets/bower_components/angular/angular.min.js.map

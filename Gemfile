@@ -15,6 +15,14 @@ gem 'omniauth-google-oauth2'
 
 gem "nested_form"
 
+gem 'bower-rails'
+gem "foreman"
+group :production, :staging do
+  gem "rails_12factor"
+  gem "rails_stdout_logging"
+  gem "rails_serve_static_assets"
+end
+
 
 # Gems used only for assets and not required
 # in production environments by default.
