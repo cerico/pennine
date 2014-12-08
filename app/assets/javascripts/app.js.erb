@@ -2,6 +2,7 @@ scenic = angular.module('scenic',['controllers'])
 
 controllers = angular.module('controllers',[])
 
-scenic.controller("TrailsController", [ '$scope', function($scope) {
-$scope.message = "hi dere im the trails controller"
+
+   scenic.controller("TrailsController", [ '$scope','$location','$http', function($scope,$location,$http) {
+ $scope.message = $location.$$absUrl
 }])
