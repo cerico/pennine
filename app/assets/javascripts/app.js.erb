@@ -4,5 +4,9 @@ controllers = angular.module('controllers',[])
 
 
    scenic.controller("TrailsController", [ '$scope','$location','$http', function($scope,$location,$http) {
- $scope.message = $location.$$absUrl
+ 
+    $http.get($location.$$absUrl + '.json').success (function (data){
+    $scope.message = data
+    })
+
 }])
