@@ -4,6 +4,7 @@ scenic.controller("ProfileController", [ '$scope','$location','$http', function(
     $scope.user = data
     if ($scope.user.loggedinuser && $scope.user.id === $scope.user.loggedinuser.id) {
       $scope.bookmarkchoice = "showfaved"
+      $scope.loggedinstate = "thatsme"
     }
     else{
       $scope.bookmarkchoice = "showcompleted"
