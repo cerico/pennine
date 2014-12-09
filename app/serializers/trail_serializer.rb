@@ -4,7 +4,7 @@ class TrailSerializer < ActiveModel::Serializer
   has_many :bookmarks
 
   def userbookmark
-    scope.bookmarks.find_by_trail_id(object) if scope
+    scope.bookmarks.find_by_berrybrow_id(object) if scope
   end
 
   def user

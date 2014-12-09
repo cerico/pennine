@@ -21,6 +21,7 @@ class TrailsController < ApplicationController
       @favourites = @trail.bookmarks.where(favourited:true)
       @completeds = @trail.bookmarks.where(completed:true)
     end
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @trail, root: false  }

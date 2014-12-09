@@ -3,12 +3,44 @@ scenic = angular.module('scenic',['controllers'])
 controllers = angular.module('controllers',[])
 
 
-   scenic.controller("TrailsController", [ '$scope','$location','$http', function($scope,$location,$http) {
- 
-    $http.get($location.$$absUrl + '.json').success (function (data){
-    $scope.trail = data
-    console.log(data)
+scenic.controller("TrailsController", [ '$scope','$location','$http', function($scope,$location,$http) {
 
+
+  $scope.favstate = "notfaved"
+  $scope.compstate = "notcompleted"
+
+  $scope.getTrailInfo = function (){
+    $http.get($location.$$absUrl + '.json').success (function (data){
+      $scope.trail = data
+      $scope.checkUserBookmark()
+      console.log($scope.trail)
     })
+  }
+
+  $scope.getTrailInfo()
+
+  $scope.checkUserBookmark = function (){
+    if  ($scope.trail.userbookmark) {
+      if ($scope.trail.userbookmark.favourited == true) {
+        $scope.favstate = "faved"
+      }
+      else {
+        $scope.favstate = "notfaved"
+      }
+      if ($scope.trail.userbookmark.completed == true) {
+        $scope.compstate = "completed"
+      }
+      else {
+        $scope.compstate = "notcompleted"
+      }
+    }
+    else{
+      $scope.favstate = "notfaved"
+      $scope.compstate = "notcompleted"
+    }
+  } 
+
+
+
 
 }])

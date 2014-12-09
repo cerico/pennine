@@ -32,17 +32,11 @@
                   </ul>
                 </div> <!--close of footerright-->
                 <div class="individual_trail_photofooter_mid">
-                  <ul>
-                    <% if @bookmark.present? && @bookmark.favourited? %>
-                      <li><i class="fa fa-heart red"></i></li>
-                    <% else %>
-                      <li><i class="fa fa-heart-o"></i></li>
-                    <% end %>
-                    <% if @bookmark.present? && @bookmark.completed? %>
-                      <li><i class="fa fa-check circle green"></i></li>
-                    <% else %>
-                      <li><i class="fa fa-check circle"></i></li>
-                    <% end %>
+                  <ul>                    
+                      <li ng-show="favstate == 'faved'"><i class="fa fa-heart red"></i></li>
+                      <li ng-show="favstate == 'notfaved'"><i class="fa fa-heart-o"></i></li>
+                      <li ng-show="compstate == 'completed'"><i class="fa fa-check circle green"></i></li>
+                      <li ng-show="compstate == 'notcompleted'"><i class="fa fa-check circle"></i></li>
                   </ul>
                 </div> <!-- close of footermid-->
               </div><!-- close of photofooter-->
