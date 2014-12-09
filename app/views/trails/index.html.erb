@@ -18,6 +18,8 @@
             <div class="everytrail">
  
                 <div class="index-photobox column-32" ng-repeat="trail in trails">
+<li ng-if="trail.userbookmark.favourited == true">
+  dogs</li>
                 <a ng-href="/trails/{{trail.id}}"><img ng-src="{{trail.photos[0].image.frontpage.url}}">
               
                   <div class="everytrail_photofooter">
@@ -25,18 +27,20 @@
                     <p class="everytrail_photofooter_county">{{trail.county}}</p>
                     <div class="everytrail_photofooter_userinfo">
                       <ul>
-                        <li><i class="fa fa-check circle"></i><%#= trail.bookmarks.where(completed:true).length %></li>
-                        <li><i class="fa fa-heart-o"></i><%#= trail.bookmarks.where(favourited:true).length %></li>
+                        
+                        <li><i class="fa fa-check circle"></i>{{(trail.bookmarks|filter: {favourited:true}).length}}</li>
+                        <li><i class="fa fa-heart-o"></i>{{(trail.bookmarks|filter: {completed:true}).length}}</li>
                       </ul>
                     </div>
                     <div class="everytrail_photofooter_userinfo">
                       <ul>
                         <% if current_user %>
                           <%# if trail.bookmarks.present? && trail.bookmarks.find_by_user_id(current_user.id).favourited %>
-                            <li><i class="fa fa-heart red"></i></li>
+
+                            <li ng-if="trail.userbookmark.favourited == true"><i class="fa fa-heart red"></i></li>
                           <%# end %>
                           <%# if trail.bookmarks.present? && trail.bookmarks.find_by_user_id(current_user.id).completed %>
-                            <li><i class="fa fa-check circle green"></i></li>
+                            <li ng-if="trail.userbookmark.completed == true"><i class="fa fa-check circle green"></i></li>
                           <%# end %>
                         <% end %>
                       </ul>

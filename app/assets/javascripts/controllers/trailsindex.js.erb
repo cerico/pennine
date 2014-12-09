@@ -1,5 +1,6 @@
 scenic.controller("TrailsIndexController", [ '$scope','$location','$http', function($scope,$location,$http) {
- 
+
+
 $http.get('/trails.json').success (function (data) {
  $scope.trails = data
  console.log($scope.trails)
