@@ -21,6 +21,7 @@ scenic.controller("TrailsController", [ '$scope','$location','$http', function($
   $scope.getTrailInfo()
 
   $scope.checkUserBookmark = function (){
+
     if  ($scope.trail.userbookmark) {
       if ($scope.trail.userbookmark.favourited == true) {
         $scope.favstate = "faved"
@@ -41,25 +42,44 @@ scenic.controller("TrailsController", [ '$scope','$location','$http', function($
     }
   } 
 
-    $scope.addFav = function (){
-      console.log($scope.trail.id)
-      console.log($scope.trail.user.id)
+    $scope.addFav = function (f){
+
       var letsBookmark = {}
       letsBookmark.trail_id = $scope.trail.id
       letsBookmark.user_id = $scope.trail.user.id
+
+      if (f == 'favit') {
+        modit = {favourited: true}
+        letsBookmark.favourited = true
+      }else if (f == 'unfavit') {
+        modit = {favourited: false}
+
+      }else if (f == 'doneit') {
+        modit = {completed: true}
+        letsBookmark.completed = true
+
+      }else if (f = 'undoneit') {
+        modit = {completed: false}
+
+      }
+
       letsBookmark.favourited = true
 
+
+
       if ($scope.trail.userbookmark) {         
-       $http.put('/bookmarks/' + $scope.trail.userbookmark.id + '.json', {favourited: true}).success (function (data){
-         $scope.favstate = "faved"            
+       $http.put('/bookmarks/' + $scope.trail.userbookmark.id + '.json', modit).success (function (data){
+        $scope.getTrailInfo() 
        });
      }else{      
       $http.post('/bookmarks.json', {bookmark: letsBookmark}).success (function (data){
-        $scope.favstate = "faved"         
+        $scope.getTrailInfo() 
       })
       
     } 
   }
+
+
 
 
 

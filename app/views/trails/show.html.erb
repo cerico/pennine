@@ -33,10 +33,10 @@
                 </div> <!--close of footerright-->
                 <div class="individual_trail_photofooter_mid">
                   <ul>                    
-                      <li ng-show="favstate == 'faved'"><i class="fa fa-heart red"></i></li>
-                      <li ng-show="favstate == 'notfaved'"><i ng-click="addFav()" class="fa fa-heart-o"></i></li>
-                      <li ng-show="compstate == 'completed'"><i class="fa fa-check circle green"></i></li>
-                      <li ng-show="compstate == 'notcompleted'"><i class="fa fa-check circle"></i></li>
+                      <li ng-show="favstate == 'faved'"><i ng-click="addFav('unfavit')" class="fa fa-heart red"></i></li>
+                      <li ng-show="favstate == 'notfaved'"><i ng-click="addFav('favit')" class="fa fa-heart-o"></i></li>
+                      <li ng-show="compstate == 'completed'"><i ng-click="addFav('undoneit')" class="fa fa-check circle green"></i></li>
+                      <li ng-show="compstate == 'notcompleted'"><i ng-click="addFav('doneit')" class="fa fa-check circle"></i></li>
                   </ul>
                 </div> <!-- close of footermid-->
               </div><!-- close of photofooter-->
