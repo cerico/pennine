@@ -1,5 +1,5 @@
      <div class="main" ng-controller="ProfileController">
-
+{{user.loggedinuser}}
       <div class="periscope">
         
           <h1 class="trailname"><img class="profilephoto" src="{{user.photo}}"></h1>
@@ -15,7 +15,7 @@
               </div>
               <div class="usercontent">
 
-<div class="profile_trailphotos column-100 showfaved">
+<div class="profile_trailphotos column-100" ng-show="bookmarkchoice == 'showfaved'">
 
           <div class="userbit column-100">Favourited</div>
           <div class="eachphoto column-32"><a href="trail.html"><img src="/assets/eachphoto1.jpg"></a>
@@ -33,7 +33,7 @@
         </div><!-- close of profile_trailphotos-->      
         
 
-  <div class="profile_trailphotos column-100 showcompleted">
+  <div class="profile_trailphotos column-100" ng-show="bookmarkchoice == 'showcompleted'">
     <div class="userbit column-100">Trails completed by Gareth</div>
     <div class="eachphoto column-32"><a href="trail.html"><img src="eachphoto1.jpg"></a>
       <div class="little_photofooter">
@@ -49,7 +49,7 @@
 
   </div><!-- close of profile_trailphotos-->
 
-  <div class="profile_trailphotos column-100 showadded">
+  <div class="profile_trailphotos column-100" ng-show="bookmarkchoice == 'showadded'">
     <div class="userbit column-100">Trails added by Gareth</div>
     <div class="eachphoto column-32"><a href="trail.html"><img src="eachphoto1.jpg"></a>
       <div class="little_photofooter">

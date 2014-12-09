@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :name, :photo, :distance
+  attributes :id, :name, :photo, :distance, :loggedinuser
 
   has_many :bookmarks
   has_many :trails
@@ -11,5 +11,9 @@ class UserSerializer < ActiveModel::Serializer
       totaldistance += hike.trail.distance
     end
     totaldistance
+  end
+
+  def loggedinuser
+    scope
   end
 end

@@ -2,6 +2,12 @@ scenic.controller("ProfileController", [ '$scope','$location','$http', function(
 
   $http.get($location.$$absUrl + '.json').success (function (data){
     $scope.user = data
+    if ($scope.user.loggedinuser && $scope.user.id === $scope.user.loggedinuser.id) {
+      $scope.bookmarkchoice = "showfaved"
+    }
+    else{
+      $scope.bookmarkchoice = "showcompleted"
+    }
   })
 
 
