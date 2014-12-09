@@ -1,6 +1,7 @@
 class BookmarksController < ApplicationController
   # GET /bookmarks
   # GET /bookmarks.json
+  skip_before_filter :verify_authenticity_token
   def index
     @bookmarks = Bookmark.all
 

@@ -14,6 +14,7 @@ scenic.controller("TrailsController", [ '$scope','$location','$http', function($
       $scope.trail = data
       $scope.checkUserBookmark()
       console.log($scope.trail)
+
     })
   }
 
@@ -39,6 +40,26 @@ scenic.controller("TrailsController", [ '$scope','$location','$http', function($
       $scope.compstate = "notcompleted"
     }
   } 
+
+    $scope.addFav = function (){
+      console.log($scope.trail.id)
+      console.log($scope.trail.user.id)
+      var letsBookmark = {}
+      letsBookmark.trail_id = $scope.trail.id
+      letsBookmark.user_id = $scope.trail.user.id
+      letsBookmark.favourited = true
+
+      if ($scope.trail.userbookmark) {         
+       $http.put('/bookmarks/' + $scope.trail.userbookmark.id + '.json', {favourited: true}).success (function (data){
+         $scope.favstate = "faved"            
+       });
+     }else{      
+      $http.post('/bookmarks.json', {bookmark: letsBookmark}).success (function (data){
+        $scope.favstate = "faved"         
+      })
+      
+    } 
+  }
 
 
 
