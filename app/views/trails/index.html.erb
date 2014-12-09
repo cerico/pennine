@@ -30,11 +30,13 @@
                     </div>
                     <div class="everytrail_photofooter_userinfo">
                       <ul>
-                        <% if trail.bookmarks.present? && trail.bookmarks.find_by_user_id(current_user.id).favourited %>
-                          <li><i class="fa fa-heart red"></i></li>
-                        <% end %>
-                        <% if trail.bookmarks.present? && trail.bookmarks.find_by_user_id(current_user.id).completed %>
-                          <li><i class="fa fa-check circle green"></i></li>
+                        <% if current_user %>
+                          <% if trail.bookmarks.present? && trail.bookmarks.find_by_user_id(current_user.id).favourited %>
+                            <li><i class="fa fa-heart red"></i></li>
+                          <% end %>
+                          <% if trail.bookmarks.present? && trail.bookmarks.find_by_user_id(current_user.id).completed %>
+                            <li><i class="fa fa-check circle green"></i></li>
+                          <% end %>
                         <% end %>
                       </ul>
                     </div>
