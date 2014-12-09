@@ -23,7 +23,10 @@
         <div class="trailcontainer column-100" >
           <div class="wrapper clearfix">
             <% if @trail.photos.first %>
-            <div class="mainphoto column-100"><%= image_tag(@trail.photos.first.image.trailpage, :class => "trailphoto column-100") %>>
+           
+
+            <div class="mainphoto column-100" ng-repeat="photo in trail.photos|limitTo:1">
+              <img class="trailphoto column-100" ng-src="{{photo.image.trailpage.url}}">
               <div class="individual_trail_photofooter">
                 <span class="individual_trail_photofooter_left" >{{ trail.name }}</span>   
                 <div class="individual_trail_photofooter_right">
@@ -50,10 +53,9 @@
             </div>
 
             <div class="morephotos column-100">
-              <% @trail.photos.each do |photo| %>
-              <div class="extraphoto column-25"><%= image_tag(photo.image.detail) %></a>
+              <div ng-repeat="photo in trail.photos" class="extraphoto column-25"><a href="{{photo.image.wide.url}}"><img ng-src="{{photo.image.detail.url}}"></a>
               </div>
-              <% end %>
+             
               <photo></photo>
 
 
@@ -90,54 +92,6 @@
      </div>
    </div>
 
-  <!--  <p id="notice"><%= notice %></p>
-
-   <p>
-    <b>Name:</b>
-    <%= @trail.name %>
-  </p>
-
-  <p>
-    <b>County:</b>
-    <%= @trail.county %>
-  </p>
-
-  <p>
-    <b>Postcode:</b>
-    <%= @trail.postcode %>
-  </p>
-
-  <p>
-    <b>Description:</b>
-    <%= @trail.description %>
-  </p>
-
-  <p>
-    <b>Lat:</b>
-    <%= @trail.lat %>
-  </p>
-
-  <p>
-    <b>Lng:</b>
-    <%= @trail.lng %>
-  </p>
-
-  <p>
-    <b>Rating:</b>
-    <%= @trail.rating %>
-  </p>
-
-  <p>
-    <b>Distance:</b>
-    <%= @trail.distance %>
-  </p>
-
-  <p>
-    <b>User:</b>
-    <%= @trail.user_id %>
-  </p>
-
-
-  <%= link_to 'Edit', edit_trail_path(@trail) %> |
+  
   <%= link_to 'Back', trails_path %>
  -->
