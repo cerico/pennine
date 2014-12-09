@@ -13,7 +13,8 @@ scenic.controller("TrailsController", [ '$scope','$location','$http', function($
     $http.get($location.$$absUrl + '.json').success (function (data){
       $scope.trail = data
       $scope.checkUserBookmark()
-      console.log($scope.trail)
+
+  
 
     })
   }
