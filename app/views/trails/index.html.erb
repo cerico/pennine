@@ -24,18 +24,18 @@
                   <div class="everytrail_photofooter">
                     <p class="everytrail_photofooter_name">{{trail.name}}</p></a>
                     <p class="everytrail_photofooter_county">{{trail.county}}</p>
+           
                     <div class="everytrail_photofooter_userinfo">
                       <ul>
                         
-                        <li><i class="fa fa-check circle"></i>{{(trail.bookmarks|filter: {favourited:true}).length}}</li>
-                        <li><i class="fa fa-heart-o"></i>{{(trail.bookmarks|filter: {completed:true}).length}}</li>
-                      </ul>
-                    </div>
-                    <div class="everytrail_photofooter_userinfo">
-                      <ul>
-                        
-                <li ng-if="trail.userbookmark.favourited == true"><i class="fa fa-heart red"></i></li>
-                <li ng-if="trail.userbookmark.completed == true"><i class="fa fa-check circle green"></i></li>
+                <li>{{(trail.bookmarks|filter: {favourited:true}).length}} 
+                  <i ng-if="trail.userbookmark.favourited == true" class="fa fa-heart red"></i>
+                  <i ng-if="trail.userbookmark.favourited != true" class="fa fa-heart-o"></i>
+                </li>
+                <li>{{(trail.bookmarks|filter: {completed:true}).length}}
+                  <i ng-if="trail.userbookmark.completed == true" class="fa fa-check circle green"></i>
+                  <i ng-if="trail.userbookmark.completed != true" class="fa fa-check circle"></i>
+                </li>
                          
                         
                       </ul>
