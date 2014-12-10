@@ -56,7 +56,7 @@
 
   <div class="profile_trailphotos column-100" ng-show="bookmarkchoice == 'showadded'">
     <div class="userbit column-100">Trails added by {{user.name}}</div>
-    <div class="eachphoto column-32" ng-repeat="trail in user.trails"><a ng-href="trail/{{fav.trail.id}}"><img ng-src="{{fav.trail.photos[0].image.detail.url}}"></a>
+    <div class="eachphoto column-32" ng-repeat="trail in user.trails"><a ng-href="trail/{{fav.trail.id}}"><img ng-src="{{trail.photos[0].image.detail.url}}"></a>
       <div class="little_photofooter">
         <span class="little_photofooter_left" >{{trail.name}}</span>   
         <div class="little_photofooter_right">

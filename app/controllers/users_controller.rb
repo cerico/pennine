@@ -9,8 +9,8 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       # format.json { render json: @user, :include => {:bookmarks => {:include => { :trail => { :include => :photos } }} }), root: false }
-      format.json { render json: @user, :include => [{:bookmarks => {:include => { :trail => { :include => :photos } }} },:trails] }
-      
+      format.json { render json: @user, :include => [{:bookmarks => {:include => { :trail => { :include => :photos } }} },:trails => {:include => :photos}] }
+
 
 
     end
