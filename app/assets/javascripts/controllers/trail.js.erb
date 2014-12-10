@@ -59,7 +59,6 @@ scenic.controller("TrailsController", [ '$scope','$location','$http', function($
 
     }
 
-    letsBookmark.favourited = true
 
 
 
@@ -69,6 +68,7 @@ scenic.controller("TrailsController", [ '$scope','$location','$http', function($
     });
    }else{      
     $http.post('/bookmarks.json', {bookmark: letsBookmark}).success (function (data){
+      console.log(modit)
       $scope.getTrailInfo() 
     })
 
