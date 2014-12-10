@@ -5,6 +5,7 @@ class UserSerializer < ActiveModel::Serializer
   has_many :trails
 
 
+
   def distance
     totaldistance = 0
     bookmarks.where(completed:true).each do |hike|
@@ -16,4 +17,5 @@ class UserSerializer < ActiveModel::Serializer
   def loggedinuser
     scope
   end
+
 end
