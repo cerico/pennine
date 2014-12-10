@@ -12,5 +12,28 @@ scenic.controller("ProfileController", [ '$scope','$location','$http', function(
   })
 
 
+  $scope.changeBookmarkView = function (state) {
+    if (state == 'added'){
+      $scope.bookmarkchoice = "showadded"
+      $(".seeadded a").addClass("current")
+      $(".seecompleted a").removeClass("current")
+      $(".seefaved a").removeClass("current")
+
+    }
+    else if (state == 'faved') {
+      $scope.bookmarkchoice = "showfaved"
+      $(".seecompleted a").removeClass("current")
+      $(".seefaved a").addClass("current")
+      $(".seeadded a").removeClass("current")
+    }
+    else if (state == 'completed') {
+      $scope.bookmarkchoice = "showcompleted"
+      $(".seefaved a").removeClass("current")
+      $(".seecompleted a").addClass("current")
+      $(".seeadded a").removeClass("current")
+    }
+  }
+
+
 
 }])
