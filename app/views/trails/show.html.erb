@@ -1,5 +1,5 @@
 <div class="main" ng-controller="TrailsController">
- 
+ {{trail.user}}
   <div class="periscope">
     <h1 class="trailname">{{trail.name}} </h1>
   </div>
@@ -31,8 +31,8 @@
                 <span class="individual_trail_photofooter_left" >{{ trail.name }}</span>   
                 <div class="individual_trail_photofooter_right">
                   <ul>
-                    <li class="uploadedby"><a href="profile.html"><%= image_tag(@uploader.photo, :class => "userphoto") %></a></li>
-                    <li><a href="profile.html">By <%= @uploader.name %></a> </li>
+                    <li class="uploadedby"><a ng-href="/users/{{trail.user.id}}"><img class="userphoto" ng-src="{{trail.user.photo}}"></li>
+                    <li>{{trail.user.name}}</a> </li>
                   </ul>
                 </div> <!--close of footerright-->
                 <div class="individual_trail_photofooter_mid">
