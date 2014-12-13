@@ -17,6 +17,11 @@ scenic.config(['$stateProvider','$urlRouterProvider','$locationProvider', functi
       url: '/trails/:id',
       templateUrl: 'trail.html',
       controller: 'TrailsController'
+  }),
+  $stateProvider.state('profile', {
+      url: '/profile',
+      templateUrl: 'profile.html',
+      controller: 'ProfileController'
   });
 
 
