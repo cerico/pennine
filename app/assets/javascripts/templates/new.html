@@ -1,0 +1,88 @@
+
+
+<div class="main">{{message}}
+
+  <div class="periscope">
+    <h1 class="trailname"></h1>
+  </div>
+  <div class="bendychair clearfix">
+
+   <div class="sidebarthin">
+
+
+
+   </div>
+   <div class="trailcontentpassive">
+    <div class="trailcontainer column-100" >
+
+
+      <div class="newtrailinfobox trailupload column-50">
+        <div class="trailuploadinfo column-75">Upload your new trail by clicking on the map for location and attaching at least one photo before submitting</div>
+       
+        <%= form_for @trail, :html => { :class => "newtrailform", :id => "trail-dropzone",  multipart: true }  do |f| %>
+        <% if @trail.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@trail.errors.count, "error") %> prohibited this trail from being saved:</h2>
+
+          <ul>
+            <% @trail.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+        <% end %>
+        <%= f.text_field :name, :placeholder => "Trail Name" %>
+        <%= f.text_field :county, :placeholder => "County" %>
+
+        <%= f.select(:rating, options_for_select(1..10 ), {}, {:class => 'rating1'})  %>
+
+       
+        <%= file_field_tag "file[]", type: :file, multiple: true %>
+        
+
+        <%= f.hidden_field :user_id, :value => current_user.id %> 
+        <%= f.hidden_field :distance, :value => "12.6" %>
+        <%= f.hidden_field :lat, :value => "55.1" %>
+        <%= f.hidden_field :lng, :value => "-2.1"%>
+        <BR><BR>
+
+
+          <button class="newtrailbutton" type="submit">Upload Trail!</button>
+
+
+        <% end %>
+      </div><!-- close of infobox-->
+
+
+      <div class="column-90">
+        <iframe width="92%" height="700" frameborder="0" scrolling="no" class="add_trail_map" marginheight="0" marginwidth="0" src="http://my.ctrlq.org/maps/#roadmap|6|53.65514003683595|-6.15656248749997"></iframe>
+      </div><!-- close of profile_trailphotos-->
+
+
+    </div><!--close of trailcontainer column-75-->
+  </div>
+</div>
+<div class="footer">
+
+  <div class="big">scen.ic</div>
+
+  <div class="footerlinks column-100">
+    <ul class="column-75">
+     <li><a class="active" href="newtrail.html">Add New</a></li><li><a href="map.html">Map</a></li><li><a href="trailsindex.html">Trails</a></li><li><a href="profile.html">Profile</a></li></ul></div>
+     <div class="whoami column-32">
+      garethrobertlee@gmail.com<br>
+      www.salterhebble.com
+    </div>
+    <div class="whoami column-32">
+      made in todmorden and honley, 2014
+    </div>
+
+    <ul class="socials">
+      <a class="lowerlink" href="http://www.twitter.com/crcvch"><i class="fa fa-twitter fa-2x"></i></a>
+      <a class="lowerlink" href="https://github.com/cerico"><i class="fa fa-github fa-2x"></i></a>
+      <a class="lowerlink" href="https://www.linkedin.com/in/garethrobertlee"><i class="fa fa-linkedin fa-2x"></i></a>
+      <a class="lowerlink" href="https://soundcloud.com/crcvch"><i class="fa fa-soundcloud fa-2x"></i></a>
+    </ul>
+  </div>
+</div>
+</div>
