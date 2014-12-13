@@ -19,6 +19,8 @@ gem 'bower-rails'
 
 gem 'active_model_serializers'
 
+gem 'angular-rails-templates'
+
 gem "foreman"
 group :production, :staging do
   gem "rails_12factor"

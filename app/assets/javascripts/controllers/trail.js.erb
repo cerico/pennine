@@ -5,8 +5,9 @@ scenic.controller("TrailsController", [ '$scope','$location','$http', function($
   $scope.compstate = "notcompleted"
 
   $scope.getTrailInfo = function (){
-    $http.get($location.$$absUrl + '.json').success (function (data){
+    $http.get($location.path() + '.json').success (function (data){
       $scope.trail = data
+      console.log(data)
       $scope.checkUserBookmark()
 
 

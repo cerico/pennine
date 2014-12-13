@@ -1,4 +1,23 @@
-scenic = angular.module('scenic',['controllers'])
+scenic = angular.module('scenic',['controllers','templates','ui.router',])
 
 controllers = angular.module('controllers',[])
 
+scenic.config(['$stateProvider','$urlRouterProvider','$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider){
+
+
+  $urlRouterProvider.otherwise('/trails')
+
+
+  $stateProvider.state('trails', { 
+      url: '/trails',
+      templateUrl: 'trailsindex.html',
+      controller: 'TrailsIndexController'
+  }),
+  $stateProvider.state('trail', {
+      url: '/trails/:id',
+      templateUrl: 'trail.html',
+      controller: 'TrailsController'
+  });
+
+
+    }])

@@ -1,0 +1,76 @@
+
+
+<div class="main" ng-controller="TrailsIndexController">
+
+
+              <div class="periscope">
+                <h1 class="trailname"></h1>
+              </div>
+
+              <div class="bendychair clearfix">
+
+                <div class="sidebarthin">
+
+
+
+                </div>
+                <div class="trailcontentpassive">
+            <div class="everytrail">
+ 
+                <div class="index-photobox column-32" ng-repeat="trail in trails">
+
+                <a ng-href="#/trails/{{trail.id}}"><img ng-src="{{trail.photos[0].image.frontpage.url}}">
+              
+                  <div class="everytrail_photofooter">
+                    <p class="everytrail_photofooter_name">{{trail.name}}</p></a>
+                    <p class="everytrail_photofooter_county">{{trail.county}}</p>
+           
+                    <div class="everytrail_photofooter_userinfo">
+                      <ul>
+                        
+                <li>{{(trail.bookmarks|filter: {favourited:true}).length}} 
+                  <i ng-if="trail.userbookmark.favourited == true" class="fa fa-heart red"></i>
+                  <i ng-if="trail.userbookmark.favourited != true" class="fa fa-heart-o"></i>
+                </li>
+                <li>{{(trail.bookmarks|filter: {completed:true}).length}}
+                  <i ng-if="trail.userbookmark.completed == true" class="fa fa-check circle green"></i>
+                  <i ng-if="trail.userbookmark.completed != true" class="fa fa-check circle"></i>
+                </li>
+                         
+                        
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+       
+              
+            </div>
+
+                </div>
+
+              </div>
+              <div class="footer">
+
+                <div class="big">scen.ic</div>
+
+                <div class="footerlinks column-100">
+                  <ul class="column-75">
+                   <li><a href="newtrail.html">Add New</a></li><li><a href="map.html">Map</a></li><li><a class="active" href="#trails">Trails</a></li><li><a href="profile.html">Profile</a></li></ul></div>
+                   <div class="whoami column-32">
+                    garethrobertlee@gmail.com<br>
+                    www.salterhebble.com
+                  </div>
+                  <div class="whoami column-32">
+                    made in todmorden and honley, 2014
+                  </div>
+
+                  <ul class="socials">
+                    <a class="lowerlink" href="http://www.twitter.com/crcvch"><i class="fa fa-twitter fa-2x"></i></a>
+                    <a class="lowerlink" href="https://github.com/cerico"><i class="fa fa-github fa-2x"></i></a>
+                    <a class="lowerlink" href="https://www.linkedin.com/in/garethrobertlee"><i class="fa fa-linkedin fa-2x"></i></a>
+                    <a class="lowerlink" href="https://soundcloud.com/crcvch"><i class="fa fa-soundcloud fa-2x"></i></a>
+                  </ul>
+                </div>
+              </div>
+
+
