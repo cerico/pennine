@@ -1,6 +1,6 @@
 scenic.controller("ProfileController", [ '$scope','$location','$http', function($scope,$location,$http) {
 
-  $http.get($location.$$absUrl + '.json').success (function (data){
+  $http.get($location.path() + '.json').success (function (data){
     $scope.user = data
     $scope.bookmarkchoice = "showfaved"
     $scope.distance = 0
