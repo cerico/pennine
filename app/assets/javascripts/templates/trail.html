@@ -1,5 +1,11 @@
 <div class="main">
 
+
+
+
+
+
+
   <div class="periscope">
     <h1 class="trailname">{{trail.name}} </h1>
   </div>
@@ -20,10 +26,11 @@
       </div>
       <div class="trailcontent">
 
+
         <div class="trailcontainer column-100" >
           <div class="wrapper clearfix">
            
-           
+         
 
             <div class="mainphoto column-100" ng-repeat="photo in trail.photos|limitTo:1">
               <img class="trailphoto column-100" ng-src="{{photo.image.trailpage.url}}">
@@ -65,11 +72,21 @@
 
 
             </div><!-- close of morephotos-->
+
+            <div ng-app="dropZone">
+            <form action="/upload" 
+                class="dropzone" 
+                drop-zone 
+                id="file-dropzone">
+            </form>
+            </div> 
             <div class="moreinfo column-100">Add more photos by clicking on, or dragging to, the area below</div>
             <div ng-if="Dropzone.isReady"></div>
             <form  id="media-dropzone" class="dropzone column-50" enctype="multipart/form-data">
             <input name="authenticity_token" type="hidden" />
           </form>
+          <hr>
+  
           </div><!-- close of wrapper clearfix-->
         </div><!--close of trailcontainer column-75--> 
 
