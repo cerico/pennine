@@ -385,6 +385,10 @@ margin-right:1%;
     text-decoration:none;
   }
 
+  .sidebar ul .current {
+    color:#f5f6f1;
+  }
+
 
 
   i.fa.fa-heart.red {
