@@ -8,7 +8,7 @@ scenic.controller("TrailsController", [ '$scope','$location','$http', function($
     $http.get($location.path() + '.json').success (function (data){
       $scope.trail = data
       console.log(data)
-      $scope.checkUserBookmark()
+      $scope.checkHikerBookmark()
 
 
 
@@ -17,16 +17,16 @@ scenic.controller("TrailsController", [ '$scope','$location','$http', function($
 
   $scope.getTrailInfo()
 
-  $scope.checkUserBookmark = function (){
+  $scope.checkHikerBookmark = function (){
 
-    if  ($scope.trail.userbookmark) {
-      if ($scope.trail.userbookmark.favourited == true) {
+    if  ($scope.trail.hikerbookmark) {
+      if ($scope.trail.hikerbookmark.favourited == true) {
         $scope.favstate = "faved"
       }
       else {
         $scope.favstate = "notfaved"
       }
-      if ($scope.trail.userbookmark.completed == true) {
+      if ($scope.trail.hikerbookmark.completed == true) {
         $scope.compstate = "completed"
       }
       else {
@@ -43,7 +43,7 @@ scenic.controller("TrailsController", [ '$scope','$location','$http', function($
 
     var letsBookmark = {}
     letsBookmark.trail_id = $scope.trail.id
-    letsBookmark.user_id = $scope.trail.user.id
+    letsBookmark.user_id = $scope.trail.hiker.id
 
     if (f == 'favit') {
       modit = {favourited: true}
@@ -63,8 +63,8 @@ scenic.controller("TrailsController", [ '$scope','$location','$http', function($
 
 
 
-    if ($scope.trail.userbookmark) {         
-     $http.put('/bookmarks/' + $scope.trail.userbookmark.id + '.json', modit).success (function (data){
+    if ($scope.trail.hikerbookmark) {         
+     $http.put('/bookmarks/' + $scope.trail.hikerbookmark.id + '.json', modit).success (function (data){
       $scope.getTrailInfo() 
     });
    }else{      
