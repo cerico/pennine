@@ -1,68 +1,31 @@
-scenic.controller("TrailsController", [ '$scope','$location','$http','$timeout', function($scope,$location,$http,$timeout) {
-
+scenic.controller("TrailsController", [ '$scope','$location','$http', function($scope,$location,$http) {
 
   $scope.favstate = "notfaved"
   $scope.compstate = "notcompleted"
-
- $scope.dropzone = Dropzone
-
   $scope.posthere = $location.path() + '/photos'
-
-
- Dropzone.autoDiscover = false;
-
- //show uploaded photo immediately
-    $timeout (function() {
-
-  // console.log(Dropzone.forElement($scope.z))
-
- //     if (Dropzone.forElement($scope.z)){
- //     Dropzone.forElement($scope.z).destroy();
- //     console.log("destroyed previous")
-   
- // }
-
-     console.log("photosjs line 29   " + $scope.posthere)
-  
-
-       // var mediaDropzone;
-       // $scope.y = "#media-dropzone_" + $route.current.params.id
-       console.log($scope.posthere)
-       Dropzone.options.photoDropzone = new Dropzone("#media-dropzone", {url: $scope.posthere});
-       console.log(Dropzone.options.photoDropzone)
-  
-       return Dropzone.options.photoDropzone.on("success", function(file, responseText) {
-    
-
-         var imageUrl;
-         imageUrl = responseText.image.url;
-         $http.get($location.path() + '/photos.json').success (function (data){
-    
-           $scope.well = data
-           $scope.photos = data
-            Dropzone.options.photoDropzone.removeAllFiles();
-         });
-         console.log(Dropzone.options.photoDropzone)
-         console.log(Dropzone.forElement($scope.z))
-       console.log(Dropzone.options.photoDropzone)
-       })
-
-    },200);
-
-
-
+  Dropzone.autoDiscover = false;
 
   $scope.getTrailInfo = function (){
     $http.get($location.path() + '.json').success (function (data){
-      $scope.trail = data
-     
-      $scope.checkHikerBookmark()
-     
-     
+      $scope.trail = data    
+      $scope.checkHikerBookmark()    
     })
   }
 
   $scope.getTrailInfo()
+
+
+  $scope.photoUpload = function (){
+    Dropzone.options.photoDropzone = new Dropzone("#media-dropzone", {url: $scope.posthere});
+    return Dropzone.options.photoDropzone.on("success", function(file, theNewPhoto) {
+      $scope.trail.photos.push(theNewPhoto)
+      $http.get($location.path() + '/photos.json').success (function (data){
+        Dropzone.options.photoDropzone.removeAllFiles();
+      });
+   })
+  }
+
+  $scope.photoUpload()
 
   $scope.checkHikerBookmark = function (){
 
@@ -106,9 +69,6 @@ scenic.controller("TrailsController", [ '$scope','$location','$http','$timeout',
       modit = {completed: false}
 
     }
-
-
-
 
     if ($scope.trail.hikerbookmark) {         
      $http.put('/bookmarks/' + $scope.trail.hikerbookmark.id + '.json', modit).success (function (data){
