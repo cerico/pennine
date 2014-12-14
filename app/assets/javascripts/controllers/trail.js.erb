@@ -16,7 +16,7 @@ scenic.controller("TrailsController", [ '$scope','$location','$http', function($
 
 
   $scope.photoUpload = function (){
-    Dropzone.options.photoDropzone = new Dropzone("#media-dropzone", {url: $scope.posthere});
+    Dropzone.options.photoDropzone = new Dropzone("#media-dropzone", {url: $scope.posthere,dictDefaultMessage:""} );
     return Dropzone.options.photoDropzone.on("success", function(file, theNewPhoto) {
       $scope.trail.photos.push(theNewPhoto)
       $http.get($location.path() + '/photos.json').success (function (data){
