@@ -15,5 +15,5 @@
 //= require angular-rails-templates
 //= require jquery
 //= require jquery_ujs
-//= require dropzone
+//= require angular-dropzone/lib/angular-dropzone
 //= require_tree .
