@@ -1,0 +1,212 @@
+/* The MIT License */
+.traildropzone,
+.traildropzone *,
+.traildropzone-previews,
+.traildropzone-previews * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+.traildropzone {
+  position: relative;
+  float: left;
+  margin-left: 6%;
+  background: url(photoupload2.png) repeat-x 0 0;
+  background-position: calc(110% - 4px) 62px;
+  z-index: 5;
+/*  height: 286;*/
+  /*padding: 1em;*/
+/*  margin-right: 50;
+  margin-top: 15%;*/
+  width: 420;
+ 
+}
+
+.trailuploadinfo{
+  position: relative;
+
+  z-index: 7;
+  height: 61;
+  /*padding: 1em;*/
+/*  margin-right: 50;
+  margin-top: 15%;*/
+  width: 400;
+  color:grey;
+  margin-left: 6%;
+  margin-top: 3%;
+  text-align: left;
+ 
+}
+
+.map_pop_up {
+  background-color: #f5f6f1;
+  border:2px solid lightsteelblue;
+  height:130;
+  width:130;
+}
+
+.map_pop_up img {
+  width:100%;
+  heigh:100%;
+  border:2px solid lightsteeblue;
+}
+
+
+.trailupload{
+  position: relative;
+  float: left;
+  z-index: 5;
+  height: 436;
+  /*padding: 1em;*/
+  margin-left: 5%;
+ 
+  margin-top: 11%;
+  width: 440;
+  border: 1px solid rgba(176,196,222,1)
+}
+
+
+.traildropzone.dz-clickable {
+  cursor: pointer;
+}
+.traildropzone.dz-clickable .dz-message,
+.dropzone.dz-clickable .dz-message span {
+  cursor: pointer;
+}
+.traildropzone.dz-clickable * {
+  cursor: default;
+}
+.traildropzone .dz-message {
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
+}
+.traildropzone.dz-drag-hover {
+  border-color: rgba(0,0,0,0.15);
+  background: rgba(0,0,0,0.04);
+}
+.traildropzone.dz-started .dz-message {
+  display: none;
+}
+.traildropzone .dz-preview,
+.traildropzone-previews .dz-preview {
+  background: rgba(255,255,255,1);
+  position: relative;
+  display: inline-block;
+  margin-right: 3px;
+  margin-top: -208px;
+  vertical-align: top;
+  border: 2px solid rgba(176,196,222,1);
+  padding: 6px 16px 6px 16px;
+  z-index: 131;
+}
+.traildropzone .dz-preview.dz-file-preview [data-dz-thumbnail],
+.traildropzone-previews .dz-preview.dz-file-preview [data-dz-thumbnail] {
+  display: none;
+}
+.traildropzone .dz-preview .dz-details,
+.traildropzone-previews .dz-preview .dz-details {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  background: #ebebeb;
+  padding: 5px;
+  margin-bottom: 22px;
+}
+.traildropzone .dz-preview .dz-details .dz-filename,
+.traildropzone-previews .dz-preview .dz-details .dz-filename {
+  overflow: hidden;
+  height: 100%;
+}
+.traildropzone .dz-preview .dz-details img,
+.traildropzone-previews .dz-preview .dz-details img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
+}
+.traildropzone .dz-preview .dz-details .dz-size,
+.traildropzone-previews .dz-preview .dz-details .dz-size {
+  position: absolute;
+  bottom: -28px;
+  left: 3px;
+  height: 28px;
+  line-height: 28px;
+}
+.traildropzone .dz-preview.dz-error .dz-error-mark,
+.traildropzone-previews .dz-preview.dz-error .dz-error-mark {
+  display: block;
+}
+.traildropzone .dz-preview.dz-success .dz-success-mark,
+.traildropzone-previews .dz-preview.dz-success .dz-success-mark {
+  display: block;
+}
+.traildropzone .dz-preview:hover .dz-details img,
+.traildropzone-previews .dz-preview:hover .dz-details img {
+  display: none;
+}
+.traildropzone .dz-preview .dz-success-mark,
+.traildropzone-previews .dz-preview .dz-success-mark,
+.traildropzone .dz-preview .dz-error-mark,
+.traildropzone-previews .dz-preview .dz-error-mark {
+  display: none;
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  font-size: 30px;
+  text-align: center;
+  right: -10px;
+  top: -10px;
+}
+.traildropzone .dz-preview .dz-success-mark,
+.traildropzone-previews .dz-preview .dz-success-mark {
+  color: #8cc657;
+}
+.traildropzone .dz-preview .dz-error-mark,
+.traildropzone-previews .dz-preview .dz-error-mark {
+  color: #ee162d;
+}
+.traildropzone .dz-preview .dz-progress,
+.traildropzone-previews .dz-preview .dz-progress {
+  position: absolute;
+  top: 100px;
+  left: 6px;
+  right: 6px;
+  height: 6px;
+  background: #d7d7d7;
+  display: none;
+}
+.traildropzone .dz-preview .dz-progress .dz-upload,
+.traildropzone-previews .dz-preview .dz-progress .dz-upload {
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  background-color: #8cc657;
+}
+.traildropzone .dz-preview.dz-processing .dz-progress,
+.traildropzone-previews .dz-preview.dz-processing .dz-progress {
+  display: block;
+}
+.traildropzone .dz-preview .dz-error-message,
+.traildropzone-previews .dz-preview .dz-error-message {
+  display: none;
+  position: absolute;
+  top: -5px;
+  left: -20px;
+  background: rgba(245,245,245,0.8);
+  padding: 8px 10px;
+  color: #800;
+  min-width: 140px;
+  max-width: 500px;
+  z-index: 500;
+}
+.traildropzone .dz-preview:hover.dz-error .dz-error-message,
+.traildropzone-previews .dz-preview:hover.dz-error .dz-error-message {
+  display: block;
+}
