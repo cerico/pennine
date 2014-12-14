@@ -56,7 +56,12 @@
               <div ng-repeat="photo in trail.photos" class="extraphoto column-25"><a href="{{photo.image.wide.url}}"><img ng-src="{{photo.image.detail.url}}"></a>
               </div>
              
-              <photodropzone></photodropzone>
+              <div ng-if="Dropzone.isReady"></div>
+
+              <form id="media-dropzone" class="dropzone" enctype="multipart/form-data">
+              <input name="authenticity_token" type="hidden" />
+
+              </form>
 
 
             </div><!-- close of morephotos-->
