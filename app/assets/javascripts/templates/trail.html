@@ -73,17 +73,20 @@
 
             </div><!-- close of morephotos-->
 
-            <div ng-app="dropZone">
-            <form action="/upload" 
+            <div>
+            <form 
                 class="dropzone" 
                 drop-zone 
-                id="file-dropzone">
+                id="media-dropzone"
+                enctype="multipart/form-data">
+                <input name="authenticity_token" type="hidden" />
             </form>
+            <input name="authenticity_token" type="hidden" />
             </div> 
             <div class="moreinfo column-100">Add more photos by clicking on, or dragging to, the area below</div>
             <div ng-if="Dropzone.isReady"></div>
             <form  id="media-dropzone" class="dropzone column-50" enctype="multipart/form-data">
-            <input name="authenticity_token" type="hidden" />
+           
           </form>
           <hr>
   

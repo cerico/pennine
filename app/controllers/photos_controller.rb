@@ -1,6 +1,7 @@
 class PhotosController < ApplicationController
   # GET /photos
   # GET /photos.json
+
   def index
     @photos = Photo.all
 
@@ -40,14 +41,17 @@ class PhotosController < ApplicationController
   # POST /photos
   # POST /photos.json
   def create
-    @photo = Photo.new(params[:photo])
-
+    #@photo = Photo.new(params[:photo])
+    @photo = Photo.new(trail_id: params[:trail_id],image: params[:file])
+   
     respond_to do |format|
       if @photo.save
-        format.html { redirect_to @photo, notice: 'Photo was successfully created.' }
-        format.json { render json: @photo, status: :created, location: @photo }
+        # format.html { redirect_to @photo, notice: 'Photo was successfully created.' }
+        # format.json { render json: @photo, status: :created, location: @photo }
+        format.json{ render :json => @photo }
+
       else
-        format.html { render action: "new" }
+        # format.html { render action: "new" }
         format.json { render json: @photo.errors, status: :unprocessable_entity }
       end
     end

@@ -1,13 +1,56 @@
-scenic.controller("TrailsController", [ '$scope','$location','$http', function($scope,$location,$http) {
+scenic.controller("TrailsController", [ '$scope','$location','$http','$timeout', function($scope,$location,$http,$timeout) {
 
 
   $scope.favstate = "notfaved"
   $scope.compstate = "notcompleted"
 
-  $scope.dropzoneConfig = {
-    parallelUploads: 3,
+ $scope.dropzone = Dropzone
+
+  $scope.posthere = $location.path() + '/photos'
+
+
+ Dropzone.autoDiscover = false;
+
+ //show uploaded photo immediately
+    $timeout (function() {
+
+  // console.log(Dropzone.forElement($scope.z))
+
+ //     if (Dropzone.forElement($scope.z)){
+ //     Dropzone.forElement($scope.z).destroy();
+ //     console.log("destroyed previous")
+   
+ // }
+
+     console.log("photosjs line 29   " + $scope.posthere)
+  
+
+       // var mediaDropzone;
+       // $scope.y = "#media-dropzone_" + $route.current.params.id
+       console.log($scope.posthere)
+       Dropzone.options.photoDropzone = new Dropzone("#media-dropzone", {url: $scope.posthere});
+       console.log(Dropzone.options.photoDropzone)
+  
+       return Dropzone.options.photoDropzone.on("success", function(file, responseText) {
     
-  };
+
+         var imageUrl;
+         imageUrl = responseText.image.url;
+         $http.get($location.path() + '/photos.json').success (function (data){
+    
+           $scope.well = data
+           $scope.photos = data
+            Dropzone.options.photoDropzone.removeAllFiles();
+         });
+         console.log(Dropzone.options.photoDropzone)
+         console.log(Dropzone.forElement($scope.z))
+       console.log(Dropzone.options.photoDropzone)
+       })
+
+    },200);
+
+
+
 
   $scope.getTrailInfo = function (){
     $http.get($location.path() + '.json').success (function (data){

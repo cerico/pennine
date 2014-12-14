@@ -9,7 +9,13 @@ Pennine::Application.routes.draw do
   
 
 
-  resources :trails 
+ resources :trails do
+   resources :photos do
+     collection do
+       post 'make_default'
+     end
+   end
+ end
 
   resources :photos
 
