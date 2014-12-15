@@ -2,34 +2,35 @@
 
 <div class="main">
 
-                <div class="periscope">
-                  <h1 class="trailname"></h1>
+  <div class="periscope">
+    <h1 class="trailname"></h1>
+  </div>
+  <div class="bendychair clearfix">
+    <div class="sidebarthin">
+
+
+
+    </div>
+    <div class="trailcontentpassive"
+
+
+
+    <div class="trailcontainer column-100" >
+
+      <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options" bounds="map.bounds">
+        <ui-gmap-markers models="map.Markers" coords="'self'" icon="'icon'" click="'onClick'" doCluster="map.ClusterMarkers" clusterOptions="map.clusterOptions">
+          <ui-gmap-windows show="show">
+            <div ng-non-bindable>
+              <div class="eachphoto column-32"><a href="#trails/{{id}}"><img src="{{photo}}">
+                <div class="little_photofooter">
+                <span class="little_photofooter_left" >{{name}}</span></a>
                 </div>
-                <div class="bendychair clearfix">
-                  <div class="sidebarthin">
+              </div>
+            </div>
+          </ui-gmap-windows>
+        </ui-gmap-markers>
+      </ui-gmap-google-map>
 
-
-
-                  </div>
-                  <div class="trailcontentpassive"
-
-
-
-                  <div class="trailcontainer column-100" >
-
-                    <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options" bounds="map.bounds">
-                    <ui-gmap-markers models="map.Markers" coords="'self'" icon="'icon'" click="'onClick'" doCluster="map.ClusterMarkers" clusterOptions="map.clusterOptions">
-                    <ui-gmap-windows show="show">
-                    <div ng-non-bindable><div class="eachphoto column-32"><a href="#trails/{{id}}"><img src="{{photo}}">
-                      <div class="little_photofooter">
-                        <span class="little_photofooter_left" >{{name}}</span></a>
-</div>
-</div>
-</div>
-                      </ui-gmap-windows>
-                    </ui-gmap-markers>
-                  </ui-gmap-google-map>
-                     
         <!--             <div class="ukmapcontainer">
                       <input id="pac-input" class="controls" type="text" placeholder="Search Box">
                       <div class="numberoftrails"><span class="trailcount"></span> trails available</div>
@@ -37,38 +38,38 @@
 
                       </div>
                     </div> -->
-                
+
 
 
 
 
 
                   </div>
-                  </div>
-
                 </div>
-              </div>
-              <div class="footer">
 
-                <div class="big">scen.ic</div>
-
-                <div class="footerlinks column-100">
-                  <ul class="column-75">
-                   <li><a href="newtrail.html">Add New</a></li><li><a class="active" href="map.html">Map</a></li><li><a href="trailsindex.html">Trails</a></li><li><a href="profile.html">Profile</a></li></ul></div>
-                   <div class="whoami column-32">
-                    garethrobertlee@gmail.com<br>
-                    www.salterhebble.com
-                  </div>
-                  <div class="whoami column-32">
-                    made in todmorden and honley, 2014
-                  </div>
-
-                  <ul class="socials">
-                    <a class="lowerlink" href="http://www.twitter.com/crcvch"><i class="fa fa-twitter fa-2x"></i></a>
-                    <a class="lowerlink" href="https://github.com/cerico"><i class="fa fa-github fa-2x"></i></a>
-                    <a class="lowerlink" href="https://www.linkedin.com/in/garethrobertlee"><i class="fa fa-linkedin fa-2x"></i></a>
-                    <a class="lowerlink" href="https://soundcloud.com/crcvch"><i class="fa fa-soundcloud fa-2x"></i></a>
-                  </ul>
-                </div>
               </div>
             </div>
+            <div class="footer">
+
+              <div class="big">scen.ic</div>
+
+              <div class="footerlinks column-100">
+                <ul class="column-75">
+                 <li><a href="newtrail.html">Add New</a></li><li><a class="active" href="map.html">Map</a></li><li><a href="trailsindex.html">Trails</a></li><li><a href="profile.html">Profile</a></li></ul></div>
+                 <div class="whoami column-32">
+                  garethrobertlee@gmail.com<br>
+                  www.salterhebble.com
+                </div>
+                <div class="whoami column-32">
+                  made in todmorden and honley, 2014
+                </div>
+
+                <ul class="socials">
+                  <a class="lowerlink" href="http://www.twitter.com/crcvch"><i class="fa fa-twitter fa-2x"></i></a>
+                  <a class="lowerlink" href="https://github.com/cerico"><i class="fa fa-github fa-2x"></i></a>
+                  <a class="lowerlink" href="https://www.linkedin.com/in/garethrobertlee"><i class="fa fa-linkedin fa-2x"></i></a>
+                  <a class="lowerlink" href="https://soundcloud.com/crcvch"><i class="fa fa-soundcloud fa-2x"></i></a>
+                </ul>
+              </div>
+            </div>
+          </div>
