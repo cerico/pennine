@@ -13,11 +13,16 @@
                   </div>
                   <div class="trailcontentpassive"
 
+
+
                   <div class="trailcontainer column-100" >
-  <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options" bounds="map.bounds">
-      <ui-gmap-markers models="randomMarkers" coords="'self'" icon="'icon'">
-      </ui-gmap-markers>
-  </ui-gmap-google-map>
+                    <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options" bounds="map.bounds">
+                      <ui-gmap-markers models="map.Markers" coords="'self'" icon="'icon'" click="'onClick'" doCluster="map.ClusterMarkers" clusterOptions="map.clusterOptions">
+         <!--                <ui-gmap-windows show="show">
+                        <div ng-non-bindable><a href="#trails/{{url}}"><img src="{{photo}}"><br>{{title}}</a></div>
+                      </ui-gmap-windows> -->
+                    </ui-gmap-markers>
+                  </ui-gmap-google-map>
                      
         <!--             <div class="ukmapcontainer">
                       <input id="pac-input" class="controls" type="text" placeholder="Search Box">
