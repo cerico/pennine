@@ -1,5 +1,5 @@
 scenic.controller("TrailsController", [ '$scope','$location','$http','uiGmapGoogleMapApi', function($scope,$location,$http,uiGmapGoogleMapApi) {
-
+  $(".angular-google-map-container").css("height", "400px");
   $scope.favstate = "notfaved"
   $scope.compstate = "notcompleted"
   $scope.posthere = $location.path() + '/photos'
@@ -17,6 +17,8 @@ scenic.controller("TrailsController", [ '$scope','$location','$http','uiGmapGoog
   }
 
   $scope.getTrailInfo()
+
+
 
 
   $scope.photoUpload = function (){

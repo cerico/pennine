@@ -1,6 +1,74 @@
-scenic.controller("MapController", [ '$scope','$location','$http', function($scope,$location,$http) {
+scenic.controller("MapController", [ '$scope','$location','$http','uiGmapGoogleMapApi', function($scope,$location,$http,uiGmapGoogleMapApi) {
 
  $scope.message = "hi dere im the map controller"
+   $http.get('/trails.json').success (function (data){
 
+     $scope.trails = data
+     $scope.state = "all";
+     var map_options = {
+         zoom: 7,
+         center: { latitude:55, longitude: -2.7 },
+
+     };
+     $scope.map = {
+          center: {
+            latitude: 54.451,
+            longitude: -2.6680
+          },
+          zoom: 7,
+          bounds: {}
+        };
+        $scope.options = {
+          scrollwheel: false
+        };
+        var createMarker = function(i, bounds, idKey) {
+          console.log(i)
+          var lat_min = bounds.southwest.latitude,
+            lat_range = bounds.northeast.latitude - lat_min,
+            lng_min = bounds.southwest.longitude,
+            lng_range = bounds.northeast.longitude - lng_min;
+
+          if (idKey == null) {
+            idKey = "id";
+          }
+
+          var latitude = i.lat;
+          var longitude = i.lng;
+          var ret = {
+            latitude: latitude,
+            longitude: longitude,
+            title: 'm' + i
+          };
+          ret[idKey] = i;
+          return ret;
+        };
+        // var position = new google.maps.LatLng($scope.trails[i].lat, $scope.trails[i].len);
+        // // bounds.extend(position);
+        // marker = new google.maps.Marker({
+
+        //     position: position,
+        //     map: $scope.map,
+        //     title: $scope.trails[i].name,
+        //     photo: $scope.trails[i].photos[0].image.thumb.url,
+        //     url: $scope.trails[i].id,
+
+        //     draggable:true
+        // });
+        $scope.randomMarkers = [];
+        // Get the bounds from the map once it's loaded
+        $scope.$watch(function() {
+          return $scope.map.bounds;
+        }, function(nv, ov) {
+          // Only need to regenerate once
+          if (!ov.southwest && nv.southwest) {
+            var markers = [];
+            for (var i = 0; i < $scope.trails.length; i++) {
+              markers.push(createMarker($scope.trails[i], $scope.map.bounds))
+            }
+            $scope.randomMarkers = markers;
+          }
+        }, true);
+
+})
 
 }])

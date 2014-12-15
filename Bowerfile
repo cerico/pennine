@@ -2,3 +2,5 @@ asset 'angular'
 asset 'angular-ui-router' 
 asset 'dropzone', "3.8.7"
 asset 'angular-google-maps'
+asset 'gmaps'
+

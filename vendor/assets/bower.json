@@ -4,6 +4,7 @@
     "angular": "latest",
     "angular-ui-router": "latest",
     "dropzone": "3.8.7",
-    "angular-google-maps": "latest"
+    "angular-google-maps": "latest",
+    "gmaps": "latest"
   }
 }

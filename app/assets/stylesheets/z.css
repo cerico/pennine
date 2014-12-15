@@ -78,7 +78,11 @@ li {
   border:2px;
 }*/
 
-.angular-google-map-container { width:99%; height:400px;}
+.angular-google-map-container { 
+  margin-left: 2%;
+width: 96%;
+height: 782px;
+}
 
 .login {
   position: relative;
