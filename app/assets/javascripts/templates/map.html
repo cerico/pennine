@@ -17,10 +17,15 @@
 
                   <div class="trailcontainer column-100" >
                     <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options" bounds="map.bounds">
-                      <ui-gmap-markers models="map.Markers" coords="'self'" icon="'icon'" click="'onClick'" doCluster="map.ClusterMarkers" clusterOptions="map.clusterOptions">
-         <!--                <ui-gmap-windows show="show">
-                        <div ng-non-bindable><a href="#trails/{{url}}"><img src="{{photo}}"><br>{{title}}</a></div>
-                      </ui-gmap-windows> -->
+                    <ui-gmap-markers models="map.Markers" coords="'self'" icon="'icon'" click="'onClick'" doCluster="map.ClusterMarkers" clusterOptions="map.clusterOptions">
+                    <ui-gmap-windows show="show">
+                    <div ng-non-bindable><div class="eachphoto column-32"><a ng-href="#trails/{{id}}"><img src="{{photo}}">
+                      <div class="little_photofooter">
+                        <span class="little_photofooter_left" >{{name}}</span></a>
+</div>
+</div>
+</div>
+                      </ui-gmap-windows>
                     </ui-gmap-markers>
                   </ui-gmap-google-map>
                      

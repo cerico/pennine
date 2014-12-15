@@ -4,7 +4,6 @@ scenic.controller("MapController", [ '$scope','$location','$http','uiGmapGoogleM
  $http.get('/trails.json').success (function (data){
 
    $scope.trails = data
-  
 
    angular.extend($scope, {
     map: {
@@ -32,11 +31,13 @@ scenic.controller("MapController", [ '$scope','$location','$http','uiGmapGoogleM
      latitude: $scope.trails[i].lat,
      longitude: $scope.trails[i].lng,
      id: $scope.trails[i].id,
+     name: $scope.trails[i].name,
+     photo: $scope.trails[i].photos[0].image.detail.url,
 
      draggable:true
    });
     $scope.map.Markers.push(marker);
-
   }
+
 })
 }])
