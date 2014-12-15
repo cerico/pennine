@@ -57,7 +57,7 @@ class TrailsController < ApplicationController
 
     respond_to do |format|
       if @trail.save
-       binding.pry
+      
          params[:file].each do |photo|
            @trail.photos << Photo.create(image: photo)   
          end
