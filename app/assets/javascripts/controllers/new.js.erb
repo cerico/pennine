@@ -1,60 +1,28 @@
 scenic.controller("NewController", [ '$scope','$location','$http', function($scope,$location,$http) {
+  
+  $(".picuploaderror").hide();
 
- $scope.message = "hi dere im the new controller"
+   Dropzone.autoDiscover = false
+   $scope.posthere = '/trails.json' 
 
-   $scope.Dropzone = Dropzone
-   $scope.posthere = '/trails.json'
-   console.log($location.path())
-
-
-
-
-  $(function (){
-   console.log("document is ready")
- })
-  console.log(Dropzone.options.trailDropzone)
-
-  Dropzone.autoDiscover = false
-
-  $(function (){
-   console.log("document is ready2")
-
-     })
-
-  var nameInput = document.getElementById('trail-dropzone');
-  console.log(nameInput.value)
-
-  // document.querySelector('trail-dropzone').addEventListener('submit', function (e) {
-
-  //     //prevent the normal submission of the form
-  //     e.preventDefault();
-
-  //     console.log(nameInput.value);    
-  // });
-
-
- Dropzone.options.trailDropzone = { // The camelized version of the ID of the form element
-
-   // The configuration we've talked about above
+   Dropzone.options.trailDropzone = { // The camelized version of the ID of the form element
+   // configuration
    autoProcessQueue: false,
    uploadMultiple: true,
    parallelUploads: 100,
    maxFiles: 100,
    url: '/trails.json',
-
-
-
+ 
    // The setting up of the dropzone
    init: function() {
 
      var myDropzone = this;
      Dropzone.isReady = true
-     console.log(myDropzone.options.maxFiles)
      var form = $(this).closest('#trail-dropzone');
-     console.log($(this).closest('#trail-dropzone'))
+ 
      // First change the button to actually tell Dropzone to process the queue.
      this.element.querySelector("button[type=submit]").addEventListener("click", function(e) {
-       console.log(myDropzone.options)
+
        // Make sure that the form isn't actually being sent.
        if (myDropzone.getQueuedFiles().length <1) {
          $(".picuploaderror").show();
@@ -64,13 +32,12 @@ scenic.controller("NewController", [ '$scope','$location','$http', function($sco
        e.preventDefault();
        e.stopPropagation();
        myDropzone.processQueue();
-     
-
      });
 
      // Listen to the sendingmultiple event. In this case, it's the sendingmultiple event instead
      // of the sending event because uploadMultiple is set to true.
      this.on("sendingmultiple", function() {
+      console.log("sending")
        // Gets triggered when the form is actually being sent.
        // Hide the success button or the complete form.
      });
@@ -82,13 +49,11 @@ scenic.controller("NewController", [ '$scope','$location','$http', function($sco
        // Redirect user or notify of success.
      });
      this.on("errormultiple", function(files, response) {
+      console.log(files)
        // Gets triggered when there was an error sending the files.
        // Maybe show form again, and notify user of error
      });
-
    }
-  
-
  }
 
  Dropzone.isReady = true

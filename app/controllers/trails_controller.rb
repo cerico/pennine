@@ -1,6 +1,7 @@
 class TrailsController < ApplicationController
   # GET /trails
   # GET /trails.json
+  # skip_before_filter :verify_authenticity_token
   def index
     @trails = Trail.all
     respond_to do |format|
@@ -31,7 +32,11 @@ class TrailsController < ApplicationController
   # GET /trails/new.json
   def new
     @trail = Trail.new
- 
+    @trail.photos.build
+    @trail.token = @trail.generate_token
+    @photo = @trail.photos.build
+    @photos = []
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @trail }
@@ -46,15 +51,18 @@ class TrailsController < ApplicationController
   # POST /trails
   # POST /trails.json
   def create
-    @trail = Trail.new(params[:trail])
+    # @trail = Trail.new(params[:trail])
+   filter = params.except(:action, :controller, :format, :null, :file, :authenticity_token)
+     @trail = Trail.new(filter)
 
     respond_to do |format|
       if @trail.save
+       binding.pry
          params[:file].each do |photo|
            @trail.photos << Photo.create(image: photo)   
          end
-        format.html { redirect_to @trail, notice: 'Trail was successfully created.' }
-        format.json { render json: @trail, status: :created, location: @trail }
+     
+        format.json { render json: @trail, root: false  }
       else
         format.html { render action: "new" }
         format.json { render json: @trail.errors, status: :unprocessable_entity }

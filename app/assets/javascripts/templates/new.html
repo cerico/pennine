@@ -22,7 +22,7 @@
    <form id="trail-dropzone" class="traildropzone">
 
      
-     <input placeholder="Trail Name" type="name" name="name">
+     <input placeholder="Trail Name" type="name" name="name" id="name">
      <input placeholder="County" type="county" name="county" />
      <select class="rating1" name="rating">
        <ul class="ratingoptions">
@@ -41,12 +41,14 @@
      </select>
                          
 
-     <input type="hidden" name="lat" value="{{lat1}}"/>
-     <input type="hidden" name="len" value="{{lng1}}" />
+     <input type="hidden" name="lat" value="55"/>
+     <input type="hidden" name="lng" value="-1" />
      <input type="hidden" name="distance" value="12"/>
-     <input type="hidden" name="addedby" value="{{current_user}}" />
+     <input type="hidden" name="user_id" value="1" />
+     <input name="authenticity_token" type="hidden" />
 
      <BR><BR>
+      <div class="picuploaderror">PLEASE ATTACH AT LEAST ONE PHOTO!</div>
        <div class="dropzone-previews"></div> <!-- this is were the previews should be shown. -->
 
        <button class="newtrailbutton" type="submit">Upload Trail!</button>

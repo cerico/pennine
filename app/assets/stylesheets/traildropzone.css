@@ -210,3 +210,19 @@
 .traildropzone-previews .dz-preview:hover.dz-error .dz-error-message {
   display: block;
 }
+
+.picuploaderror {
+  background: rgba(216, 87, 65, 1);
+  color: #f5f6f1;
+  font-size: 12px;
+  line-height: 18px;
+  padding: 8px 22px;
+
+  margin-left: 9%;
+  margin-top: -12%;
+  position: absolute;
+  z-index: 130;
+  width: 115;
+  padding-top: 4%;
+  height: 110;
+}
