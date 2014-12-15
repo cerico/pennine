@@ -1,13 +1,17 @@
-scenic.controller("TrailsController", [ '$scope','$location','$http', function($scope,$location,$http) {
+scenic.controller("TrailsController", [ '$scope','$location','$http','uiGmapGoogleMapApi', function($scope,$location,$http,uiGmapGoogleMapApi) {
 
   $scope.favstate = "notfaved"
   $scope.compstate = "notcompleted"
   $scope.posthere = $location.path() + '/photos'
   Dropzone.autoDiscover = false;
 
+
   $scope.getTrailInfo = function (){
     $http.get($location.path() + '.json').success (function (data){
       $scope.trail = data    
+      uiGmapGoogleMapApi.then(function(maps) {
+        $scope.map = { center: { latitude:$scope.trail.lat, longitude: $scope.trail.lng }, zoom: 13 };
+      });
       $scope.checkHikerBookmark()    
     })
   }

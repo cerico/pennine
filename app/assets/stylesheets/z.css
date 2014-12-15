@@ -66,6 +66,20 @@ li {
   margin-top: 10%;
 }
 
+/*.thetrailmap {
+  width:900px;
+  height:600px;
+  border:2px;
+}
+
+.angular-google-map {
+  width:900px;
+  height:600px;
+  border:2px;
+}*/
+
+.angular-google-map-container { width:99%; height:400px;}
+
 .login {
   position: relative;
   padding-left: 25px;

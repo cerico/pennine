@@ -1,8 +1,17 @@
-scenic = angular.module('scenic',['controllers','templates','ui.router',])
+scenic = angular.module('scenic',['controllers','templates','ui.router','uiGmapgoogle-maps'])
 
 controllers = angular.module('controllers',[])
 
-scenic.config(['$stateProvider','$urlRouterProvider','$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider){
+scenic.config(['$stateProvider','$urlRouterProvider','$locationProvider','uiGmapGoogleMapApiProvider', function ($stateProvider, $urlRouterProvider, $locationProvider, uiGmapGoogleMapApiProvider){
+
+
+      uiGmapGoogleMapApiProvider.configure({
+         
+          key: 'AIzaSyC3QZszFRix7NN1EFAe_YOxScY5J6AY99U',
+          v: '3.17',
+          libraries: 'weather,geometry,visualization'
+      });
+
 
 
   $urlRouterProvider.otherwise('/trails')

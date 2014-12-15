@@ -13,6 +13,8 @@
 //= require angular/angular
 //= require angular-ui-router/release/angular-ui-router
 //= require angular-rails-templates
+//= require lodash/dist/lodash
+//= require angular-google-maps/dist/angular-google-maps
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
