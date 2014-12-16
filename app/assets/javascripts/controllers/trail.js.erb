@@ -15,12 +15,8 @@ scenic.controller("TrailsController", [ '$scope','$location','$http','uiGmapGoog
         raters = $scope.trail.bookmarks.length;
         total += $scope.trail.bookmarks[i].rating
       }
-      $scope.trailrating = total/raters
-
-
-      if ($scope.trailrating != $scope.trailrating ){
-        $scope.trailrating = "Unrated"
-      }
+      $scope.trailrating = (total/raters).toFixed(2)
+      $scope.ratedby = '(' + $scope.trail.bookmarks.length + ')'
     }
   }
 
@@ -98,18 +94,14 @@ scenic.controller("TrailsController", [ '$scope','$location','$http','uiGmapGoog
       letsBookmark.favourited = true
     }else if (f == 'unfavit') {
       modit = {favourited: false}
-
     }else if (f == 'doneit') {
       modit = {completed: true}
       letsBookmark.completed = true
-
     }else if (f == 'undoneit') {
       modit = {completed: false}
-
     }else  {
       modit = {rating: f}
       letsBookmark.rating = f
- 
     }
 
     if ($scope.trail.hikerbookmark) {         

@@ -52,7 +52,7 @@ class TrailsController < ApplicationController
   # POST /trails.json
   def create
     # @trail = Trail.new(params[:trail])
-   filter = params.except(:action, :controller, :format, :null, :file, :authenticity_token)
+   filter = params.except(:action, :controller, :format, :null, :file, :authenticity_token, :rating)
      @trail = Trail.new(filter)
 
     respond_to do |format|
@@ -61,7 +61,8 @@ class TrailsController < ApplicationController
          params[:file].each do |photo|
            @trail.photos << Photo.create(image: photo)   
          end
-     
+         Bookmark.create(user_id:current_user.id,trail_id:@trail.id,favourited:true,rating:params[:rating])
+     binding.pry
         format.json { render json: @trail, root: false  }
       else
         format.html { render action: "new" }

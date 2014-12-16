@@ -14,7 +14,7 @@
     <div class="sidebar">
       <ul>
 
-        <li><a class="current" href="#">{{ trail.distance}} Miles</a></li><li><a href="#">Ave Rating: {{trailrating.toFixed(2)}} ({{trail.bookmarks.length}}) </a></li><li><a href="#">Ranking (4)</a></li>
+        <li><a class="current" href="#">{{ trail.distance}} Miles</a></li><li><a href="#">Ave Rating: {{trailrating}} {{ratedby}} </a></li><li><a href="#">Ranking (4)</a></li>
      
         <li><a href="#">{{(trail.bookmarks|filter: {completed:true}).length}}  Hikers <i class="fa fa-check circle green"></i></a></li>
      

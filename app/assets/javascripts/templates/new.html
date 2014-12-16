@@ -38,11 +38,6 @@
          <option value="3">3</option>
          <option value="4">4</option>
          <option value="5">5</option>
-         <option value="6">6</option>
-         <option value="7">7</option>
-         <option value="8">8</option>
-         <option value="9">9</option>
-         <option value="10">10</option>
        </ul>
      </select>
                          
@@ -51,7 +46,7 @@
      <input type="hidden" name="lng" value="{{lng}}" />
      <input type="hidden" name="distance" value="12"/>
      <input type="hidden" name="user_id" value="1" />
-     <input name="authenticity_token" type="hidden" />
+     <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"/>
 
      <BR><BR>
       <div class="picuploaderror">PLEASE ATTACH AT LEAST ONE PHOTO!</div>
