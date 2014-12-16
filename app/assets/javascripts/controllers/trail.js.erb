@@ -10,7 +10,16 @@ scenic.controller("TrailsController", [ '$scope','$location','$http','uiGmapGoog
     $http.get($location.path() + '.json').success (function (data){
       $scope.trail = data    
       uiGmapGoogleMapApi.then(function(maps) {
-        $scope.map = { center: { latitude:$scope.trail.lat, longitude: $scope.trail.lng }, zoom: 13 };
+        $scope.map = { 
+          center: { latitude:$scope.trail.lat, longitude: $scope.trail.lng }, 
+          zoom: 13,
+          Markers: [({
+            latitude: $scope.trail.lat,
+            longitude: $scope.trail.lng,
+            id: 1,
+            draggable:true
+          })] ,
+        };
       });
       $scope.checkHikerBookmark()    
     })
