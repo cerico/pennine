@@ -4,11 +4,34 @@ scenic.controller("TrailsController", [ '$scope','$location','$http','uiGmapGoog
   $scope.compstate = "notcompleted"
   $scope.posthere = $location.path() + '/photos'
   Dropzone.autoDiscover = false;
+  
 
+
+
+  $scope.averating = function (){
+    total = 0
+    for (var i= 0; i< $scope.trail.bookmarks.length; i++){
+      if ($scope.trail.bookmarks[i].rating > 0) {
+        raters = $scope.trail.bookmarks.length;
+        total += $scope.trail.bookmarks[i].rating
+      }
+      $scope.trailrating = total/raters
+
+
+      if ($scope.trailrating != $scope.trailrating ){
+        $scope.trailrating = "Unrated"
+      }
+    }
+  }
 
   $scope.getTrailInfo = function (){
     $http.get($location.path() + '.json').success (function (data){
-      $scope.trail = data    
+      $scope.trail = data  
+      if (data.hikerbookmark){
+        $scope.changeStar(data.hikerbookmark.rating)
+        console.log(data.hikerbookmark.rating)
+      }
+      $scope.averating();  
       uiGmapGoogleMapApi.then(function(maps) {
         $scope.map = { 
           center: { latitude:$scope.trail.lat, longitude: $scope.trail.lng }, 
@@ -80,22 +103,64 @@ scenic.controller("TrailsController", [ '$scope','$location','$http','uiGmapGoog
       modit = {completed: true}
       letsBookmark.completed = true
 
-    }else if (f = 'undoneit') {
+    }else if (f == 'undoneit') {
       modit = {completed: false}
 
+    }else  {
+      modit = {rating: f}
+      letsBookmark.rating = f
+ 
     }
 
     if ($scope.trail.hikerbookmark) {         
      $http.put('/bookmarks/' + $scope.trail.hikerbookmark.id + '.json', modit).success (function (data){
+      $scope.changeStar(f)
       $scope.getTrailInfo() 
+      
     });
    }else{      
     $http.post('/bookmarks.json', {bookmark: letsBookmark}).success (function (data){
-      console.log(modit)
+      $scope.changeStar(f)
       $scope.getTrailInfo() 
+   
     })
 
   } 
+}
+
+$scope.changeStar = function(f) {
+  $scope.is5 = false
+  $scope.is4 = false
+  $scope.is3 = false
+  $scope.is2 = false
+  $scope.is1 = false
+if (f === 1){
+  $scope.is1 = true
+}
+else if (f === 2){
+  $scope.is2 = true
+  $scope.is1 = true
+}
+else if (f === 3){
+  $scope.is3 = true
+  $scope.is2 = true
+  $scope.is1 = true
+}
+else if (f === 4){
+ $scope.is4 = true
+ $scope.is3 = true
+ $scope.is2 = true
+ $scope.is1 = true
+}
+else if (f === 5){
+  $scope.is5 = true
+  $scope.is4 = true
+  $scope.is3 = true
+  $scope.is2 = true
+  $scope.is1 = true
+}
+
+
 }
 
 
