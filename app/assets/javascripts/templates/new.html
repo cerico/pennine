@@ -15,7 +15,13 @@
    <div class="trailcontentpassive">
     <div class="trailcontainer column-100" >
 
+        <div class="column-90 test">
+          <ui-gmap-google-map center='map.center' zoom='map.zoom' events="map.events">
+          <ui-gmap-markers models="map.Markers" coords="'self'" icon="'icon'" >
+        </ui-gmap-markers>
+      </ui-gmap-google-map>
 
+        </div><!-- close of profile_trailphotos-->
       <div class="newtrailinfobox trailupload column-50">
         <div class="trailuploadinfo column-75">Upload your new trail by clicking on the map for location and attaching at least one photo before submitting</div>
        
@@ -57,13 +63,7 @@
       </div><!-- close of infobox-->
 
 
-      <div class="column-90 test">
-        <ui-gmap-google-map center='map.center' zoom='map.zoom' events="map.events">
-        <ui-gmap-markers models="map.Markers" coords="'self'" icon="'icon'" >
-      </ui-gmap-markers>
-    </ui-gmap-google-map>
 
-      </div><!-- close of profile_trailphotos-->
 
 
     </div><!--close of trailcontainer column-75-->
