@@ -37,6 +37,7 @@ scenic.controller("MapController", [ '$scope','$location','$http','uiGmapGoogleM
      draggable:true
    });
     $scope.map.Markers.push(marker);
+    console.log($scope.map.Markers)
   }
 
 })

@@ -1,6 +1,72 @@
-scenic.controller("NewController", [ '$scope','$location','$http', function($scope,$location,$http) {
+scenic.controller("NewController", [ '$scope','$location','$http','uiGmapGoogleMapApi', function($scope,$location,$http,uiGmapGoogleMapApi) {
   
   $(".picuploaderror").hide();
+  uiGmapGoogleMapApi.then(function(maps) {
+    $scope.count = 0
+    $scope.map = { 
+      center: { latitude:53, longitude:-1 }, 
+      zoom: 6,
+      Markers: [],
+      events: {
+          click: function (model, event, params) {           
+            console.log($scope.map.Markers)
+            var marker = {
+              latitude: params[0].latLng.lat(),
+              longitude: params[0].latLng.lng(),
+              id: $scope.count += 1
+            }
+     
+            $scope.lat = params[0].latLng.lat();
+            $scope.lng = params[0].latLng.lng();
+            //scope apply required because this event handler is outside of the angular domain
+    
+            $scope.map.Markers.push(marker)
+            console.log(marker)
+            $scope.$apply();
+            $scope.map.Markers.splice(0, $scope.map.Markers.length);
+            $scope.$apply();
+          }
+          
+        },
+        
+  }
+    $scope.addMarker = function($event, $params) {
+      console.log("hate life")
+      console.log($event)
+      console.log($params)
+      console.log($scope.map)
+      angular.forEach($scope.myMarkers, function(marker) {
+          marker.setMap(null);
+      });
+      $scope.myMarkers.splice(0, $scope.myMarkers.length);
+      // console.log($params[0].latLng)
+      $scope.lat1 = $params[0].latLng.k
+      $scope.lng1 = $params[0].latLng.B
+
+      console.log($scope.myMarkers)
+      $scope.myMarkers.push(new google.maps.Marker({
+        map: $scope.map,
+        position: $params[0].latLng,
+        draggable: true
+      }));
+     
+      console.log($scope)
+      console.log("hello")
+      console.log($scope.map)
+      console.log($scope.myMarkers)
+    };
+    // $scope.$watch($scope.map, function () {
+    //     if ($scope.map.getGMap) {
+    //     google.maps.event.addListener($scope.map.getGMap(), 'click', function () {
+    //         alert('hello');
+    //     });
+    //     }
+    // });
+// $scope.addMarker()
+  });
+
+ 
+
 
    Dropzone.autoDiscover = false
    $scope.posthere = '/trails.json' 
@@ -60,4 +126,12 @@ scenic.controller("NewController", [ '$scope','$location','$http', function($sco
 
  console.log(Dropzone.options.trailDropzone)
  Dropzone.options.photoDropzone = new Dropzone("#trail-dropzone", {url: $scope.posthere});
+
+
+
+
+
+
+
+
 }])

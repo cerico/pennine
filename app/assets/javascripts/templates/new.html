@@ -1,7 +1,7 @@
 
 
 <div class="main">
-
+{{lat}} {{lng }}
   <div class="periscope">
     <h1 class="trailname"></h1>
   </div>
@@ -57,8 +57,12 @@
       </div><!-- close of infobox-->
 
 
-      <div class="column-90">
-        <iframe width="92%" height="700" frameborder="0" scrolling="no" class="add_trail_map" marginheight="0" marginwidth="0" src="http://my.ctrlq.org/maps/#roadmap|6|53.65514003683595|-6.15656248749997"></iframe>
+      <div class="column-90 test">
+        <ui-gmap-google-map center='map.center' zoom='map.zoom' events="map.events">
+        <ui-gmap-markers models="map.Markers" coords="'self'" icon="'icon'" >
+      </ui-gmap-markers>
+    </ui-gmap-google-map>
+
       </div><!-- close of profile_trailphotos-->
 
 
