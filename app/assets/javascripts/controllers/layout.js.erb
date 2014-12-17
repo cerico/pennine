@@ -1,0 +1,12 @@
+scenic.controller("LayoutController", [ '$scope','$location','$http','uiGmapGoogleMapApi', function($scope,$location,$http,uiGmapGoogleMapApi) {
+  
+ 
+    $http.get('/trails.json').success (function (data){
+      $scope.trail = data  
+      $scope.currentuser = data[0].hiker.id
+      console.log(data)
+    })
+
+
+
+}])

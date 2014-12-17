@@ -1,7 +1,7 @@
 
 
 <div class="main">
-{{lat}} {{lng }}
+
   <div class="periscope">
     <h1 class="trailname"></h1>
   </div>
@@ -15,7 +15,7 @@
    <div class="trailcontentpassive">
     <div class="trailcontainer column-100" >
 
-        <div class="column-90 test">
+        <div class="column-100 test">
           <ui-gmap-google-map center='map.center' zoom='map.zoom' events="map.events">
           <ui-gmap-markers models="map.Markers" coords="'self'" icon="'icon'" >
         </ui-gmap-markers>
@@ -45,7 +45,7 @@
      <input type="hidden" name="lat" value="{{lat}}"/>
      <input type="hidden" name="lng" value="{{lng}}" />
      <input type="hidden" name="distance" value="12"/>
-     <input type="hidden" name="user_id" value="1" />
+     <input type="hidden" name="user_id" value="{{currentuser}}" />
      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"/>
 
      <BR><BR>
@@ -70,7 +70,7 @@
 
   <div class="footerlinks column-100">
     <ul class="column-75">
-     <li><a class="active" href="newtrail.html">Add New</a></li><li><a href="map.html">Map</a></li><li><a href="trailsindex.html">Trails</a></li><li><a href="profile.html">Profile</a></li></ul></div>
+     <li><a class="active" href="/#new">Add New</a></li><li><a href="/#map">Map</a></li><li><a href="/#trails">Trails</a></li><li><a href="profile.html">Profile</a></li></ul></div>
      <div class="whoami column-32">
       garethrobertlee@gmail.com<br>
       www.salterhebble.com
