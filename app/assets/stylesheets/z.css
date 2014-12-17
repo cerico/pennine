@@ -168,6 +168,7 @@ height: 782px;
 
 .toplinks a.active, .toplinks a:hover, .footerlinks a.active, .footerlinks a:hover {
   color:#f5f6f1;
+  background:transparent;
 }
 
 .toplinks a:hover, .footerlinks a:hover{
