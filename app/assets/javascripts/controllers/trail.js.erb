@@ -16,10 +16,9 @@ scenic.controller("TrailsController", [ '$scope','$location','$http','uiGmapGoog
     total = 0
     for (var i= 0; i< $scope.trail.bookmarks.length; i++){
       if ($scope.trail.bookmarks[i].rating > 0) {
-        raters = $scope.trail.bookmarks.length;
         total += $scope.trail.bookmarks[i].rating
       }
-      $scope.trailrating = (total/raters).toFixed(2)
+      $scope.trailrating = (total/$scope.trail.bookmarks.length).toFixed(2)
       $scope.ratedby = '(' + $scope.trail.bookmarks.length + ')'
     }
   }
