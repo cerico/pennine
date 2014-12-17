@@ -7,7 +7,21 @@ scenic.controller("TrailsController", [ '$scope','$location','$http','uiGmapGoog
   $scope.favstate = "notfaved"
   $scope.compstate = "notcompleted"
   $scope.posthere = $location.path() + '/photos'
-  Dropzone.autoDiscover = false;
+  Dropzone.autoDiscover = false;  
+
+  $(document).ready(function() {
+    $(".fancybox").fancybox();
+  });
+  
+
+  $('.image').fancybox({
+    padding: 0,
+    helpers: {
+      overlay: {
+        locked: false
+      }
+    }
+  });
   
 
 

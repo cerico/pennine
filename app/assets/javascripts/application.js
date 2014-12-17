@@ -18,4 +18,5 @@
 //= require markerclusterer/markerclusterer
 //= require jquery
 //= require jquery_ujs
+//= require fancybox/source/jquery.fancybox
 //= require_tree .
