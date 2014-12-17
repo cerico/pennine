@@ -1,46 +1,129 @@
-scenic.controller("MapController", [ '$scope','$location','$http','uiGmapGoogleMapApi', function($scope,$location,$http,uiGmapGoogleMapApi) {
-
- $scope.message = "hi dere im the map controller"
- $http.get('/trails.json').success (function (data){
-
-   $scope.trails = data
-
-   angular.extend($scope, {
-    map: {
-      center: {
-        latitude: 53.681382,
-        longitude: -2.766084
-      },
-      options: {
-        maxZoom: 20,
-        minZoom: 3
-      },
-      zoom: 6,
-      Markers: [],
-      ClusterMarkers: true,
-      clusterOptions: {
-        title: 'Cluster Markers', 
-        gridSize: 60, 
-        ignoreHidden: true, 
-        minimumClusterSize: 2
-      }
-    }
+ scenic.controller('MapController', ["$scope", "$http", "$location", function($scope, $http, $location) { 
+  $http.get('/trails.json').success (function (data){
+    $scope.trails = data
+    makeUKMap();
   });
-   for( i = 0; i < $scope.trails.length; i++ ) {  
-    marker = ({
-     latitude: $scope.trails[i].lat,
-     longitude: $scope.trails[i].lng,
-     id: $scope.trails[i].id,
-     name: $scope.trails[i].name,
-     photo: $scope.trails[i].photos[0].image.detail.url,
 
-     draggable:true
-   });
-    $scope.map.Markers.push(marker);
-    console.log($scope.map.Markers)
-  }
 
-})
+     function makeUKMap(){
+             $scope.selected = 'first'; 
+             var center = new google.maps.LatLng(53.5,-2.1);              
+                     var map_options = {
+                         zoom: 7,
+                         center: center,
+                         mapTypeId: google.maps.MapTypeId.TERRAIN
+                     };
+                     var map = new google.maps.Map(document.getElementById('ukmap_canvas'), map_options);
+                     var marker_options = {
+                         map: map,
+                         position: center,
+                         draggable: true
+                     };
+                     var markers = [];
+          
+                     for( i = 0; i < $scope.trails.length; i++ ) { 
+                         var position = new google.maps.LatLng($scope.trails[i].lat, $scope.trails[i].lng);
+            
+                         marker = new google.maps.Marker({
+                             position: position,
+                             map: map,
+                             title: $scope.trails[i].name,
+                             photo: $scope.trails[i].photos[0].image.detail.url,
+                             url: $scope.trails[i].id,
+                             draggable:true
+                         });
+                          markers.push(marker);
+                          
+                         (function(marker, i) {
+                                            // add click event
+                                            google.maps.event.addListener(marker, 'click', function() {
+                                                infowindow = new google.maps.InfoWindow({
+                                                    content: '<div class="eachphoto column-32"><a href="#trails/' + marker.url + '"><img src="' + marker.photo + '"><div class="little_photofooter"><span class="little_photofooter_left">' + marker.title + '"</span></a></div></div>'
+                                                });
+                                                infowindow.open(map, marker);
+                                            });
+                                        })(marker, i);
+                       } 
+
+                        var mc = new MarkerClusterer(map, markers);
+                        console.log(markers.length)
+
+             
+                        var input = /** @type {HTMLInputElement} */(
+                            document.getElementById('pac-input'));
+                        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+                        var searchBox = new google.maps.places.SearchBox(
+                          /** @type {HTMLInputElement} */(input));
+
+                        // Listen for the event fired when the user selects an item from the
+                        // pick list. Retrieve the matching places for that item.
+                        google.maps.event.addListener(searchBox, 'places_changed', function() {
+                          var places = searchBox.getPlaces();
+
+                          if (places.length == 0) {
+                            return;
+                          }
+                          for (var i = 0, marker; marker = markers[i]; i++) {
+                            marker.setMap(null);
+                          }
+
+                          // For each place, get the icon, place name, and location.
+                            // markers = [];
+                            var bounds = new google.maps.LatLngBounds();
+                            for (var i = 0, place; place = places[i]; i++) {
+                              var image = {
+                                url: place.icon,
+                                size: new google.maps.Size(71, 71),
+                                origin: new google.maps.Point(0, 0),
+                                anchor: new google.maps.Point(17, 34),
+                                scaledSize: new google.maps.Size(25, 25)
+                              };
+
+                              bounds.extend(place.geometry.location);
+                            }
+
+                            map.fitBounds(bounds);
+
+     })
+
+      google.maps.event.addListener(map, 'idle', function() {
+       countmarkers = 0;
+          for(var i = markers.length, bounds = map.getBounds(); i--;) {
+              if( bounds.contains(markers[i].getPosition()) ){
+                   countmarkers ++;
+              }
+            }
+            visiblemarkers = countmarkers
+         $('span.trailcount').html(countmarkers);
+      });
+
+
+
+
+
+
+
+
+
+
+
+
+           
+           }
+
+      //   $scope.$watch('mapVisible',function(resize){if(resize){
+      //       google.maps.event.trigger(map, 'resize');
+      
+      //       map.setCenter(center);
+      //   }});
+      //   $scope.$watch('selected', function () {
+      //       $scope.mapVisible=($scope.selected == 'second');
+      
+      // });
+
+ // Allow each marker to have an info window    
+
 
 
 }])

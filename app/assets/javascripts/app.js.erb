@@ -9,7 +9,7 @@ scenic.config(['$stateProvider','$urlRouterProvider','$locationProvider','uiGmap
          
           key: 'AIzaSyC3QZszFRix7NN1EFAe_YOxScY5J6AY99U',
           v: '3.17',
-          libraries: 'weather,geometry,visualization'
+          libraries: 'weather,geometry,visualization,places'
       });
 
 
@@ -41,6 +41,11 @@ scenic.config(['$stateProvider','$urlRouterProvider','$locationProvider','uiGmap
       url: '/map',
       templateUrl: 'map.html',
       controller: 'MapController'
+  });
+  $stateProvider.state('m2', {
+      url: '/m2',
+      templateUrl: 'm2.html',
+      controller: 'M2Controller'
   });
 
 

@@ -15,6 +15,7 @@
 //= require angular-rails-templates
 //= require lodash/dist/lodash
 //= require angular-google-maps/dist/angular-google-maps
+//= require markerclusterer/markerclusterer
 //= require jquery
 //= require jquery_ujs
 //= require_tree .

@@ -3,7 +3,7 @@
 <div class="main">
 
   <div class="periscope">
-    <h1 class="trailnamewhite"><span class="trailcount"></span> in current map</h1>
+    <h1 class="trailname"></h1>
   </div>
   <div class="bendychair clearfix">
     <div class="sidebarthin">
@@ -17,15 +17,27 @@
 
     <div class="trailcontainer column-100" >
 
-      <div class="ukmapcontainer">
-        <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-        <div class="numberoftrails"><span class="trailcount"></span> trails available</div>
-      <div id="ukmap_canvas" ui-map="myMap" class="ukmap" ui-options="mapOptions">
+      <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options" bounds="map.bounds" events="map.events">
+        <ui-gmap-markers models="map.Markers" coords="'self'" icon="'icon'" click="'onClick'" doCluster="map.ClusterMarkers" clusterOptions="map.clusterOptions">
+          <ui-gmap-windows show="show">
+            <div ng-non-bindable>
+              <div class="eachphoto column-32">
+                <div class="little_photofooter">
+                <span class="little_photofooter_left" >{{name}}</span>
+                </div>
+              </div>
+            </div>
+          </ui-gmap-windows>
+        </ui-gmap-markers>
+      </ui-gmap-google-map>
 
-      </div>
-      </div>
+        <!--             <div class="ukmapcontainer">
+                      <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+                      <div class="numberoftrails"><span class="trailcount"></span> trails available</div>
+                      <div id="ukmap_canvas" ui-map="myMap" class="ukmap" ui-options="mapOptions">
 
-
+                      </div>
+                    </div> -->
 
 
 
