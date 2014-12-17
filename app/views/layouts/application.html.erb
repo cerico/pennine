@@ -52,19 +52,23 @@
 
 
     <ul class="toplinks" ng-init="selectedLink = 'trails'">
-
-      <li><a ng-class="{'active':selectedLink === 'new'}" ng-click="selectedLink = 'new'" ng-href="/#new">new</li><li><a ng-class="{'active':selectedLink === 'map'}" ng-click="selectedLink = 'map'" ng-href="/#map">Map</a></li><li><a ng-class="{'active':selectedLink === 'trails'}" ng-click="selectedLink = 'trails'" ng-href="/#trails">trails</li>
       <% if user_signed_in? %>
-      
+      <li><a ng-class="{'active':selectedLink === 'new'}" ng-click="selectedLink = 'new'" ng-href="/#new">new</li>
+      <% else %>
+      <li><%= link_to "new", user_omniauth_authorize_path(:google_oauth2)%></li>
+      <%end%>
+      <li><a ng-class="{'active':selectedLink === 'map'}" ng-click="selectedLink = 'map'" ng-href="/#map">Map</a></li>
+      <li><a ng-class="{'active':selectedLink === 'trails'}" ng-click="selectedLink = 'trails'" ng-href="/#trails">trails</li>
+      <% if user_signed_in? %>      
       <li><a ng-class="{'active':selectedLink === 'profile'}" ng-click="selectedLink = 'profile'" ng-href="#users/<%=current_user.id%>"><%=current_user.name.split[0]%></a></li>
+      <% else %>
+      <li><%= link_to "profile", user_omniauth_authorize_path(:google_oauth2)%></li>
       <% end %> 
       <% if user_signed_in? %>
       <li>
        <%= link_to "sign out", destroy_user_session_path, :method => :delete %>
      </li>
-
-     <% else %>
-     
+     <% else %>     
      <li>
        <%= link_to "sign in", user_omniauth_authorize_path(:google_oauth2)%>
      </li>
@@ -72,9 +76,9 @@
      <% end %> 
    </ul>
 
-   </div>
-   
-   <ui-view></ui-view>
  </div>
+ 
+ <ui-view></ui-view>
+</div>
 </body>
 </html>
