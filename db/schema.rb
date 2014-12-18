@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141207183603) do
+ActiveRecord::Schema.define(:version => 20141218112205) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "trail_id"
@@ -32,6 +32,28 @@ ActiveRecord::Schema.define(:version => 20141207183603) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "points", :force => true do |t|
+    t.integer  "tracksegment_id"
+    t.string   "name"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.float    "elevation"
+    t.string   "description"
+    t.datetime "point_created_at"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "points", ["tracksegment_id"], :name => "index_points_on_tracksegment_id"
+
+  create_table "tracksegments", :force => true do |t|
+    t.integer  "trail_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "tracksegments", ["trail_id"], :name => "index_tracksegments_on_trail_id"
+
   create_table "trails", :force => true do |t|
     t.string   "name"
     t.string   "county"
@@ -42,8 +64,12 @@ ActiveRecord::Schema.define(:version => 20141207183603) do
     t.integer  "rating"
     t.float    "distance"
     t.integer  "user_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.string   "gpx_file_name"
+    t.string   "gpx_content_type"
+    t.integer  "gpx_file_size"
+    t.datetime "gpx_updated_at"
   end
 
   create_table "users", :force => true do |t|

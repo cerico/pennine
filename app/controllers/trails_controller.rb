@@ -1,7 +1,7 @@
 class TrailsController < ApplicationController
   # GET /trails
   # GET /trails.json
-    skip_before_filter :verify_authenticity_token
+  skip_before_filter :verify_authenticity_token
   def index
     @trails = Trail.all
     respond_to do |format|
@@ -14,7 +14,7 @@ class TrailsController < ApplicationController
   # GET /trails/1.json
   def show
     @trail = Trail.find(params[:id])
-   
+
     @uploader = User.find_by_id(@trail.user_id)
     if current_user
       @bookmark = current_user.bookmarks.find_by_trail_id(@trail.id)
@@ -52,24 +52,28 @@ class TrailsController < ApplicationController
   # POST /trails.json
   def create
     # @trail = Trail.new(params[:trail])
-   filter = params.except(:action, :controller, :format, :null, :file, :authenticity_token, :rating)
-     @trail = Trail.new(filter)
+    filter = params.except(:action, :controller, :format, :null, :file, :authenticity_token, :rating)
+    @trail = Trail.new(filter)
 
     respond_to do |format|
       if @trail.save
-      
-         params[:file].each do |photo|
-           @trail.photos << Photo.create(image: photo)   
-         end
-         Bookmark.create(user_id:current_user.id,trail_id:@trail.id,favourited:true,rating:params[:rating])
-   
-        format.json { render json: @trail, root: false  }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @trail.errors, status: :unprocessable_entity }
+
+       params[:file].each do |file|
+        if file.content_type === "image/jpeg"
+          @trail.photos << Photo.create(image: file) 
+       elsif file.content_type === "application/octet-stream"
+        @trail.update_attributes(gpx:file)
       end
     end
+    Bookmark.create(user_id:current_user.id,trail_id:@trail.id,favourited:true,rating:params[:rating])
+
+    format.json { render json: @trail, root: false  }
+  else
+    format.html { render action: "new" }
+    format.json { render json: @trail.errors, status: :unprocessable_entity }
   end
+end
+end
 
   # PUT /trails/1
   # PUT /trails/1.json
