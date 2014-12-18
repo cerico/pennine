@@ -40,6 +40,7 @@ scenic.controller("TrailsController", [ '$scope','$location','$http','uiGmapGoog
   $scope.getTrailInfo = function (){
     $http.get($location.path() + '.json').success (function (data){
       $scope.trail = data  
+      console.log(data)
 
       if (data.hikerbookmark){
         $scope.changeStar(data.hikerbookmark.rating)
@@ -55,8 +56,20 @@ scenic.controller("TrailsController", [ '$scope','$location','$http','uiGmapGoog
             longitude: $scope.trail.lng,
             id: 1,
             draggable:true
-          })] ,
+          })]
         };
+        for (var i=0;i<$scope.trail.points.length;i++){
+          
+          var marker = {
+            latitude: $scope.trail.points[i].latitude,
+            longitude: $scope.trail.points[i].longitude,
+            id: $scope.trail.points[i].id,
+            draggable:true
+          }
+          
+          $scope.map.Markers.push(marker)
+          $scope.$apply
+        }
       });
       $scope.checkHikerBookmark()    
     })

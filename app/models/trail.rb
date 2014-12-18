@@ -16,8 +16,7 @@ class Trail < ActiveRecord::Base
 
   def parse_gpx
 
-    if gpx.queued_for_write[:original]
-    
+    if gpx.queued_for_write[:original]   
      tempfile = gpx.queued_for_write[:original]
      doc = Nokogiri::XML(tempfile)
      parse_xml(doc)
@@ -83,7 +82,7 @@ def parse_points2(node,tmp_segment)
   if node.node_name.eql? 'rtept'
     tmp_point = Point.new
     tmp_point.latitude = node.attributes["lat"].value
-    tmp_point.longitude = node.attributes["lat"].value
+    tmp_point.longitude = node.attributes["lon"].value
     node.elements.each do |node|
       tmp_point.name = node.text.to_s if node.name.eql? 'name'
       tmp_point.elevation = node.text.to_s if node.name.eql? 'ele'
