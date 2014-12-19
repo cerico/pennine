@@ -42,9 +42,9 @@ class PhotosController < ApplicationController
   # POST /photos.json
   def create
     #@photo = Photo.new(params[:photo])
-    binding.pry
+
     if params[:file].content_type === "image/jpeg"
-      binding.pry
+    
       @photo = Photo.new(trail_id: params[:trail_id],image: params[:file])
     respond_to do |format|
       if @photo.save

@@ -63,7 +63,7 @@ class TrailsController < ApplicationController
         if file.content_type === "image/jpeg"
           @trail.photos << Photo.create(image: file) 
        elsif file.content_type === "application/octet-stream"
-        binding.pry
+     
         @trail.update_attributes(gpx:file)
       end
     end
@@ -86,7 +86,7 @@ end
   # PUT /trails/1.json
   def update
     @trail = Trail.find(params[:id])
-binding.pry
+
     respond_to do |format|
       if @trail.update_attributes(params[:trail])
         format.html { redirect_to @trail, notice: 'Trail was successfully updated.' }
