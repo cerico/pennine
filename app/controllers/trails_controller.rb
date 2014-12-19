@@ -6,7 +6,7 @@ class TrailsController < ApplicationController
     @trails = Trail.all
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @trails, each_serializer: IndexSerializer, root: false  }
+      format.json { render json: @trails, root: false  }
     end
   end
 
@@ -24,7 +24,7 @@ class TrailsController < ApplicationController
     
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @trail, root: false  }
+      format.json { render json: @trail, serializer: PointsSerializer, root: false  }
     end
   end
 
@@ -52,8 +52,9 @@ class TrailsController < ApplicationController
   # POST /trails.json
   def create
     # @trail = Trail.new(params[:trail])
+
     filter = params.except(:action, :controller, :format, :null, :file, :authenticity_token, :rating)
-    @trail = Trail.new(filter)
+    @trail = Trail.new(name:params[:name],county:params[:county],lat:params[:lat],lng:params[:lng],distance:params[:distance],user_id:current_user.id)
 
     respond_to do |format|
       if @trail.save
@@ -62,10 +63,16 @@ class TrailsController < ApplicationController
         if file.content_type === "image/jpeg"
           @trail.photos << Photo.create(image: file) 
        elsif file.content_type === "application/octet-stream"
+        binding.pry
         @trail.update_attributes(gpx:file)
       end
     end
+ 
     Bookmark.create(user_id:current_user.id,trail_id:@trail.id,favourited:true,rating:params[:rating])
+    if @trail.photos.empty?
+      @trail.photos << Photo.create(image: File.open(File.join(Rails.root.join('public'), 'boots2.jpg')))
+    end
+    
 
     format.json { render json: @trail, root: false  }
   else
@@ -79,7 +86,7 @@ end
   # PUT /trails/1.json
   def update
     @trail = Trail.find(params[:id])
-
+binding.pry
     respond_to do |format|
       if @trail.update_attributes(params[:trail])
         format.html { redirect_to @trail, notice: 'Trail was successfully updated.' }

@@ -2,11 +2,13 @@ scenic.controller("TrailsController", [ '$scope','$location','$http','uiGmapGoog
 
   
 
-  $(".angular-google-map-container").css("height", "400px");
+  $("#map_canvas.angular-google-map-container").css("height", "400px");
+
   $(".angular-google-map-container").css("margin-left", "1px");
   $scope.favstate = "notfaved"
   $scope.compstate = "notcompleted"
   $scope.posthere = $location.path() + '/photos'
+  $scope.postgpx = $location.path() + '/points.json'
   Dropzone.autoDiscover = false;  
 
   $(document).ready(function() {

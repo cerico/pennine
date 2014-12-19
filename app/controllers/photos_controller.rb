@@ -1,7 +1,7 @@
 class PhotosController < ApplicationController
   # GET /photos
   # GET /photos.json
-
+  skip_before_filter :verify_authenticity_token
   def index
     @photos = Photo.all
 
@@ -42,8 +42,10 @@ class PhotosController < ApplicationController
   # POST /photos.json
   def create
     #@photo = Photo.new(params[:photo])
-    @photo = Photo.new(trail_id: params[:trail_id],image: params[:file])
-   
+    binding.pry
+    if params[:file].content_type === "image/jpeg"
+      binding.pry
+      @photo = Photo.new(trail_id: params[:trail_id],image: params[:file])
     respond_to do |format|
       if @photo.save
         # format.html { redirect_to @photo, notice: 'Photo was successfully created.' }
@@ -54,6 +56,14 @@ class PhotosController < ApplicationController
         # format.html { render action: "new" }
         format.json { render json: @photo.errors, status: :unprocessable_entity }
       end
+    end
+    elsif params[:file].content_type === "application/octet-stream"
+      @trail = Trail.find(params[:trail_id])
+      respond_to do |format|
+      if @trail.update_attributes(gpx:params[:file])
+        format.json { head :no_content }
+      end
+    end
     end
   end
 

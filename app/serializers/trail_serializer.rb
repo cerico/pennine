@@ -5,7 +5,7 @@ class TrailSerializer < ActiveModel::Serializer
   has_many :photos
   has_one :user
   # has_many :tracksegments
-  has_many :points
+  #has_many :points
   
 
   def hikerbookmark
