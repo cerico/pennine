@@ -643,13 +643,21 @@ i.fa.fa-star.starred {
     margin-bottom: -18px;
   }
 
-  .little_photofooter {
+  .little_photofooter, .little_photofooter_popup {
     height: 25px;
     margin-top: -17px;
     background-color: rgba(0,0,0,0.65);
-    width: 100%;
     display: inline-block;
   }
+
+  .little_photofooter {
+    width:100%;
+  }
+
+.little_photofooter_popup{
+  width:212px;
+}
+ 
 
   .little_photofooter_left {
     text-decoration: none;

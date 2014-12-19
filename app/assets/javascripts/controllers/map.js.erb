@@ -23,7 +23,7 @@
           
                      for( i = 0; i < $scope.trails.length; i++ ) { 
                          var position = new google.maps.LatLng($scope.trails[i].lat, $scope.trails[i].lng);
-            
+            if ($scope.trails[i].photos[0]){
                          marker = new google.maps.Marker({
                              position: position,
                              map: map,
@@ -32,6 +32,17 @@
                              url: $scope.trails[i].id,
                              draggable:true
                          });
+                       }
+                       else {
+                        marker = new google.maps.Marker({
+                            position: position,
+                            map: map,
+                            title: $scope.trails[i].name,
+                            photo: "/assets/boots.jpg",
+                            url: $scope.trails[i].id,
+                            draggable:true
+                        });
+                       }
                           markers.push(marker);
                           
                          (function(marker, i) {
