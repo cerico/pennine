@@ -1,4 +1,4 @@
- scenic.controller('MapController', ["$scope", "$http", "$location", function($scope, $http, $location) { 
+ scenic.controller('MapController', ["$scope", "$http", "$location", 'uiGmapGoogleMapApi',function($scope, $http, $location,uiGmapGoogleMapApi) { 
   $http.get('/trails.json').success (function (data){
     $scope.trails = data
     makeUKMap();
@@ -106,7 +106,13 @@
               }
             }
             visiblemarkers = countmarkers
-         $('span.trailcount').html(countmarkers);
+            if (visiblemarkers > 1){
+         $('span.trailcount').html(countmarkers + " Trails near here");
+       }else if (visiblemarkers === 1){
+        $('span.trailcount').html(countmarkers + " Trail near here");
+       }else {
+        $('span.trailcount').html("No trails available");
+       }
       });
 
 
