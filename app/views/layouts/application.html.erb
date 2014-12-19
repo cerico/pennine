@@ -13,7 +13,7 @@
   <div class="backgroundimage">
     <%= image_tag("j14.jpg") %>
   </div>
-  <div class="background" ng-controller="LayoutController">
+  <div class="background">
    <div class="header">
     <div class="navleft" ><!-- for tablets-->
       <a class="btn-navbar dark" href="#" class="hamburger hamInactive">
@@ -52,6 +52,8 @@
 
 
     <ul class="toplinks" ng-init="selectedLink = 'trails'">
+
+      
       <% if user_signed_in? %>
       <li><a ng-class="{'active':selectedLink === 'new'}" ng-click="selectedLink = 'new'" ng-href="/#new">new</li>
       <% else %>

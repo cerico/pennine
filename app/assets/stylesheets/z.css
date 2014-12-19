@@ -139,16 +139,19 @@ height: 782px;
 }
 
 .header{
-/*  border-top: 5px solid rgba(70,105,149,1.0);*/
+  
   margin-bottom:60px;
   width:1200px;
   margin:0 auto;
   height:48px;
+  
+  padding-bottom:20px;
 }
 
 .toplinks {
   display:block;
-  padding-top:20px;
+
+
 }
 
 .toplinks li {
@@ -157,13 +160,17 @@ height: 782px;
   width: 20%;
   text-align: center;
   font-size:24px;
+  background: rgba(0,0,0,0.7);
+  border-top: 5px solid rgba(70,105,149,1.0);
+  padding-top:20px;
+  padding-bottom:20px;
 }
 
 .toplinks a {
   display: block;
   color: rgba(70,105,149,1.0);
   text-transform: uppercase;
-  padding: 1px 9px 1px 1px;
+ 
 }
 
 .toplinks a.active, .toplinks a:hover, .footerlinks a.active, .footerlinks a:hover {
@@ -365,7 +372,8 @@ margin-right:1%;
   margin: 0;
   font-size: 32px;
   min-width: 160px;
-  color: #7AA06D;
+  /*color: #7AA06D;*/
+  color:rgb(70,105,149);
   border-radius: 4px 11px 0 0;
   background-color: rgba(0,0,0,0.74);
 }

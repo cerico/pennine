@@ -14,6 +14,10 @@ class Trail < ActiveRecord::Base
 
   before_save :parse_gpx
 
+  def active_model_serializer
+      IndexSerializer
+  end
+
   def parse_gpx
 
     if gpx.queued_for_write[:original]   

@@ -6,7 +6,7 @@ class TrailsController < ApplicationController
     @trails = Trail.all
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @trails, root: false  }
+      format.json { render json: @trails, each_serializer: IndexSerializer, root: false  }
     end
   end
 

@@ -51,27 +51,31 @@ scenic.controller("TrailsController", [ '$scope','$location','$http','uiGmapGoog
         $scope.map = { 
           center: { latitude:$scope.trail.lat, longitude: $scope.trail.lng }, 
           zoom: 13,
+          polylineSteps: [],
           Markers: [({
             latitude: $scope.trail.lat,
             longitude: $scope.trail.lng,
             id: 1,
             draggable:true
-          })]
+          })],
+          bounds:new google.maps.LatLngBounds()
         };
+        var boom = new google.maps.LatLng(45.4555729, 9.169236)
         for (var i=0;i<$scope.trail.points.length;i++){
-          
-          var marker = {
-            latitude: $scope.trail.points[i].latitude,
-            longitude: $scope.trail.points[i].longitude,
-            id: $scope.trail.points[i].id,
-            draggable:true
-          }
-          
-          $scope.map.Markers.push(marker)
+          // console.log($scope.trail.points[i].longitude)
+          $scope.map.polylineSteps.push({latitude:$scope.trail.points[i].latitude,longitude:$scope.trail.points[i].longitude}) 
+    //  $scope.map.bounds.extend(boom)
+    // $scope.map.bounds.fitBounds($scope.map.bounds)
           $scope.$apply
         }
+
+       ;
+        $scope.map.visible = true
+        // $scope.map.fitBounds($scope.map.bounds)
       });
+
       $scope.checkHikerBookmark()    
+
     })
   }
 
@@ -137,19 +141,56 @@ scenic.controller("TrailsController", [ '$scope','$location','$http','uiGmapGoog
 
     if ($scope.trail.hikerbookmark) {         
      $http.put('/bookmarks/' + $scope.trail.hikerbookmark.id + '.json', modit).success (function (data){
-      $scope.changeStar(f)
+ $scope.changeBookmark(f)
       $scope.getTrailInfo() 
       
     });
    }else{      
     $http.post('/bookmarks.json', {bookmark: letsBookmark}).success (function (data){
-      $scope.changeStar(f)
+    $scope.changeBookmark(f)
       $scope.getTrailInfo() 
    
     })
 
   } 
 }
+
+$scope.rateTrail = function(f){
+  var letsRate = {}
+  letsRate.trail_id = $scope.trail.id
+  letsRate.rating = f
+    if ($scope.trail.hikerbookmark) {         
+     $http.put('/bookmarks/' + $scope.trail.hikerbookmark.id + '.json', {rating: f}).success (function (data){
+      $scope.changeStar(f)
+      $scope.getTrailInfo() 
+      
+    });
+   }else{      
+    $http.post('/bookmarks.json', {bookmark: letsRate}).success (function (data){
+      $scope.changeStar(f)
+      $scope.getTrailInfo() 
+   
+    })
+
+  } 
+
+}
+
+$scope.changeBookmark = function(f){
+  if (f === 'favit'){
+    $scope.favstate = 'faved'
+  }
+  else if (f === 'unfavit') {
+    $scope.favstate = 'notfaved'
+  }
+  else if (f === 'doneit'){
+    $scope.compstate = 'completed'
+  }
+  else if (f === 'undoneit'){
+    $scope.compstate = 'notcompleted'
+  }
+}
+
 
 $scope.changeStar = function(f) {
   $scope.is5 = false
