@@ -41,29 +41,25 @@ class PhotosController < ApplicationController
   # POST /photos
   # POST /photos.json
   def create
-    #@photo = Photo.new(params[:photo])
+
 
     if params[:file].content_type === "image/jpeg"
-    
-      @photo = Photo.new(trail_id: params[:trail_id],image: params[:file])
-    respond_to do |format|
-      if @photo.save
-        # format.html { redirect_to @photo, notice: 'Photo was successfully created.' }
-        # format.json { render json: @photo, status: :created, location: @photo }
-        format.json{ render :json => @photo }
 
-      else
-        # format.html { render action: "new" }
-        format.json { render json: @photo.errors, status: :unprocessable_entity }
+      @photo = Photo.new(trail_id: params[:trail_id],image: params[:file])
+      respond_to do |format|
+        if @photo.save
+          format.json{ render :json => @photo }
+        else
+          format.json { render json: @photo.errors, status: :unprocessable_entity }
+        end
       end
-    end
     elsif params[:file].content_type === "application/octet-stream"
       @trail = Trail.find(params[:trail_id])
       respond_to do |format|
-      if @trail.update_attributes(gpx:params[:file])
-        format.json { head :no_content }
+        if @trail.update_attributes(gpx:params[:file])
+          format.json { render :json => @trail, root: false}
+        end
       end
-    end
     end
   end
 

@@ -60,20 +60,14 @@ scenic.controller("TrailsController", [ '$scope','$location','$http','uiGmapGoog
             id: 1,
             draggable:true
           })],
-          bounds:new google.maps.LatLngBounds()
         };
-        var boom = new google.maps.LatLng(45.4555729, 9.169236)
         for (var i=0;i<$scope.trail.points.length;i++){
-          // console.log($scope.trail.points[i].longitude)
           $scope.map.polylineSteps.push({latitude:$scope.trail.points[i].latitude,longitude:$scope.trail.points[i].longitude}) 
-    //  $scope.map.bounds.extend(boom)
-    // $scope.map.bounds.fitBounds($scope.map.bounds)
           $scope.$apply
         }
 
-       ;
         $scope.map.visible = true
-        // $scope.map.fitBounds($scope.map.bounds)
+
       });
 
       $scope.checkHikerBookmark()    

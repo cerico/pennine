@@ -4,9 +4,7 @@
     makeUKMap();
   });
 
-
-     function makeUKMap(){
-             $scope.selected = 'first'; 
+    function makeUKMap(){
              var center = new google.maps.LatLng(53.5,-2.1);              
                      var map_options = {
                          zoom: 7,
@@ -19,11 +17,9 @@
                          position: center,
                          draggable: true
                      };
-                     var markers = [];
-          
+                     var markers = [];        
                      for( i = 0; i < $scope.trails.length; i++ ) { 
-                         var position = new google.maps.LatLng($scope.trails[i].lat, $scope.trails[i].lng);
-            if ($scope.trails[i].photos[0]){
+                         var position = new google.maps.LatLng($scope.trails[i].lat, $scope.trails[i].lng);     
                          marker = new google.maps.Marker({
                              position: position,
                              map: map,
@@ -31,18 +27,7 @@
                              photo: $scope.trails[i].photos[0].image.detail.url,
                              url: $scope.trails[i].id,
                              draggable:true
-                         });
-                       }
-                       else {
-                        marker = new google.maps.Marker({
-                            position: position,
-                            map: map,
-                            title: $scope.trails[i].name,
-                            photo: "/assets/boots.jpg",
-                            url: $scope.trails[i].id,
-                            draggable:true
-                        });
-                       }
+                         }); 
                           markers.push(marker);
                           
                          (function(marker, i) {
@@ -114,16 +99,6 @@
         $('span.trailcount').html("No trails available");
        }
       });
-
-
-
-
-
-
-
-
-
-
 
 
            
