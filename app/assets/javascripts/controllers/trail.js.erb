@@ -1,6 +1,6 @@
 scenic.controller("TrailsController", [ '$scope','$location','$http','uiGmapGoogleMapApi', function($scope,$location,$http,uiGmapGoogleMapApi) {
 
-  
+
 
   $("#map_canvas.angular-google-map-container").css("height", "400px");
 
@@ -30,12 +30,16 @@ scenic.controller("TrailsController", [ '$scope','$location','$http','uiGmapGoog
 
   $scope.averating = function (){
     total = 0
+    raters = 0
     for (var i= 0; i< $scope.trail.bookmarks.length; i++){
       if ($scope.trail.bookmarks[i].rating > 0) {
         total += $scope.trail.bookmarks[i].rating
+        raters += 1
       }
-      $scope.trailrating = (total/$scope.trail.bookmarks.length).toFixed(2)
-      $scope.ratedby = '(' + $scope.trail.bookmarks.length + ')'
+      if (raters >0 ){
+        $scope.trailrating = (total/raters).toFixed(2)
+        $scope.ratedby = '(' + raters + ')'
+      }
     }
   }
 
@@ -45,130 +49,166 @@ scenic.controller("TrailsController", [ '$scope','$location','$http','uiGmapGoog
       console.log(data)
 
       if (data.hikerbookmark){
+        console.log("cats")
         $scope.changeStar(data.hikerbookmark.rating)
         console.log(data.hikerbookmark.rating)
       }
-      $scope.averating();  
-      uiGmapGoogleMapApi.then(function(maps) {
-        $scope.map = { 
-          center: { latitude:$scope.trail.lat, longitude: $scope.trail.lng }, 
-          zoom: 13,
-          polylineSteps: [],
-          Markers: [({
-            latitude: $scope.trail.lat,
-            longitude: $scope.trail.lng,
-            id: 1,
-            draggable:true
-          })],
-        };
-        for (var i=0;i<$scope.trail.points.length;i++){
-          $scope.map.polylineSteps.push({latitude:$scope.trail.points[i].latitude,longitude:$scope.trail.points[i].longitude}) 
-          $scope.$apply
-        }
-
-        $scope.map.visible = true
-
-      });
-
-      $scope.checkHikerBookmark()    
-
+      $scope.averating(); 
+      $scope.checkHikerBookmark() 
+      $scope.makeMap()
     })
   }
 
-  $scope.getTrailInfo()
 
+  $scope.makeMap = function() {
+    uiGmapGoogleMapApi.then(function(maps) {
+      $scope.map = { 
 
+       center: { latitude:$scope.trail.lat, longitude: $scope.trail.lng }, 
+       zoom:13,
+       polylineSteps: [], 
+       Markers: [({
+        latitude: $scope.trail.lat,
+        longitude: $scope.trail.lng,
+        id: 1,
+        draggable:true
+      })],
+     };
 
+     var bounds = new maps.LatLngBounds()
 
-  $scope.photoUpload = function (){
-    Dropzone.options.photoDropzone = new Dropzone("#media-dropzone", {url: $scope.posthere,dictDefaultMessage:""} );
-    return Dropzone.options.photoDropzone.on("success", function(file, theNewPhoto) {
-      $scope.trail.photos.push(theNewPhoto)
-      $http.get($location.path() + '/photos.json').success (function (data){
-        Dropzone.options.photoDropzone.removeAllFiles();
-      });
-   })
-  }
+     for (var i=0;i<$scope.trail.points.length;i++){
 
-  $scope.photoUpload()
+      var latlng = new maps.LatLng($scope.trail.points[i].latitude,$scope.trail.points[i].longitude)
+      $scope.map.polylineSteps.push({latitude:$scope.trail.points[i].latitude,longitude:$scope.trail.points[i].longitude}) 
+      bounds.extend(latlng);
 
-  $scope.checkHikerBookmark = function (){
-
-    if  ($scope.trail.hikerbookmark) {
-      if ($scope.trail.hikerbookmark.favourited == true) {
-        $scope.favstate = "faved"
-      }
-      else {
-        $scope.favstate = "notfaved"
-      }
-      if ($scope.trail.hikerbookmark.completed == true) {
-        $scope.compstate = "completed"
-      }
-      else {
-        $scope.compstate = "notcompleted"
-      }
+   
     }
-    else{
+
+    $scope.map.visible = true
+    if ($scope.trail.points.length > 1){
+      var deregister = $scope.$watch('map.getGMap', function (getGMap) {     
+        if (getGMap) {
+          deregister();
+          google.maps.event.addListenerOnce(getGMap(), 'tilesloaded', function () {      
+           getGMap().fitBounds(bounds)
+         });
+
+        }
+      });
+    }
+
+
+  });
+
+
+
+
+
+}
+
+$scope.getTrailInfo()
+
+
+
+
+
+
+
+
+
+$scope.photoUpload = function (){
+  Dropzone.options.photoDropzone = new Dropzone("#media-dropzone", {url: $scope.posthere,dictDefaultMessage:""} );
+  return Dropzone.options.photoDropzone.on("success", function(file, theNewPhoto) {
+    $scope.trail.photos.push(theNewPhoto)
+    $http.get($location.path() + '/photos.json').success (function (data){
+      Dropzone.options.photoDropzone.removeAllFiles();
+    });
+  })
+}
+
+$scope.photoUpload()
+
+$scope.checkHikerBookmark = function (){
+
+  if  ($scope.trail.hikerbookmark) {
+    if ($scope.trail.hikerbookmark.favourited == true) {
+      $scope.favstate = "faved"
+    }
+    else {
       $scope.favstate = "notfaved"
+    }
+    if ($scope.trail.hikerbookmark.completed == true) {
+      $scope.compstate = "completed"
+    }
+    else {
       $scope.compstate = "notcompleted"
     }
-  } 
+  }
+  else{
+    $scope.favstate = "notfaved"
+    $scope.compstate = "notcompleted"
+  }
 
-  $scope.addFav = function (f){
+} 
 
-    var letsBookmark = {}
-    letsBookmark.trail_id = $scope.trail.id
-    letsBookmark.user_id = $scope.trail.hiker.id
+$scope.addFav = function (f){
 
-    if (f == 'favit') {
-      modit = {favourited: true}
-      letsBookmark.favourited = true
-    }else if (f == 'unfavit') {
-      modit = {favourited: false}
-    }else if (f == 'doneit') {
-      modit = {completed: true}
-      letsBookmark.completed = true
-    }else if (f == 'undoneit') {
-      modit = {completed: false}
-    }else  {
-      modit = {rating: f}
-      letsBookmark.rating = f
-    }
+  var letsBookmark = {}
+  letsBookmark.trail_id = $scope.trail.id
+  letsBookmark.user_id = $scope.trail.hiker.id
 
-    if ($scope.trail.hikerbookmark) {         
-     $http.put('/bookmarks/' + $scope.trail.hikerbookmark.id + '.json', modit).success (function (data){
- $scope.changeBookmark(f)
-      $scope.getTrailInfo() 
-      
-    });
-   }else{      
-    $http.post('/bookmarks.json', {bookmark: letsBookmark}).success (function (data){
-    $scope.changeBookmark(f)
-      $scope.getTrailInfo() 
-   
-    })
+  if (f == 'favit') {
+    modit = {favourited: true}
+    letsBookmark.favourited = true
+  }else if (f == 'unfavit') {
+    modit = {favourited: false}
+  }else if (f == 'doneit') {
+    modit = {completed: true}
+    letsBookmark.completed = true
+  }else if (f == 'undoneit') {
+    modit = {completed: false}
+  }
 
-  } 
+  if ($scope.trail.hikerbookmark) {         
+   $http.put('/bookmarks/' + $scope.trail.hikerbookmark.id + '.json', modit).success (function (data){
+
+
+    $scope.getTrailInfo() 
+
+  });
+ }else{      
+  $http.post('/bookmarks.json', {bookmark: letsBookmark}).success (function (data){
+
+    $scope.getTrailInfo() 
+
+  })
+
+} 
 }
 
 $scope.rateTrail = function(f){
   var letsRate = {}
   letsRate.trail_id = $scope.trail.id
+  letsRate.user_id = $scope.trail.hiker.id
   letsRate.rating = f
-    if ($scope.trail.hikerbookmark) {         
-     $http.put('/bookmarks/' + $scope.trail.hikerbookmark.id + '.json', {rating: f}).success (function (data){
-      $scope.changeStar(f)
-      $scope.getTrailInfo() 
-      
-    });
-   }else{      
-    $http.post('/bookmarks.json', {bookmark: letsRate}).success (function (data){
-      $scope.changeStar(f)
-      $scope.getTrailInfo() 
-   
-    })
+  if ($scope.trail.hikerbookmark) {         
+   $http.put('/bookmarks/' + $scope.trail.hikerbookmark.id + '.json', {rating: f}).success (function (data){
+    console.log("arnside")
+    $scope.changeStar(f)
+    $scope.getTrailInfo() 
 
-  } 
+  });
+ }else{      
+  $http.post('/bookmarks.json', {bookmark: letsRate}).success (function (data){
+    console.log("silverdale")
+    $scope.changeStar(f)
+    $scope.getTrailInfo() 
+
+  })
+
+} 
 
 }
 
@@ -189,30 +229,31 @@ $scope.changeBookmark = function(f){
 
 
 $scope.changeStar = function(f) {
+  console.log("dogS")
   $scope.is5 = false
   $scope.is4 = false
   $scope.is3 = false
   $scope.is2 = false
   $scope.is1 = false
-if (f === 1){
-  $scope.is1 = true
-}
-else if (f === 2){
-  $scope.is2 = true
-  $scope.is1 = true
-}
-else if (f === 3){
-  $scope.is3 = true
-  $scope.is2 = true
-  $scope.is1 = true
-}
-else if (f === 4){
- $scope.is4 = true
- $scope.is3 = true
- $scope.is2 = true
- $scope.is1 = true
-}
-else if (f === 5){
+  if (f === 1){
+    $scope.is1 = true
+  }
+  else if (f === 2){
+    $scope.is2 = true
+    $scope.is1 = true
+  }
+  else if (f === 3){
+    $scope.is3 = true
+    $scope.is2 = true
+    $scope.is1 = true
+  }
+  else if (f === 4){
+   $scope.is4 = true
+   $scope.is3 = true
+   $scope.is2 = true
+   $scope.is1 = true
+ }
+ else if (f === 5){
   $scope.is5 = true
   $scope.is4 = true
   $scope.is3 = true
@@ -222,6 +263,7 @@ else if (f === 5){
 
 
 }
+
 
 
 

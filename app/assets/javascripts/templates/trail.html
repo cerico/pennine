@@ -61,15 +61,15 @@
               </div><!-- close of photofooter-->
 
             </div> <!--close of mainphoto-->
+            <div id="dogs">
          <div id="map_canvas" class="thetrailmap" ng-if="map.visible">
-            <ui-gmap-google-map center='map.center' zoom='map.zoom' bounds='map.bounds' class="thetrailmap">
+            <ui-gmap-google-map center='map.center' zoom='map.zoom' bounds='map.bounds' class="thetrailmap" control='map'>
             <ui-gmap-markers models="map.Markers" coords="'self'" icon="'icon'" >
             <ui-gmap-polyline path="map.polylineSteps" static="true"></ui-gmap-polyline>
           </ui-gmap-markers></ui-gmap-google-map>
 </div>
-<!--             <div id="map_canvas" class="thetrailmap column-100">
-              <iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://my.ctrlq.org/maps/#roadmap|14|53.70910162841865|-2.095017117077651"></iframe>
-            </div> -->
+</div>
+
 
 
 

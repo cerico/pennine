@@ -4,53 +4,54 @@
     makeUKMap();
   });
 
-    function makeUKMap(){
-             var center = new google.maps.LatLng(53.5,-2.1);              
-                     var map_options = {
-                         zoom: 7,
-                         center: center,
-                         mapTypeId: google.maps.MapTypeId.TERRAIN
-                     };
-                     var map = new google.maps.Map(document.getElementById('ukmap_canvas'), map_options);
-                     var marker_options = {
-                         map: map,
-                         position: center,
-                         draggable: true
-                     };
-                     var markers = [];        
-                     for( i = 0; i < $scope.trails.length; i++ ) { 
-                         var position = new google.maps.LatLng($scope.trails[i].lat, $scope.trails[i].lng);     
-                         marker = new google.maps.Marker({
-                             position: position,
-                             map: map,
-                             title: $scope.trails[i].name,
-                             photo: $scope.trails[i].photos[0].image.detail.url,
-                             url: $scope.trails[i].id,
-                             draggable:true
-                         }); 
-                          markers.push(marker);
-                          
-                         (function(marker, i) {
+  function makeUKMap(){
+   var center = new google.maps.LatLng(53.5,-2.1);              
+   var map_options = {
+     zoom: 7,
+     center: center,
+     mapTypeId: google.maps.MapTypeId.TERRAIN
+   };
+   var map = new google.maps.Map(document.getElementById('ukmap_canvas'), map_options);
+console.log(map)
+   var marker_options = {
+     map: map,
+     position: center,
+     draggable: true
+   };
+   var markers = [];        
+   for( i = 0; i < $scope.trails.length; i++ ) { 
+     var position = new google.maps.LatLng($scope.trails[i].lat, $scope.trails[i].lng);     
+     marker = new google.maps.Marker({
+       position: position,
+       map: map,
+       title: $scope.trails[i].name,
+       photo: $scope.trails[i].photos[0].image.detail.url,
+       url: $scope.trails[i].id,
+       draggable:true
+     }); 
+     markers.push(marker);
+
+     (function(marker, i) {
                                             // add click event
                                             google.maps.event.addListener(marker, 'click', function() {
-                                                infowindow = new google.maps.InfoWindow({
-                                                    content: '<div class="eachphoto column-32"><a href="#trails/' + marker.url + '"><img src="' + marker.photo + '"><div class="little_photofooter"><span class="little_photofooter_left">' + marker.title + '"</span></a></div></div>'
-                                                });
-                                                infowindow.open(map, marker);
+                                              infowindow = new google.maps.InfoWindow({
+                                                content: '<div class="eachphoto column-32"><a href="#trails/' + marker.url + '"><img src="' + marker.photo + '"><div class="little_photofooter"><span class="little_photofooter_left">' + marker.title + '"</span></a></div></div>'
+                                              });
+                                              infowindow.open(map, marker);
                                             });
-                                        })(marker, i);
-                       } 
+                                          })(marker, i);
+                                        } 
 
-                        var mc = new MarkerClusterer(map, markers);
-                        console.log(markers.length)
+                                        var mc = new MarkerClusterer(map, markers);
+                                        console.log(markers.length)
 
-             
-                        var input = /** @type {HTMLInputElement} */(
-                            document.getElementById('pac-input'));
-                        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
-                        var searchBox = new google.maps.places.SearchBox(
-                          /** @type {HTMLInputElement} */(input));
+                                        var input = /** @type {HTMLInputElement} */(
+                                          document.getElementById('pac-input'));
+                                        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+                                        var searchBox = new google.maps.places.SearchBox(
+                                          /** @type {HTMLInputElement} */(input));
 
                         // Listen for the event fired when the user selects an item from the
                         // pick list. Retrieve the matching places for that item.
@@ -79,30 +80,31 @@
                               bounds.extend(place.geometry.location);
                             }
 
+console.log(bounds)
                             map.fitBounds(bounds);
 
-     })
+                          })
 
-      google.maps.event.addListener(map, 'idle', function() {
-       countmarkers = 0;
-          for(var i = markers.length, bounds = map.getBounds(); i--;) {
-              if( bounds.contains(markers[i].getPosition()) ){
-                   countmarkers ++;
-              }
-            }
-            visiblemarkers = countmarkers
-            if (visiblemarkers > 1){
-         $('span.trailcount').html(countmarkers + " Trails near here");
-       }else if (visiblemarkers === 1){
-        $('span.trailcount').html(countmarkers + " Trail near here");
-       }else {
-        $('span.trailcount').html("No trails available");
-       }
-      });
+ google.maps.event.addListener(map, 'idle', function() {
+   countmarkers = 0;
+   for(var i = markers.length, bounds = map.getBounds(); i--;) {
+    if( bounds.contains(markers[i].getPosition()) ){
+     countmarkers ++;
+   }
+ }
+ visiblemarkers = countmarkers
+ if (visiblemarkers > 1){
+   $('span.trailcount').html(countmarkers + " Trails near here");
+ }else if (visiblemarkers === 1){
+  $('span.trailcount').html(countmarkers + " Trail near here");
+}else {
+  $('span.trailcount').html("No trails available");
+}
+});
 
 
-           
-           }
+
+}
 
       //   $scope.$watch('mapVisible',function(resize){if(resize){
       //       google.maps.event.trigger(map, 'resize');
