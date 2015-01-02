@@ -1,6 +1,9 @@
 scenic.controller("TrailsController", [ '$scope','$location','$http','uiGmapGoogleMapApi', function($scope,$location,$http,uiGmapGoogleMapApi) {
 
 
+console.log("hello")
+
+
 
   $("#map_canvas.angular-google-map-container").css("height", "400px");
 
@@ -117,9 +120,13 @@ $scope.getTrailInfo()
 
 
 
-
 $scope.photoUpload = function (){
-  Dropzone.options.photoDropzone = new Dropzone("#media-dropzone", {url: $scope.posthere,dictDefaultMessage:""} );
+  Dropzone.options.photoDropzone = new Dropzone("#media-dropzone", {
+    url: $scope.posthere,
+    headers: {
+      "X-CSRF-Token" : $('meta[name="csrf-token"]').attr('content')},
+    dictDefaultMessage:"",
+  } );
   return Dropzone.options.photoDropzone.on("success", function(file, theNewPhoto) {
     $scope.trail.photos.push(theNewPhoto)
     $http.get($location.path() + '/photos.json').success (function (data){

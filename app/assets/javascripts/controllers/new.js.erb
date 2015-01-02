@@ -45,6 +45,8 @@ scenic.controller("NewController", [ '$scope','$location','uiGmapGoogleMapApi', 
    uploadMultiple: true,
    parallelUploads: 100,
    maxFiles: 100,
+       headers: {
+      "X-CSRF-Token" : $('meta[name="csrf-token"]').attr('content')},
    url: '/trails.json',
    
    // The setting up of the dropzone

@@ -559,11 +559,15 @@ i.fa.fa-star.starred {
 
   .individual_trail_photofooter_right ul li {
     float: right;
-    margin-top: -10px;
+
   }
 
   .uploadedby {
     margin-bottom:5px;
+  }
+    .uploadedby2 {
+    margin-top: 58%;
+margin-right: -43%
   }
 
   .individual_trail_photofooter_right a {
@@ -585,7 +589,7 @@ i.fa.fa-star.starred {
 
   .userphoto {
     border-radius: 50%;
-    margin-top: 20px;
+    margin-top: 8px;
     z-index: 28;
     top: -40px;
     float: right;

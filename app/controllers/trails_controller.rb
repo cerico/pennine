@@ -1,9 +1,10 @@
 class TrailsController < ApplicationController
   # GET /trails
   # GET /trails.json
-  skip_before_filter :verify_authenticity_token
+   # before_filter :authenticate_user!  
   def index
     @trails = Trail.all
+ 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @trails, root: false  }
@@ -60,6 +61,7 @@ class TrailsController < ApplicationController
       if @trail.save
 
        params[:file].each do |file|
+      
         if file.content_type === "image/jpeg"
           @trail.photos << Photo.create(image: file) 
        elsif file.content_type === "application/octet-stream"

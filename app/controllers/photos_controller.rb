@@ -1,7 +1,7 @@
 class PhotosController < ApplicationController
   # GET /photos
   # GET /photos.json
-  skip_before_filter :verify_authenticity_token
+  # skip_before_filter :verify_authenticity_token
   def index
     @photos = Photo.all
 
@@ -46,6 +46,7 @@ class PhotosController < ApplicationController
     if params[:file].content_type === "image/jpeg"
 
       @photo = Photo.new(trail_id: params[:trail_id],image: params[:file])
+     
       respond_to do |format|
         if @photo.save
           format.json{ render :json => @photo }

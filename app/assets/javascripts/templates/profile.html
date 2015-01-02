@@ -7,7 +7,7 @@
       <div class="bendychairactive clearfix">
 
           <div class="sidebar">
-            <ul><li>{{user.name}}</li>
+            <ul><li>{{user.name.split(" ")[0]}}</li>
              <li>Hiked: {{distance.toFixed(1)}} Miles</li>
              <li>Ranked (2)</li>
              <li>Ave Rating: 8.6</li>
@@ -39,7 +39,7 @@
         
 
   <div class="profile_trailphotos column-100" ng-show="bookmarkchoice == 'showcompleted'">
-    <div class="userbit column-100">Trails completed by {{user.name}}</div>
+    <div class="userbit column-100">Trails completed by {{user.name.split(" ")[0]}}</div>
     <div class="eachphoto column-32" ng-repeat="completed in user.bookmarks |filter: {completed:true}"><a ng-href="#trails/{{completed.trail.id}}"><img ng-src="{{completed.trail.photos[0].image.detail.url}}"></a>
       <div class="little_photofooter">
         <span class="little_photofooter_left" >{{completed.trail.name}}</span>   
@@ -55,7 +55,7 @@
   </div><!-- close of profile_trailphotos-->
 
   <div class="profile_trailphotos column-100" ng-show="bookmarkchoice == 'showadded'">
-    <div class="userbit column-100">Trails added by {{user.name}}</div>
+    <div class="userbit column-100">Trails added by {{user.name.split(" ")[0]}}</div>
     <div class="eachphoto column-32" ng-repeat="trail in user.trails"><a ng-href="#trails/{{trail.id}}"><img ng-src="{{trail.photos[0].image.detail.url}}"></a>
       <div class="little_photofooter">
         <span class="little_photofooter_left" >{{trail.name}}</span>   

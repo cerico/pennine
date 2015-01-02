@@ -24,6 +24,9 @@ gem 'angular-rails-templates'
 gem 'paperclip', '~> 3.0'
 gem 'nokogiri'
 
+
+
+
 gem "foreman"
 group :production, :staging do
   gem "rails_12factor"

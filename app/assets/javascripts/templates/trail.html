@@ -39,7 +39,7 @@
                 <div class="individual_trail_photofooter_right">
                   <ul>
                     <li class="uploadedby"><a ng-href="#/users/{{trail.user_id}}"><img class="userphoto" ng-src="{{trail.user.photo}}"></li>
-                    <li>{{trail.user.name}}</a> </li>
+                    <li class="uploadedby2">{{trail.user.name.split(" ")[0]}}</a> </li>
                   </ul>
                 </div> <!--close of footerright-->
                 <div class="individual_trail_photofooter_mid">
@@ -97,7 +97,8 @@
                   
                   id="media-dropzone"  
                   enctype="multipart/form-data">
-                  <input name="authenticity_token" type="hidden" />
+                  <!-- <input name="authenticity_token" value="ig1U0Er7VHUTdw5bxtcVRyjDs+4d2o79p8lg94fPaBk=" type="hidden"> -->
+     <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
             </form>
             
 
