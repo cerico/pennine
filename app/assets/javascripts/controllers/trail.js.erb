@@ -124,7 +124,8 @@ $scope.photoUpload = function (){
   Dropzone.options.photoDropzone = new Dropzone("#media-dropzone", {
     url: $scope.posthere,
     headers: {
-      "X-CSRF-Token" : $('meta[name="csrf-token"]').attr('content')},
+      "X-CSRF-Token" : $('meta[name="csrf-token"]').attr('content')
+    },
     dictDefaultMessage:"",
   } );
   return Dropzone.options.photoDropzone.on("success", function(file, theNewPhoto) {

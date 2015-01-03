@@ -1,7 +1,7 @@
 class TrailsController < ApplicationController
   # GET /trails
   # GET /trails.json
-   # before_filter :authenticate_user!  
+  # skip_before_filter :verify_authenticity_token 
   def index
     @trails = Trail.all
  

@@ -2,7 +2,7 @@ scenic = angular.module('scenic',['controllers','templates','ui.router','uiGmapg
 
 controllers = angular.module('controllers',[])
 
-scenic.config(['$stateProvider','$urlRouterProvider','$locationProvider','uiGmapGoogleMapApiProvider', function ($stateProvider, $urlRouterProvider, $locationProvider, uiGmapGoogleMapApiProvider){
+scenic.config(['$stateProvider','$urlRouterProvider','$locationProvider','uiGmapGoogleMapApiProvider','$httpProvider', function ($stateProvider, $urlRouterProvider, $locationProvider, uiGmapGoogleMapApiProvider,provider){
 
 
       uiGmapGoogleMapApiProvider.configure({
@@ -12,6 +12,8 @@ scenic.config(['$stateProvider','$urlRouterProvider','$locationProvider','uiGmap
           libraries: 'weather,geometry,visualization,places'
       });
 
+
+  provider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
 
 
   $urlRouterProvider.otherwise('/trails')
