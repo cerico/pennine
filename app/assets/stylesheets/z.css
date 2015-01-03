@@ -28,6 +28,7 @@ a {
 
 li {
   list-style:none;
+  float:left;
 }
 
 .column-25 {
@@ -78,8 +79,13 @@ li {
   border:2px;
 }*/
 
+a:hover, a:visited{
+  text-decoration:none;
+  background-color:transparent;
+}
+
 .angular-google-map-container { 
-  /*margin-left: 2%;*/
+
   margin-left:28px;
 width: 96%;
 height: 782px;
@@ -88,7 +94,7 @@ height: 782px;
 .login {
   position: relative;
   padding-left: 25px;
-  padding-bottom: 8px;
+  padding-bottom: 13px;
   background-color: rgba(0,0,0,0.7);
   width: 250px;
   margin: 0 auto;
@@ -99,15 +105,37 @@ height: 782px;
   color:#f5f6f1;
 }
 
+a.splashtitle, a.splashlinks,a.splashlinks2 {
+  color: #f5f6f1;
+
+}
+
+a.splashlinks, a.splashlinks2{
+  font-size:17px;
+  padding-left:4px;
+  padding-right:4px;
+
+}
+
+a.splashlinks2{
+margin-left: 96px;
+}
+
+
 
 .loginfirst {
   border-radius: 6px 6px 0 0;
   padding-top: 25px;
+  padding-bottom:18px;
 }
 
 .loginlast {
   border-radius: 0 0 6px 6px;
   padding-bottom: 35px;
+}
+
+.loginlast ul {
+  list-style:none;
 }
 
 .socialsignin {

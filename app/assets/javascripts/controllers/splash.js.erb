@@ -1,5 +1,5 @@
 scenic.controller("SplashController", [ '$scope','$location','$http', function($scope,$location,$http) {
-  $(".backgroundimage").css("visibility","none")
+  $(".header").css("visibility","none")
   var backgroundnumber = Math.floor(Math.random() * 7)+1;
      $(".intro").css("background", "url('assets/backdrop" + backgroundnumber + ".jpg') no-repeat center center fixed");
 
