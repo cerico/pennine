@@ -1,5 +1,8 @@
-scenic.controller("NewController", [ '$scope','$location','uiGmapGoogleMapApi', function($scope,$location,uiGmapGoogleMapApi) {
-  
+scenic.controller("NewController", [ '$scope','$location','uiGmapGoogleMapApi','Auth', function($scope,$location,uiGmapGoogleMapApi,Auth) {
+    $scope.auth = Auth;
+    if ($scope.auth.isLoggedIn){
+      console.log("yes im logged in")
+    }
   $(".picuploaderror").hide();
   uiGmapGoogleMapApi.then(function(maps) {
     $scope.count = 0
