@@ -24,6 +24,9 @@ gem 'angular-rails-templates'
 gem 'paperclip', '~> 3.0'
 gem 'nokogiri'
 
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+
 
 
 
