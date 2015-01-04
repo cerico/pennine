@@ -13,5 +13,8 @@ class ApplicationController < ActionController::Base
     totaldistance
   end
 
+  private
+
+
 
 end

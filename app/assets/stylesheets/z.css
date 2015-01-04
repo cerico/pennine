@@ -28,8 +28,9 @@ a {
 
 li {
   list-style:none;
-  float:left;
 }
+
+
 
 .column-25 {
   width: 25%;
@@ -136,6 +137,13 @@ margin-left: 96px;
 
 .loginlast ul {
   list-style:none;
+
+}
+
+.loginlast ul li{
+  list-style:none;
+  float:left;
+  
 }
 
 .socialsignin {
