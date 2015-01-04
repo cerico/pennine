@@ -74,7 +74,7 @@ class User < ActiveRecord::Base
         user.uid = auth.uid
         user.name = auth.info.name
         user.photo = auth.info.image
-        user.email = twitter_email
+        user.email = facebook_email
         user.password = Devise.friendly_token[0,20]
         #user.skip_confirmation!
         
