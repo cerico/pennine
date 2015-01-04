@@ -91,8 +91,9 @@
 
            
             </div> 
-            <div class="moreinfo column-100">Add more photos by clicking on, or dragging to, the area below</div>
-              <form  
+            <!-- <div ng-if="!auth.isLoggedIn">hi</div> -->
+            <div ng-if="auth.isLoggedIn" class="moreinfo column-100">Add more photos by clicking on, or dragging to, the area below</div>
+              <form 
                   class="dropzone column-50" 
                   
                   id="media-dropzone"  
