@@ -53,7 +53,6 @@ class TrailsController < ApplicationController
   # POST /trails.json
   def create
     # @trail = Trail.new(params[:trail])
-
     filter = params.except(:action, :controller, :format, :null, :file, :authenticity_token, :rating)
     @trail = Trail.new(name:params[:name],county:params[:county],lat:params[:lat],lng:params[:lng],distance:params[:distance],user_id:current_user.id)
 

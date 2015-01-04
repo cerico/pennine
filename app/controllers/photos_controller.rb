@@ -41,11 +41,12 @@ class PhotosController < ApplicationController
   # POST /photos
   # POST /photos.json
   def create
-
+    
+    if current_user
 
     if params[:file].content_type === "image/jpeg"
 
-      @photo = Photo.new(trail_id: params[:trail_id],image: params[:file])
+      @photo = Photo.new(trail_id: params[:trail_id],image: params[:file],user_id: current_user.id)
      
       respond_to do |format|
         if @photo.save
@@ -62,6 +63,7 @@ class PhotosController < ApplicationController
         end
       end
     end
+  end
   end
 
   # PUT /photos/1

@@ -134,12 +134,12 @@ $scope.photoUpload = function (){
 }
 
 
+
+if ($scope.auth.isLoggedIn){
   $scope.photoUpload()
-// if ($scope.auth.isLoggedIn){
-//   $scope.photoUpload()
-// }else {
-//   $(".dropzone").css("background", "none");
-// }
+}else {
+  $(".dropzone").css("background", "none");
+}
 
 $scope.checkHikerBookmark = function (){
 
