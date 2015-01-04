@@ -15,7 +15,7 @@ class OmniauthCallbacksController < ApplicationController
     @user = User.find_for_twitter(request.env['omniauth.auth'].except("extra"), current_user)
 
     if @user.persisted?
-      flash[:notice] = "Welcome to the contacts App! You have successfully logged in with Twitter!"
+      flash[:notice] = "Scenic, find somewhere new to go today!"
       sign_in(@user)
       redirect_to trails_path, event: :authentication
     else
@@ -23,5 +23,18 @@ class OmniauthCallbacksController < ApplicationController
       redirect_to new_user_registration_path
     end
   end
-  
+
+  def facebook
+    @user = User.find_for_facebook(request.env['omniauth.auth'].except("extra"), current_user)
+
+    if @user.persisted?
+      flash[:notice] = "Scenic, find somewhere new to go today!"
+      sign_in(@user)
+      redirect_to trails_path, event: :authentication
+    else
+      session["devise.facebook_data"] = request.env['omniauth.auth'].except("extra")
+      redirect_to new_user_registration_path
+    end
+  end
+
 end

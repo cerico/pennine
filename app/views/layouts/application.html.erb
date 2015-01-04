@@ -9,7 +9,9 @@
     <script>
       var current_user = <%=raw current_user.to_json  %>
     </script>
+
     <% end %>
+
   <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
   <link href='https://fonts.googleapis.com/css?family=Raleway+Dots' rel='stylesheet' type='text/css'>
@@ -58,7 +60,7 @@
 
     <ul class="toplinks" ng-init="selectedLink = 'trails'">
 
-      <li class="toptitle">scen.ic</li>
+      <li class="toptitle">scen.ic </li>
 
 
       <li class="toplink"><a ng-class="{'active':selectedLink === 'new'}" ng-click="selectedLink = 'new'" ng-href="/#new">add a new trail</a></li>
@@ -73,6 +75,7 @@
      </li>
      <% else %>     
      <li class="toplink">
+
        <%= link_to "sign in", user_omniauth_authorize_path(:google_oauth2)%>
      </li>
      

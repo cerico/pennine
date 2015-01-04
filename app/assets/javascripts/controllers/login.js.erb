@@ -4,6 +4,37 @@ scenic.controller("LoginController", [ '$scope','$location','$http','Auth', func
   var backgroundnumber = Math.floor(Math.random() * 7)+1;
      $(".intro").css("background", "url('assets/backdrop" + backgroundnumber + ".jpg') no-repeat center center fixed");
 
+ 
+//   window.fbAsyncInit = function() {
+//     FB.init({
+//       appId      : <%= ENV['FACEBOOK_APP_ID'] %>,
+//       xfbml      : true,
+//       version    : 'v2.2'
+//     });
+//   };
+
+//   (function(d, s, id){
+//      var js, fjs = d.getElementsByTagName(s)[0];
+//      if (d.getElementById(id)) {return;}
+//      js = d.createElement(s); js.id = id;
+//      js.src = "//connect.facebook.net/en_US/sdk.js";
+//      fjs.parentNode.insertBefore(js, fjs);
+//    }(document, 'script', 'facebook-jssdk'));
+
+
+
+
+// function login() {
+//   FB.login(function(response) {
+//     if (response.authResponse) {
+//       alert("hi dere")
+//       window.location = '/auth/facebook/callback'
+//     }
+//   });
+// }
+
+
+
 }])
 
 
