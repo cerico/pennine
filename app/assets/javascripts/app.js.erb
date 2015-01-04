@@ -66,7 +66,8 @@ scenic.config(['$stateProvider','$urlRouterProvider','$locationProvider','uiGmap
 }])
 
 
-scenic.run(function ($rootScope, $state, $location, Auth) {
+
+scenic.run(['$rootScope','$state','$location','Auth', function ($rootScope, $state, $location, Auth) {
 
   $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState) {
 
@@ -80,7 +81,7 @@ scenic.run(function ($rootScope, $state, $location, Auth) {
       return;
     }
   });
-})
+}])
 
 
 
