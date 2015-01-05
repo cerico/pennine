@@ -1,4 +1,6 @@
 scenic.controller("NewController", [ '$scope','$location','uiGmapGoogleMapApi','Auth', function($scope,$location,uiGmapGoogleMapApi,Auth) {
+   $scope.loading = true;
+$(".uploadingspinner").hide()
     $scope.auth = Auth;
     if ($scope.auth.isLoggedIn){
       console.log("yes im logged in")
@@ -11,7 +13,8 @@ scenic.controller("NewController", [ '$scope','$location','uiGmapGoogleMapApi','
       zoom: 6,
       Markers: [],
       events: {
-        click: function (model, event, params) {           
+        click: function (model, event, params) {   
+
           console.log($scope.map.Markers)
           var marker = {
             latitude: params[0].latLng.lat(),
@@ -28,6 +31,7 @@ scenic.controller("NewController", [ '$scope','$location','uiGmapGoogleMapApi','
             $scope.$apply();
             $scope.map.Markers.splice(0, $scope.map.Markers.length);
             $scope.$apply();
+
           }
           
         },
@@ -56,6 +60,7 @@ scenic.controller("NewController", [ '$scope','$location','uiGmapGoogleMapApi','
    init: function() {
 
      var myDropzone = this;
+
      Dropzone.isReady = true
      var form = $(this).closest('#trail-dropzone');
      
@@ -68,6 +73,7 @@ scenic.controller("NewController", [ '$scope','$location','uiGmapGoogleMapApi','
        }else{
          $(".picuploaderror").hide();
        }
+      
        e.preventDefault();
        e.stopPropagation();
        myDropzone.processQueue();
@@ -77,6 +83,8 @@ scenic.controller("NewController", [ '$scope','$location','uiGmapGoogleMapApi','
      // of the sending event because uploadMultiple is set to true.
      this.on("sendingmultiple", function() {
       console.log("sending")
+      $(".uploadingspinner").show()
+      
        // Gets triggered when the form is actually being sent.
        // Hide the success button or the complete form.
      });
@@ -96,6 +104,7 @@ scenic.controller("NewController", [ '$scope','$location','uiGmapGoogleMapApi','
  }
 
  Dropzone.isReady = true
+  $scope.loading = false;
 
  console.log(Dropzone.options.trailDropzone)
  Dropzone.options.photoDropzone = new Dropzone("#trail-dropzone", {url: $scope.posthere});

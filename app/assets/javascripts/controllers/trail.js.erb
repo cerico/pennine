@@ -1,4 +1,6 @@
 scenic.controller("TrailsController", ['$scope','$location','$http','uiGmapGoogleMapApi','Auth', function($scope,$location,$http,uiGmapGoogleMapApi,Auth) {
+$scope.loading = true;
+
 
 $scope.auth = Auth
   $("#map_canvas.angular-google-map-container").css("height", "400px");
@@ -86,6 +88,11 @@ $scope.auth = Auth
     }
 
     $scope.map.visible = true
+    console.log($scope.trail.photos)
+    $scope.loading = false;
+    $scope.whenready = true
+
+    
     if ($scope.trail.points.length > 1){
       var deregister = $scope.$watch('map.getGMap', function (getGMap) {     
         if (getGMap) {

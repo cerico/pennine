@@ -29,10 +29,14 @@
 
         <div class="trailcontainer column-100" >
           <div class="wrapper clearfix">
-           
+<div class="spinner" ng-show="loading">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+</div>
          
 
-            <div class="mainphoto column-100" ng-repeat="photo in trail.photos|limitTo:1">
+            <div class="mainphoto column-100" ng-repeat="photo in trail.photos|limitTo:1" ng-class="whenready">
               <img class="trailphoto column-100" ng-src="{{photo.image.trailpage.url}}">
               <div class="individual_trail_photofooter">
                 <span class="individual_trail_photofooter_left" >{{ trail.name }}</span>   
@@ -93,6 +97,7 @@
             </div> 
             <!-- <div ng-if="!auth.isLoggedIn">hi</div> -->
             <div ng-if="auth.isLoggedIn" class="moreinfo column-100">Add more photos by clicking on, or dragging to, the area below</div>
+
               <form 
                   class="dropzone column-50" 
                   

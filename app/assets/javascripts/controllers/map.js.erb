@@ -1,7 +1,9 @@
  scenic.controller('MapController', ["$scope", "$http", "$location", 'uiGmapGoogleMapApi',function($scope, $http, $location,uiGmapGoogleMapApi) { 
+  $scope.loading = true;
   $http.get('/trails.json').success (function (data){
     $scope.trails = data
     makeUKMap();
+   
   });
 
 //   scope.login = function() {
@@ -124,7 +126,7 @@ console.log(bounds)
 }
 });
 
-
+ $scope.loading = false;
 
 }
 
