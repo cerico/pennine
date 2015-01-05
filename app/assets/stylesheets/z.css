@@ -639,12 +639,46 @@ margin-right:1%;
     color:#f5f6f1;
   }
 
+.sidebar li.admin, .sidebar li.admin2 {
+background: rgb(255, 31, 31);
+border: 2px solid white;
+color: white;
+border-radius: 3px;
+padding: 9px;
+text-transform: uppercase;
+font-weight: 700;
+}
+
+.sidebar li.admin2 {
+background: rgb(10, 110, 38);
+
+}
+
+.makemain{
+float: left;
+font-size: 16px;
+background: rgb(85, 85, 181);
+color: white;
+padding: 7px;
+font-family: 'raleway';
+margin-top: -1px;
+margin-bottom: 2px;
+text-transform: uppercase;
+}
+
+
+
 .star {
   margin-top:20px;
 }
 
   i.fa.fa-heart.red {
     color: #F04545
+  }
+
+  i.fa.fa-times{
+    color:red;
+    float:right;
   }
 
 i.fa.fa-star-o.un, i.fa.fa-heart-o.un, i.fa.fa-check.circle.un, i.fa.fa-star.un {

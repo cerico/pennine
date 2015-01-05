@@ -12,6 +12,7 @@ class PointsSerializer < ActiveModel::Serializer
     scope.bookmarks.find_by_trail_id(object) if scope
   end
 
+  
   def hiker
     scope
   end

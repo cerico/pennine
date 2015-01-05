@@ -15,7 +15,7 @@ class TrailsController < ApplicationController
   # GET /trails/1.json
   def show
     @trail = Trail.find(params[:id])
-
+ 
     @uploader = User.find_by_id(@trail.user_id)
     if current_user
       @bookmark = current_user.bookmarks.find_by_trail_id(@trail.id)
@@ -86,8 +86,16 @@ end
   # PUT /trails/1
   # PUT /trails/1.json
   def update
-    @trail = Trail.find(params[:id])
+Photo.where(trail_id:params[:id]).each do | photo|
+  photo.name = "other"
+end
+# binding.pry
+@photo = Photo.find_by_id(params[:photo])
+@photo.name = "main"
 
+    @trail = Trail.find(params[:id])
+# @trail.photos = @trail.photos.order(:updated_at).reverse
+# binding.pry
     respond_to do |format|
       if @trail.update_attributes(params[:trail])
         format.html { redirect_to @trail, notice: 'Trail was successfully updated.' }
@@ -102,6 +110,7 @@ end
   # DELETE /trails/1
   # DELETE /trails/1.json
   def destroy
+
     @trail = Trail.find(params[:id])
     @trail.destroy
 

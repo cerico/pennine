@@ -1,8 +1,9 @@
 scenic.controller("TrailsController", ['$scope','$location','$http','uiGmapGoogleMapApi','Auth', function($scope,$location,$http,uiGmapGoogleMapApi,Auth) {
-$scope.loading = true;
+  $scope.loading = true;
+  $scope.current_user = current_user
 
 
-$scope.auth = Auth
+  $scope.auth = Auth
   $("#map_canvas.angular-google-map-container").css("height", "400px");
 
   $(".angular-google-map-container").css("margin-left", "1px");
@@ -57,6 +58,7 @@ $scope.auth = Auth
       $scope.averating(); 
       $scope.checkHikerBookmark() 
       $scope.makeMap()
+      $scope.areYouTheOwner()
     })
   }
 
@@ -84,7 +86,7 @@ $scope.auth = Auth
       $scope.map.polylineSteps.push({latitude:$scope.trail.points[i].latitude,longitude:$scope.trail.points[i].longitude}) 
       bounds.extend(latlng);
 
-   
+
     }
 
     $scope.map.visible = true
@@ -282,6 +284,55 @@ $scope.changeStar = function(f) {
 
 }
 
+$scope.areYouTheOwner = function(){
+  if ($scope.trail.user_id === current_user.id){
+    $scope.trailowner = true
+  }
+}
+
+$scope.administrateview = function(admin){
+  if (admin === "start"){
+    $scope.deletePic = true
+    $scope.deleteGPX = true
+    $scope.makeFirstPic = true
+    $scope.editName = true
+    $scope.changeLoc = true
+    $scope.administrating = true
+    $scope.trailowner = false
+  }else if (admin === "finish"){
+    $scope.deletePic = false
+    $scope.deleteGPX = false
+    $scope.makeFirstPic = false
+    $scope.editName = false
+    $scope.changeLoc = false
+    $scope.administrating = false
+    $scope.trailowner = true
+        $scope.deletingMainPic = false
+  }
+}
+
+$scope.deletePhoto = function (photo){
+  $http.delete('/photos/' + photo.id + '.json').success (function (){
+    var index = $scope.trail.photos.indexOf(photo)
+    $scope.trail.photos.splice( index, 1 );
+  }).error (function(){
+    alert("Can't delete main trail photo!")
+
+  })
+}
+
+$scope.makeMain = function (photo){
+
+
+  $http.put('/photos/' + photo.id + '.json', {trailid:photo.trail_id}).success (function(){
+    console.log(photo)
+    for (var i = 0;i < $scope.trail.photos.length; i++){
+      $scope.trail.photos[i].name = "other"
+    }
+    photo.name = "main"
+})
+
+}
 
 
 

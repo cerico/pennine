@@ -7,13 +7,14 @@
 
 
   <div class="periscope">
-    <h1 class="trailname">{{trail.name}} </h1>
+    <h1 class="trailname">{{trail.name}}</h1>
   </div>
   <div class="bendychairactive clearfix">
 
     <div class="sidebar">
       <ul>
-
+        <li class="admin" ng-show="trailowner" ng-click="administrateview('start')">Click to Admin</li>
+        <li class="admin2" ng-show="administrating" ng-click="administrateview('finish')">Click to Finish</li>
         <li><a class="current" href="#">{{ trail.distance}} Miles</a></li><li><a href="#">Ave Rating: {{trailrating}} {{ratedby}} </a></li><li><a href="#">Ranking (4)</a></li>
      
         <li><a href="#">{{(trail.bookmarks|filter: {completed:true}).length}}  Hikers <i class="fa fa-check circle green"></i></a></li>
@@ -36,7 +37,7 @@
 </div>
          
 
-            <div class="mainphoto column-100" ng-repeat="photo in trail.photos|limitTo:1" ng-class="whenready">
+            <div class="mainphoto column-100" ng-repeat="photo in trail.photos|filter: {name:'main'}" ng-class="whenready">
               <img class="trailphoto column-100" ng-src="{{photo.image.trailpage.url}}">
               <div class="individual_trail_photofooter">
                 <span class="individual_trail_photofooter_left" >{{ trail.name }}</span>   
@@ -78,7 +79,10 @@
 
 
             <div class="morephotos column-100">
-              <div ng-repeat="photo in trail.photos" class="extraphoto column-25"><a class="fancybox" rel="group" href="{{photo.image.wide.url}}"><img ng-src="{{photo.image.detail.url}}"></a>
+              <div ng-repeat="photo in trail.photos" class="extraphoto column-25">
+              <span photo class="makemain" ng-show="makeFirstPic" ng-click="makeMain(photo)">Make Main Photo</span>
+                <i ng-show="deletePic" ng-click="deletePhoto(photo)" class="fa fa-times fa-2x"></i>
+                  <a class="fancybox" rel="group" href="{{photo.image.wide.url}}"><img ng-src="{{photo.image.detail.url}}"></a>
               </div>
              
               
