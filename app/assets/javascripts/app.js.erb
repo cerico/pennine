@@ -14,51 +14,12 @@ scenic.factory('Auth',function() {
   }
 })
 
-scenic.factory('httpInterceptor', function ($q, $rootScope, $log) {
-
-    var numLoadings = 0;
-
-    return {
-        request: function (config) {
-console.log(config.data)
-            numLoadings++;
-
-
-            // Show loader
-            $rootScope.$broadcast("loader_show");
-            return config || $q.when(config)
-
-        },
-        response: function (response) {
-console.log(response.data.distance)
-            if (response.data.id ) {
-              console.log("im an object")
-                // Hide loader
-                $rootScope.$broadcast("loader_hide");
-            }
-console.log(response)
-console.log($q.when(response))
-            return response || $q.when(response);
-
-
-        },
-        responseError: function (response) {
-
-            if (!(--numLoadings)) {
-                // Hide loader
-                $rootScope.$broadcast("loader_hide");
-            }
-
-            return $q.reject(response);
-        }
-    };
-})
 
 
 
 scenic.config(['$stateProvider','$urlRouterProvider','$locationProvider','uiGmapGoogleMapApiProvider','$httpProvider', function ($stateProvider, $urlRouterProvider, $locationProvider, uiGmapGoogleMapApiProvider,$httpProvider){
   
-  $httpProvider.interceptors.push('httpInterceptor');
+
 
   uiGmapGoogleMapApiProvider.configure({
 
@@ -131,21 +92,7 @@ scenic.run(['$rootScope','$state','$location','Auth', function ($rootScope, $sta
   });
 }])
 
-scenic.directive("loader", function ($rootScope) {
- 
-    return function ($scope, element, attrs) {
-        $scope.$on("loader_show", function () {
-          console.log(element)
-            // return element.show();
-                    console.log(element)
-        });
-        return $scope.$on("loader_hide", function () {
-                  console.log(element)
-            return element.hide();
-                    console.log(element)
-        });
-    };
-})
+
 
 
 
