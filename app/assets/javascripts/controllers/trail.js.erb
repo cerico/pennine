@@ -1,6 +1,6 @@
 scenic.controller("TrailsController", ['$scope','$location','$http','uiGmapGoogleMapApi','Auth', function($scope,$location,$http,uiGmapGoogleMapApi,Auth) {
   $scope.loading = true;
-  $scope.current_user = current_user
+
 
 
   $scope.auth = Auth
@@ -285,10 +285,15 @@ $scope.changeStar = function(f) {
 }
 
 $scope.areYouTheOwner = function(){
+    if (typeof current_user != "undefined"){
+        $scope.current_user = current_user
   if ($scope.trail.user_id === current_user.id){
     $scope.trailowner = true
   }
 }
+}
+
+
 
 $scope.administrateview = function(admin){
   if (admin === "start"){
