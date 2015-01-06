@@ -11,7 +11,7 @@
     <div class="periedit" ng-show="administrating">
        <form class="trailedit" ng-submit="editname()">
       <input type="text" placeholder="Trail Name" ng-model="newtrailname"  size="30">
-      <input class="edit" type="submit" value="add">
+      <input class="edit" type="submit" value="edit name">
       </form>
 
     </div>
@@ -21,7 +21,7 @@
     <div class="sidebar">
       <ul>
         <li class="admin" ng-show="trailowner" ng-click="administrateview('start')">Click to Admin</li>
-        <li class="admin2" ng-show="administrating" ng-click="administrateview('finish')">Click to Finish</li>
+        <li class="admin2" ng-show="administrating" ng-click="administrateview('finish')">done editing</li>
       <!--   <li class="admin" ng-show="administrating" a scroll-to="editphotos">edit Photos</a></li> -->
         <li><a class="current" href="#">{{ trail.distance}} Miles</a></li><li><a href="#">Ave Rating: {{trailrating}} {{ratedby}} </a></li><li><a href="#">Ranking (4)</a></li>
      
