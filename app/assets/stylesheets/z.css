@@ -217,6 +217,18 @@ font-size:15px;
 margin-top: 25px;
 }
 
+/* when hiding the thing */
+.ng-hide-add         { 
+  -webkit-animation:0.2s fadeOutDown ease; 
+  animation:0.2s fadeOutDown ease; 
+}
+
+/* when showing the thing */
+.ng-hide-remove      { 
+  -webkit-animation:0.2s fadeInUp ease; 
+  animation:0.2s fadeInUp ease; 
+}
+
 
 
 .toplinks a {
@@ -601,7 +613,7 @@ font-size: 19px;
 padding: 3px;
 padding-left: 4px;
 text-transform: uppercase;
-border: 2px solid white;
+
 border-radius: 5px;
 }
 

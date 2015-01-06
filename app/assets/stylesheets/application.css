@@ -10,5 +10,6 @@
  *
  *= require_self
  *= require fancybox/source/jquery.fancybox
+ *= require animate.css/animate
  *= require_tree .
  */

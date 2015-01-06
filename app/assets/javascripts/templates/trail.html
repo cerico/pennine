@@ -2,20 +2,23 @@
 
 
 
+  <div class="periscope" ng-show="trailowner">
+    <h1 class="trailname" >{{trail.name}}</h1>
+
+  </div>
 
 
 
-
-  <div class="periscope">
-    <h1 class="trailname">{{trail.name}}</h1>
-    <div class="periedit" ng-show="administrating">
-       <form class="trailedit" ng-submit="editname()">
-      <input type="text" placeholder="Trail Name" ng-model="newtrailname"  size="30">
+  <div class="periscope" ng-show="administrating" >
+    <h1 class="trailname" ng-show="administrating">{{trail.name}}</h1>
+    <div class="periedit" ng-show="administrating" >
+       <form ng-show="administrating" class="trailedit" ng-submit="editname()">
+      <input type="text" placeholder="{{trail.name}}" ng-model="newtrailname"  size="30">
       <input class="edit" type="submit" value="edit name">
       </form>
-        <div class="editphotos"><a href="" ng-click="scrollTo('editphotos')">edit photos</a></div>
-        <div class="editlocation"><a href="" ng-click="scrollTo('editmap')">edit location</a></div>
-        <div class="editgpx" ng-click="deletegpx()" ng-show="ifgpx">delete gpx</div>
+        <div ng-show="administrating" class="editphotos"><a href="" ng-click="scrollTo('editphotos')">edit photos</a></div>
+        <div ng-show="administrating" class="editlocation"><a href="" ng-click="scrollTo('editmap')">edit location</a></div>
+        <div ng-show="administrating" class="editgpx" ng-click="deletegpx()" ng-show="ifgpx">delete gpx</div>
     </div>
   </div>
   
@@ -27,6 +30,7 @@
       <ul>
         <li class="admin" ng-show="trailowner" ng-click="administrateview('start')">Click to Admin</li>
         <li class="admin2" ng-show="administrating" ng-click="administrateview('finish')">done editing</li>
+
       <!--   <li class="admin" ng-show="administrating" a scroll-to="editphotos">edit Photos</a></li> -->
         <li><a class="current" href="#">{{ trail.distance}} Miles</a></li><li><a href="#">Ave Rating: {{trailrating}} {{ratedby}} </a></li><li><a href="#">Ranking (4)</a></li>
      

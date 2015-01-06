@@ -3,5 +3,8 @@ asset 'angular-ui-router'
 asset 'dropzone', "3.8.7"
 asset 'angular-google-maps'
 asset 'fancybox'
+asset 'angular-animate', "1.3.5"
+asset 'animate.css'
+
 
 

@@ -17,6 +17,7 @@
 //= require lodash/dist/lodash
 //= require angular-google-maps/dist/angular-google-maps
 //= require markerclusterer/markerclusterer
+//= require bangular-animate/angular-animate
 //= require jquery
 //= require jquery_ujs
 //= require fancybox/source/jquery.fancybox
