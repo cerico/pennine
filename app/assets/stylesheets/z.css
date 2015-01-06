@@ -590,8 +590,9 @@ margin-left: 8px;
 }
 
 
-.edit {
+.edit, .editgpx {
 background: rgb(88, 140, 176);
+display:inline;
 width: 121px;
 margin-left: 4px;
 color: white;
@@ -602,6 +603,12 @@ padding-left: 4px;
 text-transform: uppercase;
 border: 2px solid white;
 border-radius: 5px;
+}
+
+.editgpx {
+  padding: 4px;
+padding-bottom: 7px;
+margin-left:65%;
 }
 
 .trailname, .trailnamewhite {

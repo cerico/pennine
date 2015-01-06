@@ -64,6 +64,7 @@ class TrailsController < ApplicationController
         if file.content_type === "image/jpeg"
           @trail.photos << Photo.create(image: file) 
        elsif file.content_type === "application/octet-stream"
+        binding.pry
      
         @trail.update_attributes(gpx:file)
       end
@@ -88,6 +89,7 @@ end
   def update
 
     @trail = Trail.find(params[:id])
+
     if current_user.id === @trail.user_id 
     if params[:photo]     
       Photo.where(trail_id:params[:id]).each do | photo|
@@ -100,7 +102,7 @@ end
       respond_to do |format|
 
         if @trail.update_attributes(params[:trail])
-
+  binding.pry
         # format.html { redirect_to @trail, notice: 'Trail was successfully updated.' }
         format.json { render json: @trail, serializer: PointsSerializer, root: false  }
       else

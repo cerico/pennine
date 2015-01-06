@@ -59,6 +59,10 @@ scenic.controller("TrailsController", ['$scope','$location','$http','uiGmapGoogl
       $scope.checkHikerBookmark() 
       $scope.makeMap()
       $scope.areYouTheOwner()
+      if ($scope.trail.points.length > 1){
+        $scope.ifgpx = true
+      }
+   
     })
   }
 
@@ -347,6 +351,13 @@ $scope.editname  = function(){
 })
 }
 
+$scope.deletegpx = function(){
+  var newgpx = {}
+  newgpx.tracksegments = []
+  $http.put($location.path() + '.json', newgpx).success (function(){
+    console.log("hello")
+  })
+}
 
 
 

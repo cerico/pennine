@@ -56,13 +56,17 @@ class PhotosController < ApplicationController
           end
         end
       elsif params[:file].content_type === "application/octet-stream"
+
+  
         @trail = Trail.find(params[:trail_id])
+        if @trail.points.length < 2
         respond_to do |format|
           if @trail.update_attributes(gpx:params[:file])
             format.json { render :json => @trail, root: false}
           end
         end
       end
+    end
     end
   end
 
