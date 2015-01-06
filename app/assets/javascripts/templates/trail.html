@@ -36,9 +36,10 @@
   <div class="bounce3"></div>
 </div>
          
-
-            <div class="mainphoto column-100" ng-repeat="photo in trail.photos|filter: {name:'main'}" ng-class="whenready">
-              <img class="trailphoto column-100" ng-src="{{photo.image.trailpage.url}}">
+ <!--            <div class="mainphoto column-100" ng-repeat="photo in trail.photos|filter: {name:'main'}" ng-class="whenready">
+              <img class="trailphoto column-100" ng-src="{{photo.image.trailpage.url}}"> -->
+            <div class="mainphoto column-100"  ng-class="whenready">
+              <img class="trailphoto column-100" ng-src="{{trail.mainphoto.image.trailpage.url}}">
               <div class="individual_trail_photofooter">
                 <span class="individual_trail_photofooter_left" >{{ trail.name }}</span>   
                 <div class="individual_trail_photofooter_right">

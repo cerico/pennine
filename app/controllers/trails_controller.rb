@@ -15,7 +15,7 @@ class TrailsController < ApplicationController
   # GET /trails/1.json
   def show
     @trail = Trail.find(params[:id])
- 
+
     @uploader = User.find_by_id(@trail.user_id)
     if current_user
       @bookmark = current_user.bookmarks.find_by_trail_id(@trail.id)

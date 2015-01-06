@@ -331,10 +331,8 @@ $scope.makeMain = function (photo){
 
   $http.put('/photos/' + photo.id + '.json', {trailid:photo.trail_id}).success (function(){
     console.log(photo)
-    for (var i = 0;i < $scope.trail.photos.length; i++){
-      $scope.trail.photos[i].name = "other"
-    }
-    photo.name = "main"
+    $scope.trail.mainphoto = photo
+
 })
 
 }
