@@ -2,23 +2,20 @@
 
 
 
-  <div class="periscope" ng-show="trailowner">
+
+
+
+
+  <div class="periscope" >
     <h1 class="trailname" >{{trail.name}}</h1>
-
-  </div>
-
-
-
-  <div class="periscope" ng-show="administrating" >
-    <h1 class="trailname" ng-show="administrating">{{trail.name}}</h1>
     <div class="periedit" ng-show="administrating" >
-       <form ng-show="administrating" class="trailedit" ng-submit="editname()">
+       <form  class="trailedit" ng-submit="editname()">
       <input type="text" placeholder="{{trail.name}}" ng-model="newtrailname"  size="30">
       <input class="edit" type="submit" value="edit name">
       </form>
-        <div ng-show="administrating" class="editphotos"><a href="" ng-click="scrollTo('editphotos')">edit photos</a></div>
-        <div ng-show="administrating" class="editlocation"><a href="" ng-click="scrollTo('editmap')">edit location</a></div>
-        <div ng-show="administrating" class="editgpx" ng-click="deletegpx()" ng-show="ifgpx">delete gpx</div>
+        <div class="editphotos"><a href="" ng-click="scrollTo('editphotos')">edit photos</a></div>
+        <div  class="editlocation"><a href="" ng-click="scrollTo('editmap')">edit location</a></div>
+        <div  class="editgpx" ng-click="deletegpx()" ng-show="ifgpx">delete gpx</div>
     </div>
   </div>
   

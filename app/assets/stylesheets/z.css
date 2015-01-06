@@ -219,14 +219,14 @@ margin-top: 25px;
 
 /* when hiding the thing */
 .ng-hide-add         { 
-  -webkit-animation:0.2s fadeOutDown ease; 
-  animation:0.2s fadeOutDown ease; 
+  -webkit-animation:0.0s fadeOutDown ease; 
+  animation:0.0s fadeOutDown ease; 
 }
 
-/* when showing the thing */
+ when showing the thing 
 .ng-hide-remove      { 
-  -webkit-animation:0.2s fadeInUp ease; 
-  animation:0.2s fadeInUp ease; 
+  -webkit-animation:0.0s fadeInUp ease; 
+  animation:0.0s fadeInUp ease; 
 }
 
 
@@ -702,6 +702,10 @@ border-radius: 3px;
 padding: 9px;
 text-transform: uppercase;
 font-weight: 700;
+}
+
+.sidebar li.admin{
+  margin-top:36px;
 }
 
 .sidebar li.admin2 {
