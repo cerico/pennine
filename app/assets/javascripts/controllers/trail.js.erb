@@ -1,6 +1,6 @@
 scenic.controller("TrailsController", ['$scope','$location','$http','uiGmapGoogleMapApi','Auth','$anchorScroll', function($scope,$location,$http,uiGmapGoogleMapApi,Auth,$anchorScroll) {
   $scope.loading = true;
-   
+    $scope.administrating = false
 
    $scope.scrollTo = function(id) {
     $location.hash(id);
@@ -64,7 +64,10 @@ scenic.controller("TrailsController", ['$scope','$location','$http','uiGmapGoogl
       $scope.averating(); 
       $scope.checkHikerBookmark() 
       $scope.makeMap()
+      console.log($scope.administrating)
+   
       $scope.areYouTheOwner()
+
       if ($scope.trail.points.length > 1){
         $scope.ifgpx = true
       }
@@ -324,6 +327,7 @@ $scope.areYouTheOwner = function(){
     if (typeof current_user != "undefined"){
         $scope.current_user = current_user
   if ($scope.trail.user_id === current_user.id){
+    $scope.administrateview("finish")
     $scope.trailowner = true
   }
 }
@@ -340,7 +344,7 @@ $scope.administrateview = function(admin){
     $scope.changeLoc = true
     $scope.administrating = true
     $scope.trailowner = false
-    $scope.editMap()
+    
   }else if (admin === "finish"){
     $scope.deletePic = false
     $scope.deleteGPX = false
@@ -353,11 +357,7 @@ $scope.administrateview = function(admin){
   }
 }
 
-$scope.editMap = function (){
-   console.log($scope.map.Markers[0])
 
-
-}
 
 $scope.deletePhoto = function (photo){
   $http.delete('/photos/' + photo.id + '.json').success (function (){
