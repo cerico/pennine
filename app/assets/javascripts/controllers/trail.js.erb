@@ -336,6 +336,18 @@ $scope.makeMain = function (photo){
 })
 
 }
+$scope.editname  = function(){
+  console.log($scope.newtrailname)
+    var newtrailname = {}
+  newtrailname.name = $scope.newtrailname
+
+
+  $http.put($location.path() + '.json', newtrailname).success (function(){
+  $scope.trail.name = $scope.newtrailname
+})
+}
+
+
 
 
 

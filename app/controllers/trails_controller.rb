@@ -86,26 +86,31 @@ end
   # PUT /trails/1
   # PUT /trails/1.json
   def update
-Photo.where(trail_id:params[:id]).each do | photo|
-  photo.name = "other"
-end
-# binding.pry
-@photo = Photo.find_by_id(params[:photo])
-@photo.name = "main"
 
     @trail = Trail.find(params[:id])
-# @trail.photos = @trail.photos.order(:updated_at).reverse
-# binding.pry
-    respond_to do |format|
-      if @trail.update_attributes(params[:trail])
-        format.html { redirect_to @trail, notice: 'Trail was successfully updated.' }
-        format.json { head :no_content }
+    if current_user.id === @trail.user_id 
+    if params[:photo]     
+      Photo.where(trail_id:params[:id]).each do | photo|
+        photo.name = "other"
+      end
+      @photo = Photo.find_by_id(params[:photo])
+      @photo.name = "main"
+    else
+
+      respond_to do |format|
+
+        if @trail.update_attributes(params[:trail])
+
+        # format.html { redirect_to @trail, notice: 'Trail was successfully updated.' }
+        format.json { render json: @trail, serializer: PointsSerializer, root: false  }
       else
         format.html { render action: "edit" }
         format.json { render json: @trail.errors, status: :unprocessable_entity }
       end
     end
   end
+end
+end
 
   # DELETE /trails/1
   # DELETE /trails/1.json

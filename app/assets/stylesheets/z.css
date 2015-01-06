@@ -579,6 +579,31 @@ margin-right:1%;
   margin: 50px auto 0;
 }
 
+.periedit {
+  background: rgba(0,0,0,0.74);
+line-height: 100%;
+}
+
+.trailedit {
+  display: inline;
+margin-left: 8px;
+}
+
+
+.edit {
+background: rgb(88, 140, 176);
+width: 121px;
+margin-left: 4px;
+color: white;
+line-height: 103%;
+font-size: 19px;
+padding: 3px;
+padding-left: 4px;
+text-transform: uppercase;
+border: 2px solid white;
+border-radius: 5px;
+}
+
 .trailname, .trailnamewhite {
 
   width: 220px;
@@ -640,7 +665,7 @@ margin-right:1%;
   }
 
 .sidebar li.admin, .sidebar li.admin2 {
-background: rgb(255, 31, 31);
+background: rgb(88,140,176);
 border: 2px solid white;
 color: white;
 border-radius: 3px;
