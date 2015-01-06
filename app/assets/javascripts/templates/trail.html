@@ -81,7 +81,10 @@
               </div><!-- close of photofooter-->
 
             </div> <!--close of mainphoto-->
-            
+                 <div id="editmap">
+              <div class="supplylocation" ng-show="makeFirstPic">click map to enter primary location</div>
+              <div class="editingmap" ng-show="makeFirstPic" ng-click="editmap()">Save Location</div>
+            </div>
          <div id="map_canvas" class="thetrailmap" ng-if="map.visible">
             <ui-gmap-google-map center='map.center' zoom='map.zoom' bounds='map.bounds' class="thetrailmap" control='map' events="map.events">
             <ui-gmap-markers models="map.Markers" coords="'self'" icon="'icon'" >
@@ -95,10 +98,7 @@
 
 </div>
 
-            <div id="editmap">
-              <div class="supplylocation" ng-show="makeFirstPic">click map to enter primary location</div>
-              <div class="editingmap" ng-show="makeFirstPic" ng-click="editmap()">Save Location</div>
-            </div>
+       
 
 
             <div class="morephotos column-100">
