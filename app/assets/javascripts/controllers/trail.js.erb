@@ -86,6 +86,32 @@ scenic.controller("TrailsController", ['$scope','$location','$http','uiGmapGoogl
         id: 1,
         draggable:true
       })],
+                   events: {
+               
+        click: function (model, event, params) {   
+ if ($scope.administrating){
+  count = 0
+          console.log($scope.map.Markers)
+          var marker = {
+            latitude: params[0].latLng.lat(),
+            longitude: params[0].latLng.lng(),
+            id: count += 1
+          }
+          
+          $scope.lat = params[0].latLng.lat();
+          $scope.lng = params[0].latLng.lng();
+            //scope apply required because this event handler is outside of the angular domain
+          
+              $scope.map.Markers.splice(0, $scope.map.Markers.length);
+               $scope.$apply();
+            $scope.map.Markers.push(marker)
+          
+           
+ console.log($scope.map.Markers)
+          }
+          }
+        },
+
      };
 
      var bounds = new maps.LatLngBounds()
@@ -314,6 +340,7 @@ $scope.administrateview = function(admin){
     $scope.changeLoc = true
     $scope.administrating = true
     $scope.trailowner = false
+    $scope.editMap()
   }else if (admin === "finish"){
     $scope.deletePic = false
     $scope.deleteGPX = false
@@ -324,6 +351,12 @@ $scope.administrateview = function(admin){
     $scope.trailowner = true
         $scope.deletingMainPic = false
   }
+}
+
+$scope.editMap = function (){
+   console.log($scope.map.Markers[0])
+
+
 }
 
 $scope.deletePhoto = function (photo){
@@ -362,7 +395,13 @@ $scope.deletegpx = function(){
 }
 
 $scope.editmap = function(){
-  alert("coming soon!")
+  console.log($scope.map.Markers)
+  var newloc = {}
+  newloc.lat = $scope.map.Markers[0].latitude
+  newloc.lng = $scope.map.Markers[0].longitude
+  $http.put($location.path() + '.json', newloc).success (function(){
+    console.log(newloc)
+  })
 }
 
 

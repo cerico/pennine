@@ -83,17 +83,22 @@
             </div> <!--close of mainphoto-->
             
          <div id="map_canvas" class="thetrailmap" ng-if="map.visible">
-            <ui-gmap-google-map center='map.center' zoom='map.zoom' bounds='map.bounds' class="thetrailmap" control='map'>
+            <ui-gmap-google-map center='map.center' zoom='map.zoom' bounds='map.bounds' class="thetrailmap" control='map' events="map.events">
             <ui-gmap-markers models="map.Markers" coords="'self'" icon="'icon'" >
             <ui-gmap-polyline path="map.polylineSteps" static="true"></ui-gmap-polyline>
           </ui-gmap-markers></ui-gmap-google-map>
-          <div id="editmap"><span class="editingmap" ng-show="makeFirstPic" ng-click="editmap()">Edit Location</span>
+ 
                 </div>
-</div>
 
 </div>
 
 
+</div>
+
+            <div id="editmap">
+              <div class="supplylocation" ng-show="makeFirstPic">click map to enter primary location</div>
+              <div class="editingmap" ng-show="makeFirstPic" ng-click="editmap()">Save Location</div>
+            </div>
 
 
             <div class="morephotos column-100">

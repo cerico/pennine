@@ -229,9 +229,21 @@ margin-top: 25px;
   animation:0.0s fadeInUp ease; 
 }
 
+.supplylocation {
+margin-left: 80px;
+display: inline;
+font-size: 16px;
+background: rgb(88, 140, 176);
+color: white;
+padding: 7px;
+font-family: 'raleway';
+margin-top: -1px;
+margin-bottom: 2px;
+text-transform: uppercase;
+}
+}
 
-
-.toplinks a {
+.toplinks a, .correction {
   display: block;
 
   text-transform: uppercase;
@@ -241,6 +253,8 @@ margin-top: 25px;
   padding-right:8px;
  
 }
+
+
 
 .toplinks a.active, .toplinks a:hover, .footerlinks a.active, .footerlinks a:hover {
   color:#f5f6f1;
@@ -726,8 +740,9 @@ text-transform: uppercase;
 }
 
 .editingmap{
- margin-right: 1%;
+ margin-right: 6%;
 float: right;
+margin-top:-10px;
 }
 
 

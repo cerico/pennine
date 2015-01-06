@@ -63,7 +63,7 @@
       <li class="toptitle">scen.ic </li>
 
 
-      <li class="toplink"><a ng-class="{'active':selectedLink === 'new'}" ng-click="selectedLink = 'new'" ng-href="/#new">add a new trail</a></li>
+      <li class="toplink"><ng-class="{'active':selectedLink === 'new'}" ng-click="selectedLink = 'new'" ng-href="/#new">add a new trail</a></li>
       <li class="toplink"><a ng-class="{'active':selectedLink === 'map'}" ng-click="selectedLink = 'map'" ng-href="/#map">Map</a></li>
       <li class="toplink"><a ng-class="{'active':selectedLink === 'trails'}" ng-click="selectedLink = 'trails'" ng-href="/#trails">discover</li>
       <% if user_signed_in? %>      
