@@ -13,10 +13,14 @@
       <input type="text" placeholder="Trail Name" ng-model="newtrailname"  size="30">
       <input class="edit" type="submit" value="edit name">
       </form>
-        <div class="editphotos">editphotos</div>
-             <div class="editlocation">edit location</div>
+        <div class="editphotos"><a href="" ng-click="scrollTo('editphotos')">edit photos</a></div>
+        <div class="editlocation"><a href="" ng-click="scrollTo('editmap')">edit location</a></div>
+        <div class="editgpx" ng-click="deletegpx()" ng-show="ifgpx">delete gpx</div>
     </div>
   </div>
+  
+
+
   <div class="bendychairactive clearfix">
 
     <div class="sidebar">
@@ -76,20 +80,23 @@
               </div><!-- close of photofooter-->
 
             </div> <!--close of mainphoto-->
-            <div id="dogs">
+            
          <div id="map_canvas" class="thetrailmap" ng-if="map.visible">
             <ui-gmap-google-map center='map.center' zoom='map.zoom' bounds='map.bounds' class="thetrailmap" control='map'>
             <ui-gmap-markers models="map.Markers" coords="'self'" icon="'icon'" >
             <ui-gmap-polyline path="map.polylineSteps" static="true"></ui-gmap-polyline>
           </ui-gmap-markers></ui-gmap-google-map>
+          <div id="editmap"><span class="editingmap" ng-show="makeFirstPic" ng-click="editmap()">Edit Location</span>
+                </div>
 </div>
+
 </div>
 
 
 
 
             <div class="morephotos column-100">
-            <a name="editphotos"></a>
+            <div id="editphotos"></div>
               <div ng-repeat="photo in trail.photos" class="extraphoto column-25">
               <span photo class="makemain" ng-show="makeFirstPic" ng-click="makeMain(photo)">Make Main Photo</span>
                 <i ng-show="deletePic" ng-click="deletePhoto(photo)" class="fa fa-times fa-2x"></i>
@@ -131,6 +138,7 @@
 
     </div>
     <div class="footeractive">
+
 
      <div class="big">scen.ic</div>
 

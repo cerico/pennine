@@ -65,7 +65,6 @@ class TrailsController < ApplicationController
           @trail.photos << Photo.create(image: file) 
        elsif file.content_type === "application/octet-stream"
         binding.pry
-     
         @trail.update_attributes(gpx:file)
       end
     end
@@ -102,7 +101,7 @@ end
       respond_to do |format|
 
         if @trail.update_attributes(params[:trail])
-  binding.pry
+ 
         # format.html { redirect_to @trail, notice: 'Trail was successfully updated.' }
         format.json { render json: @trail, serializer: PointsSerializer, root: false  }
       else

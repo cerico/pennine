@@ -1,5 +1,11 @@
-scenic.controller("TrailsController", ['$scope','$location','$http','uiGmapGoogleMapApi','Auth', function($scope,$location,$http,uiGmapGoogleMapApi,Auth) {
+scenic.controller("TrailsController", ['$scope','$location','$http','uiGmapGoogleMapApi','Auth','$anchorScroll', function($scope,$location,$http,uiGmapGoogleMapApi,Auth,$anchorScroll) {
   $scope.loading = true;
+   
+
+   $scope.scrollTo = function(id) {
+    $location.hash(id);
+    $anchorScroll();
+  }
 
 
 
@@ -352,11 +358,11 @@ $scope.editname  = function(){
 }
 
 $scope.deletegpx = function(){
-  var newgpx = {}
-  newgpx.tracksegments = []
-  $http.put($location.path() + '.json', newgpx).success (function(){
-    console.log("hello")
-  })
+  alert("coming soon")
+}
+
+$scope.editmap = function(){
+  alert("coming soon!")
 }
 
 
