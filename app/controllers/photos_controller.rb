@@ -69,34 +69,36 @@ class PhotosController < ApplicationController
   # PUT /photos/1
   # PUT /photos/1.json
   def update
-    if current_user.id === Trail.find_by_id(@photo.trail_id).user_id 
-    Photo.where(trail_id:params[:trailid]).each do |photo|
-      photo.name = "other"
-      photo.save
-    end  
-    @photo = Photo.find(params[:id])
-    @photo.name = "main"
+ 
+ 
+      @photo = Photo.find(params[:id])
+         if current_user.id === Trail.find_by_id(@photo.trail_id).user_id 
+      Photo.where(trail_id:params[:trailid]).each do |photo|
+        photo.name = "other"
+        photo.save
+      end  
+      @photo.name = "main"
 
-    respond_to do |format|
-      if @photo.update_attributes(params[:photo])
+      respond_to do |format|
+        if @photo.update_attributes(params[:photo])
 
-  
-        format.html { redirect_to @photo, notice: 'Photo was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @photo.errors, status: :unprocessable_entity }
+
+          format.html { redirect_to @photo, notice: 'Photo was successfully updated.' }
+          format.json { head :no_content }
+        else
+          format.html { render action: "edit" }
+          format.json { render json: @photo.errors, status: :unprocessable_entity }
+        end
       end
     end
-  end
   end
 
   # DELETE /photos/1
   # DELETE /photos/1.json
   def destroy
 
-      @photo = Photo.find(params[:id])
-       if current_user.id === Trail.find_by_id(@photo.trail_id).user_id && @photo.name != "main"
+    @photo = Photo.find(params[:id])
+    if current_user.id === Trail.find_by_id(@photo.trail_id).user_id && @photo.name != "main"
       @photo.destroy
 
       respond_to do |format|
