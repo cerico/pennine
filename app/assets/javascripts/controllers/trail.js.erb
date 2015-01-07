@@ -287,15 +287,11 @@ $scope.changeBookmark = function(f){
 }
 
 $scope.changeStar = function(f) {
-  // $scope.trail.hikerbookmark.rating = f
   $scope.stars = []
   for (var i=0;i<5;i++){
-    $scope.stars.push({empty:i >= f, index:i+1});
+    $scope.stars.push({grey:i >= f, index:i+1});
     console.log($scope.stars)
   }
-
-  
-
 }
 
 $scope.areYouTheOwner = function(){
