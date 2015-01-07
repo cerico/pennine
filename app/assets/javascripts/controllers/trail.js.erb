@@ -36,9 +36,14 @@ scenic.controller("TrailsController", ['$scope','$location','$http','uiGmapGoogl
 
 
 
-  $scope.averating = function (){
+  $scope.averating = function (f){
+ 
     total = 0
     raters = 0
+       if (f) {
+    total += f
+    raters += 1
+    }
     for (var i= 0; i< $scope.trail.bookmarks.length; i++){
       if ($scope.trail.bookmarks[i].rating > 0) {
         total += $scope.trail.bookmarks[i].rating
@@ -57,9 +62,9 @@ scenic.controller("TrailsController", ['$scope','$location','$http','uiGmapGoogl
       console.log(data)
 
       if (data.hikerbookmark){
-        console.log("cats")
         $scope.changeStar(data.hikerbookmark.rating)
-        console.log(data.hikerbookmark.rating)
+      } else {
+        $scope.changeStar(0)
       }
       $scope.averating(); 
       $scope.checkHikerBookmark() 
@@ -256,14 +261,15 @@ $scope.rateTrail = function(f){
    $http.put('/bookmarks/' + $scope.trail.hikerbookmark.id + '.json', {rating: f}).success (function (data){
     console.log("arnside")
     $scope.changeStar(f)
-    $scope.getTrailInfo() 
+    $scope.averating(f)
 
   });
  }else{      
   $http.post('/bookmarks.json', {bookmark: letsRate}).success (function (data){
     console.log("silverdale")
     $scope.changeStar(f)
-    $scope.getTrailInfo() 
+       $scope.changeStar(f)
+    $scope.averating(f)
 
   })
 
@@ -287,6 +293,7 @@ $scope.changeBookmark = function(f){
 }
 
 $scope.changeStar = function(f) {
+  console.log("h")
   $scope.stars = []
   for (var i=0;i<5;i++){
     $scope.stars.push({grey:i >= f, index:i+1});
