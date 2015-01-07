@@ -71,12 +71,13 @@
                   </ul>
                 </div> <!-- close of footermid-->
                 <div class="individual_trail_photofooter_mid star">
-                <i ng-click="rateTrail(1)" ng-class="{'fa fa-star un':!is1,'fa fa-star starred': is1}"></i> 
+<!--                 <i ng-click="rateTrail(1)" ng-class="{'fa fa-star un':!is1,'fa fa-star starred': is1}"></i> 
                 <i ng-click="rateTrail(2)" ng-class="{'fa fa-star un':!is2,'fa fa-star starred': is2}"></i> 
                 <i ng-click="rateTrail(3)" ng-class="{'fa fa-star un':!is3,'fa fa-star starred': is3}"></i> 
                 <i ng-click="rateTrail(4)" ng-class="{'fa fa-star un':!is4,'fa fa-star starred': is4}"></i>  
-                <i ng-click="rateTrail(5)" ng-class="{'fa fa-star un':!is5,'fa fa-star starred': is5}"></i>  
-    
+                <i ng-click="rateTrail(5)" ng-class="{'fa fa-star un':!is5,'fa fa-star starred': is5}"></i>   -->
+       <!-- <li ng-repeat="star in stars" style="color: #FFD700;" class="glyphicon" ng-class="{true: 'glyphicon-star-empty', false: 'glyphicon-star'}[star.empty]" ng-click="click(star.index)"></li> -->
+        <i ng-repeat="star in stars" ng-class="{true: 'fa fa-star un', false: 'fa fa-star starred'}[star.empty]" ng-click="rateTrail(star.index)"></i>
               </div>
               </div><!-- close of photofooter-->
 
@@ -98,7 +99,7 @@
 
 </div>
 
-       
+
 
 
             <div class="morephotos column-100">

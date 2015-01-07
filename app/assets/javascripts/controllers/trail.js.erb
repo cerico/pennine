@@ -286,40 +286,15 @@ $scope.changeBookmark = function(f){
   }
 }
 
-
 $scope.changeStar = function(f) {
-  console.log("dogS")
-  $scope.is5 = false
-  $scope.is4 = false
-  $scope.is3 = false
-  $scope.is2 = false
-  $scope.is1 = false
-  if (f === 1){
-    $scope.is1 = true
+  // $scope.trail.hikerbookmark.rating = f
+  $scope.stars = []
+  for (var i=0;i<5;i++){
+    $scope.stars.push({empty:i >= f, index:i+1});
+    console.log($scope.stars)
   }
-  else if (f === 2){
-    $scope.is2 = true
-    $scope.is1 = true
-  }
-  else if (f === 3){
-    $scope.is3 = true
-    $scope.is2 = true
-    $scope.is1 = true
-  }
-  else if (f === 4){
-   $scope.is4 = true
-   $scope.is3 = true
-   $scope.is2 = true
-   $scope.is1 = true
- }
- else if (f === 5){
-  $scope.is5 = true
-  $scope.is4 = true
-  $scope.is3 = true
-  $scope.is2 = true
-  $scope.is1 = true
-}
 
+  
 
 }
 
