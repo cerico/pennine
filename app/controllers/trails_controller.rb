@@ -54,6 +54,7 @@ class TrailsController < ApplicationController
   def create
     # @trail = Trail.new(params[:trail])
     filter = params.except(:action, :controller, :format, :null, :file, :authenticity_token, :rating)
+
     @trail = Trail.new(name:params[:name],county:params[:county],lat:params[:lat],lng:params[:lng],distance:params[:distance],user_id:current_user.id)
 
     respond_to do |format|
@@ -64,7 +65,7 @@ class TrailsController < ApplicationController
         if file.content_type === "image/jpeg"
           @trail.photos << Photo.create(image: file) 
        elsif file.content_type === "application/octet-stream"
-        binding.pry
+     
         @trail.update_attributes(gpx:file)
       end
     end

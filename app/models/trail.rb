@@ -12,6 +12,31 @@ class Trail < ActiveRecord::Base
 
   has_attached_file :gpx
 
+  validates :name, presence: true
+
+  validates :lat, presence: true
+  validates :lng, presence: true
+
+       validates_format_of :name, :with => /\A[A-Za-z0-9 \-]*\z/,
+        :message => "can only contain letters, numbers, spaces, and hyphens"
+
+       validates_format_of :county, :with => /\A[A-Za-z0-9 \-]*\z/,
+        :message => "can only contain letters, numbers, spaces, and hyphens"
+
+      validates_format_of :description, :with => /\A[A-Za-z0-9 \-]*\z/,
+        :message => "can only contain letters, numbers, spaces, and hyphens"
+
+              validates_format_of :postcode, :with => /\A[A-Za-z0-9 \-]*\z/,
+        :message => "can only contain letters, numbers, spaces, and hyphens"
+
+
+        validates_numericality_of :lat
+        validates_numericality_of :lng
+        # validates_numericality_of :rating
+        validates_numericality_of :user_id
+        validates_numericality_of :distance
+
+
   before_save :parse_gpx
 
   def active_model_serializer
