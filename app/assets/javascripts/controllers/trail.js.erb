@@ -7,7 +7,7 @@ scenic.controller("TrailsController", ['$scope','$location','$http','uiGmapGoogl
     $anchorScroll();
   }
 
-
+count = 0
 
   $scope.auth = Auth
   $("#map_canvas.angular-google-map-container").css("height", "400px");
@@ -70,12 +70,17 @@ scenic.controller("TrailsController", ['$scope','$location','$http','uiGmapGoogl
       $scope.checkHikerBookmark() 
       $scope.makeMap()
       console.log($scope.administrating)
-   
+   console.log($scope.trail.bookmarks)
       $scope.areYouTheOwner()
 
       if ($scope.trail.points.length > 1){
         $scope.ifgpx = true
       }
+      if ($scope.auth.isLoggedIn){
+  $scope.photoUpload()
+}else {
+  $(".dropzone").css("background", "none");
+}
    
     })
   }
@@ -170,7 +175,7 @@ $scope.getTrailInfo()
 
 
 $scope.photoUpload = function (){
-
+console.log($scope.trail.photos.length)
   Dropzone.options.photoDropzone = new Dropzone("#media-dropzone", {
     url: $scope.posthere,
     headers: {
@@ -178,21 +183,18 @@ $scope.photoUpload = function (){
     },
     dictDefaultMessage:"",
   } );
+
+
+
   return Dropzone.options.photoDropzone.on("success", function(file, theNewPhoto) {
-    $scope.trail.photos.push(theNewPhoto)
-    $http.get($location.path() + '/photos.json').success (function (data){
+    $scope.trail.photos.push(file, theNewPhoto)
+console.log($scope.trail.photos.length)
+    // $http.get($location.path() + '/photos.json').success (function (data){
       Dropzone.options.photoDropzone.removeAllFiles();
-    });
+    // });
   })
 }
 
-
-
-if ($scope.auth.isLoggedIn){
-  $scope.photoUpload()
-}else {
-  $(".dropzone").css("background", "none");
-}
 
 $scope.checkHikerBookmark = function (){
 
@@ -218,38 +220,71 @@ $scope.checkHikerBookmark = function (){
 } 
 
 $scope.addFav = function (f){
+  count += 1
+  if (typeof $scope.tempBookmark !== "undefined") {
+    $scope.trail.hikerbookmark = $scope.tempBookmark
+  }
+  if ($scope.trail.hikerbookmark){
+    $scope.tempBookmark = $scope.trail.hikerbookmark
+  } else {
+   $scope.tempBookmark  = {}
+   $scope.tempBookmark.completed = false
+   $scope.tempBookmark.favourited = false
+  }
 
   var letsBookmark = {}
   letsBookmark.trail_id = $scope.trail.id
   letsBookmark.user_id = $scope.trail.hiker.id
 
+
   if (f == 'favit') {
-    modit = {favourited: true}
+    modit = {favourited: true, completed:$scope.tempBookmark.completed}
     letsBookmark.favourited = true
+    letsBookmark.completed = $scope.tempBookmark.completed
+
   }else if (f == 'unfavit') {
-    modit = {favourited: false}
+    modit = {favourited: false, completed:$scope.tempBookmark.completed}
+    letsBookmark.favourited = false
+    letsBookmark.completed = $scope.tempBookmark.completed
+
   }else if (f == 'doneit') {
-    modit = {completed: true}
+    modit = {completed: true, favourited:$scope.tempBookmark.favourited}
     letsBookmark.completed = true
+    letsBookmark.favourited = $scope.tempBookmark.favourited
+
   }else if (f == 'undoneit') {
-    modit = {completed: false}
+    modit = {completed: false, favourited:$scope.tempBookmark.favourited}
+    letsBookmark.completed = false
+    letsBookmark.favourited = $scope.tempBookmark.favourited
+
   }
 
-  if ($scope.trail.hikerbookmark) {         
-   $http.put('/bookmarks/' + $scope.trail.hikerbookmark.id + '.json', modit).success (function (data){
-
-
-    $scope.getTrailInfo() 
-
-  });
- }else{      
-  $http.post('/bookmarks.json', {bookmark: letsBookmark}).success (function (data){
-
-    $scope.getTrailInfo() 
-
-  })
-
-} 
+  if ($scope.trail.hikerbookmark) {  
+    $http.put('/bookmarks/' + $scope.trail.hikerbookmark.id + '.json', modit).success (function (data){
+    $scope.tempBookmark = letsBookmark
+    if (count > 1){
+      $scope.trail.bookmarks.pop();
+    }else{
+      $scope.tempBookmark.id = $scope.trail.hikerbookmark.id 
+      var index = $scope.trail.bookmarks.indexOf(data)
+      $scope.trail.bookmarks.splice(index,1)
+    }
+    $scope.tempBookmark.id = $scope.trail.hikerbookmark.id 
+    $scope.trail.bookmarks.push(letsBookmark)
+    $scope.changeBookmark(f)
+    });
+  }else{      
+    $http.post('/bookmarks.json', {bookmark: letsBookmark}).success (function (data){
+      $scope.tempBookmark = letsBookmark
+      $scope.tempBookmark.id = data.id
+    if (count > 1){
+      $scope.trail.bookmarks.pop();
+    }
+    $scope.tempBookmark.id = data.id
+    $scope.trail.bookmarks.push(letsBookmark)
+    $scope.changeBookmark(f)
+    })
+  } 
 }
 
 $scope.rateTrail = function(f){
@@ -259,14 +294,14 @@ $scope.rateTrail = function(f){
   letsRate.rating = f
   if ($scope.trail.hikerbookmark) {         
    $http.put('/bookmarks/' + $scope.trail.hikerbookmark.id + '.json', {rating: f}).success (function (data){
-    console.log("arnside")
+
     $scope.changeStar(f)
     $scope.averating(f)
 
   });
  }else{      
   $http.post('/bookmarks.json', {bookmark: letsRate}).success (function (data){
-    console.log("silverdale")
+
     $scope.changeStar(f)
        $scope.changeStar(f)
     $scope.averating(f)
@@ -293,11 +328,9 @@ $scope.changeBookmark = function(f){
 }
 
 $scope.changeStar = function(f) {
-  console.log("h")
   $scope.stars = []
   for (var i=0;i<5;i++){
     $scope.stars.push({grey:i >= f, index:i+1});
-    console.log($scope.stars)
   }
 }
 
