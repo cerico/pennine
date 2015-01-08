@@ -1,5 +1,5 @@
 class PointsSerializer < ActiveModel::Serializer
-  attributes :id, :name, :county, :rating, :user_id, :distance, :lat, :lng, :hikerbookmark, :hiker, :mainphoto, :completeds
+  attributes :id, :name, :county, :rating, :user_id, :distance, :lat, :lng, :hikerbookmark, :hiker, :mainphoto, :completeds, :likers
 
   has_many :bookmarks
   has_many :photos
@@ -15,6 +15,12 @@ class PointsSerializer < ActiveModel::Serializer
   def completeds
   
   object.bookmarks.where(completed:true).collect{|bookmark|bookmark.user}
+ 
+  end
+
+    def likers
+  
+  object.bookmarks.where(favourited:true).collect{|bookmark|bookmark.user}
  
   end
 

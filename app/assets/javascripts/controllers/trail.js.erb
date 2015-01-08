@@ -2,6 +2,7 @@ scenic.controller("TrailsController", ['$scope','$location','$http','uiGmapGoogl
   $scope.loading = true;
     $scope.administrating = false
     $scope.goodStrongHikers = false
+    $scope.justLikers = false
 
    $scope.scrollTo = function(id) {
     $location.hash(id);
@@ -34,18 +35,31 @@ count = 0
     }
   });
   
-$scope.showCompleteds = function(){
-  console.log($scope.goodStrongHikers)
-  if ($scope.goodStrongHikers) {
-$scope.goodStrongHikers = false
-} else {
-  $scope.goodStrongHikers = true
-}
-  console.log($scope.trail.completeds)
+  $scope.showUsers = function(temphiker){
+  console.log(temphiker)
+   if (temphiker === 'completers'){
+ $scope.lnk = false
+      $scope.justLikers = false
+    if ($scope.goodStrongHikers) {
+      $scope.goodStrongHikers = false
+      $scope.lnk2 = false
+    } else {
+      $scope.goodStrongHikers = true
+      $scope.lnk2 = true
+    }
+  }else if (temphiker === 'likers'){
+  $scope.lnk2 = false
+    $scope.goodStrongHikers = false
+    if ($scope.justLikers) {
+      $scope.justLikers = false
+      $scope.lnk = false
+    } else {
+      $scope.justLikers = true
+       $scope.lnk = true
+    }
+  }
 
-  // for (var i =0;i<$scope.trail.bookmarks.length;i++){
-  //   console.log($scope.trail.bookmarks[i].user.name)
-  // }
+
 }
 
 
@@ -274,6 +288,7 @@ $scope.addFav = function (f){
 
   if ($scope.trail.hikerbookmark) {  
     $http.put('/bookmarks/' + $scope.trail.hikerbookmark.id + '.json', modit).success (function (data){
+       console.log("hello")
     $scope.tempBookmark = letsBookmark
     if (count > 1){
       $scope.trail.bookmarks.pop();
@@ -288,6 +303,8 @@ $scope.addFav = function (f){
     });
   }else{      
     $http.post('/bookmarks.json', {bookmark: letsBookmark}).success (function (data){
+
+
       $scope.tempBookmark = letsBookmark
       $scope.tempBookmark.id = data.id
     if (count > 1){
@@ -314,9 +331,10 @@ $scope.rateTrail = function(f){
   });
  }else{      
   $http.post('/bookmarks.json', {bookmark: letsRate}).success (function (data){
-
+   
+    $scope.showUsers()
     $scope.changeStar(f)
-       $scope.changeStar(f)
+   
     $scope.averating(f)
 
   })
@@ -328,15 +346,20 @@ $scope.rateTrail = function(f){
 $scope.changeBookmark = function(f){
   if (f === 'favit'){
     $scope.favstate = 'faved'
+     $scope.trail.likers.push(current_user)
+
   }
   else if (f === 'unfavit') {
     $scope.favstate = 'notfaved'
+     $scope.trail.likers.pop()
   }
   else if (f === 'doneit'){
     $scope.compstate = 'completed'
+    $scope.trail.completeds.push(current_user)
   }
   else if (f === 'undoneit'){
     $scope.compstate = 'notcompleted'
+    $scope.trail.completeds.pop()
   }
 }
 

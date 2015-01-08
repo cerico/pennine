@@ -708,6 +708,11 @@ margin-left:-25%;
     color:#f5f6f1;
   }
 
+  .sidebar.lnk{
+    color:white;
+  }
+  }
+
 .sidebar li.admin, .sidebar li.admin2 {
 background: rgb(88,140,176);
 border: 2px solid white;
