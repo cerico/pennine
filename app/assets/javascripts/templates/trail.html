@@ -30,10 +30,11 @@
 
       <!--   <li class="admin" ng-show="administrating" a scroll-to="editphotos">edit Photos</a></li> -->
         <li><a class="current" href="#">{{ trail.distance}} Miles</a></li><li><a href="#">Ave Rating: {{trailrating}} {{ratedby}} </a></li><li><a href="#">Ranking (4)</a></li>
+             <li >{{(trail.bookmarks|filter: {favourited:true}).length}} Hikers <i class="fa fa-heart red"></i></li>
+        <li ng-click="showCompleteds()">{{(trail.bookmarks|filter: {completed:true}).length}}  Hikers <i class="fa fa-check circle green"></i></a></li>
+        <li ng-show="goodStrongHikers" class="current" ng-repeat="hikercompleted in trail.completeds"><a ng-href="#/users/{{hikercompleted.id}}"><img class="profilephoto" ng-src={{hikercompleted.photo}}>{{hikercompleted.name}}</a></li>
      
-        <li><a href="#">{{(trail.bookmarks|filter: {completed:true}).length}}  Hikers <i class="fa fa-check circle green"></i></a></li>
-     
-        <li><a href="#">{{(trail.bookmarks|filter: {favourited:true}).length}} Hikers <i class="fa fa-heart red"></i></a></li>
+
       </ul>
         
 

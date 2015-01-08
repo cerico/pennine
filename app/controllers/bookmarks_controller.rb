@@ -8,7 +8,8 @@ class BookmarksController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @bookmarks }
+      # format.json { render json: @bookmarks, :include => user}
+ format.json { render json: @bookmarks.to_json(include: {:user => {:only  =>:name}}) }
     end
   end
 
@@ -20,6 +21,7 @@ class BookmarksController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @bookmark }
+
     end
   end
 

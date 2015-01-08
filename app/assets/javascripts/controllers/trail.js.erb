@@ -1,6 +1,7 @@
 scenic.controller("TrailsController", ['$scope','$location','$http','uiGmapGoogleMapApi','Auth','$anchorScroll', function($scope,$location,$http,uiGmapGoogleMapApi,Auth,$anchorScroll) {
   $scope.loading = true;
     $scope.administrating = false
+    $scope.goodStrongHikers = false
 
    $scope.scrollTo = function(id) {
     $location.hash(id);
@@ -33,7 +34,19 @@ count = 0
     }
   });
   
+$scope.showCompleteds = function(){
+  console.log($scope.goodStrongHikers)
+  if ($scope.goodStrongHikers) {
+$scope.goodStrongHikers = false
+} else {
+  $scope.goodStrongHikers = true
+}
+  console.log($scope.trail.completeds)
 
+  // for (var i =0;i<$scope.trail.bookmarks.length;i++){
+  //   console.log($scope.trail.bookmarks[i].user.name)
+  // }
+}
 
 
   $scope.averating = function (f){
