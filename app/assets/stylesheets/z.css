@@ -219,14 +219,14 @@ margin-top: 25px;
 
 /* when hiding the thing */
 .ng-hide-add         { 
-  -webkit-animation:0.0s fadeOutDown ease; 
-  animation:0.0s fadeOutDown ease; 
+  -webkit-animation:2.0s fadeOutDown ease; 
+  animation:2.0s fadeOutDown ease; 
 }
 
  when showing the thing 
 .ng-hide-remove      { 
-  -webkit-animation:0.0s fadeInUp ease; 
-  animation:0.0s fadeInUp ease; 
+  -webkit-animation:2.0s fadeInUp ease; 
+  animation:2.0s fadeInUp ease; 
 }
 
 .supplylocation {
