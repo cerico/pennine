@@ -1,9 +1,7 @@
 <div class="main">
 
 
-
-
-
+<!-- <div whoiam>This text will be overwritten</div> -->
 
 
   <div class="periscope" >
@@ -52,30 +50,9 @@
          
  <!--            <div class="mainphoto column-100" ng-repeat="photo in trail.photos|filter: {name:'main'}" ng-class="whenready">
               <img class="trailphoto column-100" ng-src="{{photo.image.trailpage.url}}"> -->
-            <div class="mainphoto column-100"  ng-class="whenready">
-              <img class="trailphoto column-100" ng-src="{{trail.mainphoto.image.trailpage.url}}">
-              <div class="individual_trail_photofooter">
-                <span class="individual_trail_photofooter_left" >{{ trail.name }}</span>   
-                <div class="individual_trail_photofooter_right">
-                  <ul>
-                    <li class="uploadedby"><a ng-href="#/users/{{trail.user_id}}"><img class="userphoto" ng-src="{{trail.user.photo}}"></li>
-                    <li class="uploadedby2">{{trail.user.name.split(" ")[0]}}</a> </li>
-                  </ul>
-                </div> <!--close of footerright-->
-                <div class="individual_trail_photofooter_mid">
-                  <ul>                  
-                      <li ng-show="favstate == 'faved'"><i ng-click="addFav('unfavit')" class="fa fa-heart red"></i></li>
-                      <li ng-show="favstate == 'notfaved'"><i ng-click="addFav('favit')" class="fa fa-heart-o un"></i></li>
-                      <li ng-show="compstate == 'completed'"><i ng-click="addFav('undoneit')" class="fa fa-check circle green"></i></li>
-                      <li ng-show="compstate == 'notcompleted'"><i ng-click="addFav('doneit')" class="fa fa-check circle un"></i></li>
-                  </ul>
-                </div> <!-- close of footermid-->
-                <div class="individual_trail_photofooter_mid star">
-        <i ng-repeat="star in stars" ng-class="{true: 'fa fa-star un', false: 'fa fa-star starred'}[star.grey]" ng-click="rateTrail(star.index)"></i>
-              </div>
-              </div><!-- close of photofooter-->
-
-            </div> <!--close of mainphoto-->
+ <div mainphoto>
+   This text will be overwritten
+  </div>
                  <div id="editmap">
               <div class="supplylocation" ng-show="makeFirstPic">click map to enter primary location</div>
               <div class="editingmap" ng-show="makeFirstPic" ng-click="editmap()">Save Location</div>

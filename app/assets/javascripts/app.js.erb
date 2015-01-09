@@ -74,7 +74,31 @@ scenic.config(['$stateProvider','$urlRouterProvider','$locationProvider','uiGmap
 
 }])
 
+// scenic.directive('helloworld', function() {
+//   return {
+//       restrict: 'AE',
+//       replace: 'true',
+//       templateUrl: 'jelloworld.html'
+//   };
+// });
 
+scenic.directive('mainphoto', function() {
+    return {
+        restrict: 'A',
+        templateUrl: 'mainphoto.html',
+    };
+});
+scenic.directive('helloworld', function($http) {
+    return {
+        restrict: 'A',
+        templateUrl: 'helloworld.html',
+        link: function(scope, element, attrs) {
+            $http.get('trails.json').success(function(data) {
+                scope.data = data;
+            });
+        }
+    };
+});
 
 scenic.run(['$rootScope','$state','$location','Auth', function ($rootScope, $state, $location, Auth) {
 
