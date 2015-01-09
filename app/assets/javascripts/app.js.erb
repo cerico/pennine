@@ -15,11 +15,9 @@ scenic.factory('Auth',function() {
 })
 
 
-
-
-scenic.config(['$stateProvider','$urlRouterProvider','$locationProvider','uiGmapGoogleMapApiProvider','$httpProvider', function ($stateProvider, $urlRouterProvider, $locationProvider, uiGmapGoogleMapApiProvider,$httpProvider){
+scenic.config(['$stateProvider','$urlRouterProvider','$locationProvider','uiGmapGoogleMapApiProvider','$httpProvider', '$animateProvider', function ($stateProvider, $urlRouterProvider, $locationProvider, uiGmapGoogleMapApiProvider,$httpProvider, $animateProvider){
   
-
+  $animateProvider.classNameFilter(/angular-animate/);
 
   uiGmapGoogleMapApiProvider.configure({
 

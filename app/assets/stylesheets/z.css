@@ -217,17 +217,7 @@ font-size:15px;
 margin-top: 25px;
 }
 
-/* when hiding the thing */
-.ng-hide-add         { 
-  -webkit-animation:2.0s fadeOutDown ease; 
-  animation:2.0s fadeOutDown ease; 
-}
 
- when showing the thing 
-.ng-hide-remove      { 
-  -webkit-animation:2.0s fadeInUp ease; 
-  animation:2.0s fadeInUp ease; 
-}
 
 .supplylocation {
 margin-left: 80px;
@@ -704,9 +694,20 @@ margin-left:-25%;
     text-decoration:none;
   }
 
-  .sidebar ul .current {
+  .sidebar ul .current, .sidebar ul .currenthiker, .sidebar ul .currentliker {
     color:#f5f6f1;
+/*        -webkit-transition:top linear 15s;
+    transition:top linear 15s;*/
   }
+
+
+/*.sidebar ul .currenthiker.ng-hide, .sidebar ul .currentliker.ng-hide  {
+  top: -40px;
+}
+
+.sidebar ul .currenthiker.ng-hide-add, .sidebar ul .currenthiker.ng-hide-remove, .sidebar ul .currentliker.ng-hide-add, .sidebar ul .currentliker.ng-hide-remove {
+  display:block!important;
+}*/
 
   .sidebar.lnk{
     color:white;
