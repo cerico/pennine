@@ -216,9 +216,9 @@ console.log($scope.trail.photos.length)
   return Dropzone.options.photoDropzone.on("success", function(file, theNewPhoto) {
     $scope.trail.photos.push(file, theNewPhoto)
 console.log($scope.trail.photos.length)
-    // $http.get($location.path() + '/photos.json').success (function (data){
+    $http.get($location.path() + '/photos.json').success (function (data){
       Dropzone.options.photoDropzone.removeAllFiles();
-    // });
+    });
   })
 }
 

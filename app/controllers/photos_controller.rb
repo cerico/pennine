@@ -43,13 +43,16 @@ class PhotosController < ApplicationController
   def create
 
     if current_user
-
+  @trail = Trail.find(params[:trail_id])
       if params[:file].content_type === "image/jpeg"
 
         @photo = Photo.new(trail_id: params[:trail_id],image: params[:file],user_id: current_user.id)
 
         respond_to do |format|
           if @photo.save
+         
+             @trail.update_attributes(postcode:@photo.id)
+
             format.json{ render :json => @photo }
           else
             format.json { render json: @photo.errors, status: :unprocessable_entity }
@@ -58,7 +61,7 @@ class PhotosController < ApplicationController
       elsif params[:file].content_type === "application/octet-stream"
 
   
-        @trail = Trail.find(params[:trail_id])
+    
         if @trail.points.length < 2
         respond_to do |format|
           if @trail.update_attributes(gpx:params[:file])

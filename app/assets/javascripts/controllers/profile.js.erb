@@ -1,10 +1,14 @@
-scenic.controller("ProfileController", [ '$scope','$location','$http', function($scope,$location,$http) {
+scenic.controller("ProfileController", [ '$scope','$location','$http','glossop', function($scope,$location,$http,glossop) {
 
-  $http.get($location.path() + '.json').success (function (data){
-    $scope.user = data
+    function getUser() {
+        glossop.getUser()
+            .success(function (data) {
+                    $scope.user = data
     $scope.bookmarkchoice = "showfaved"
     $scope.distance = 0
+    $scope.notifications = 0
     console.log($scope.user.bookmarks.length)
+    console.log($scope.notifications)
     for (var i= 0; i< $scope.user.bookmarks.length; i++){
 
       if ($scope.user.bookmarks[i].completed === true){
@@ -19,7 +23,25 @@ scenic.controller("ProfileController", [ '$scope','$location','$http', function(
   //   else{
   //     $scope.bookmarkchoice = "showcompleted"
   //   }
-  })
+
+  for (var i = 0; i<$scope.user.trails;i++){
+    if ($scope.user.trails[i].updated_at < current_user.updated_at) {
+      $scope.notifications += 1
+
+    }
+  }
+            })
+            .error(function (error) {
+                $scope.status = 'Unable to load customer data: ' + error.message;
+            });
+    }
+
+   getUser()
+
+  console.log(current_user.updated_at)
+  
+
+
 
 
   $scope.changeBookmarkView = function (state) {

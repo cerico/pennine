@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="scenic">
 <head>
   <title>Pennine</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
@@ -16,7 +16,7 @@
 
   <link href='https://fonts.googleapis.com/css?family=Raleway+Dots' rel='stylesheet' type='text/css'>
 </head>
-<body ng-app="scenic">
+<body ng-controller="LayoutController">
   <div class="backgroundimage">
     <%= image_tag("backdrop6.jpg") %>
   </div>

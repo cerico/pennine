@@ -15,6 +15,38 @@ scenic.factory('Auth',function() {
 })
 
 
+    scenic.factory('glossop', ['$http', function($http) {
+
+    var urlBase = '/users/' + current_user.id + '.json';
+    var glossop = {};
+
+    glossop.getUser = function () {
+        return $http.get(urlBase);
+    };
+
+    // glossop.getUser = function (id) {
+    //     return $http.get(urlBase + '/' + id);
+    // };
+
+    // glossop.insertUser = function (cust) {
+    //     return $http.post(urlBase, cust);
+    // };
+
+    // glossop.updateUser = function (cust) {
+    //     return $http.put(urlBase + '/' + cust.ID, cust)
+    // };
+
+    // glossop.deleteUser = function (id) {
+    //     return $http.delete(urlBase + '/' + id);
+    // };
+
+    
+
+    return glossop;
+}]);
+
+
+
 scenic.config(['$stateProvider','$urlRouterProvider','$locationProvider','uiGmapGoogleMapApiProvider','$httpProvider', '$animateProvider', function ($stateProvider, $urlRouterProvider, $locationProvider, uiGmapGoogleMapApiProvider,$httpProvider, $animateProvider){
   
   $animateProvider.classNameFilter(/angular-animate/);

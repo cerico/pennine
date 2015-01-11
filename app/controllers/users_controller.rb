@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     @completed = @user.bookmarks.where(completed:true)
     @added = Trail.where(user_id:@user.id)
     @distance = view_context.distance_calc(@completed)
-    
+   
     respond_to do |format|
       format.html # show.html.erb
 
