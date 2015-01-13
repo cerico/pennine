@@ -133,7 +133,14 @@ scenic.directive('helloworld', function($http) {
 scenic.run(['$rootScope','$state','$location','Auth', function ($rootScope, $state, $location, Auth) {
 
   $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState) {
-    console.log($location.path())
+  
+    console.log(toState.name)
+    if (toState.name === 'login'){
+      $(".header").css("visibility","hidden")
+    }else {
+      $(".header").css("visibility","visible")
+    }
+   
 
     var shouldLogin = toState.data !== undefined
     && toState.data.requireLogin 
@@ -144,5 +151,7 @@ scenic.run(['$rootScope','$state','$location','Auth', function ($rootScope, $sta
       event.preventDefault();
       return;
     }
+
+
   });
 }])
