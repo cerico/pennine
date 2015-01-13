@@ -15,9 +15,9 @@ scenic.factory('Auth',function() {
 })
 
 
-    scenic.factory('glossop', ['$http', function($http) {
+    scenic.factory('glossop', ['$http','$location', function($http,$location) {
 
-    var urlBase = '/users/' + current_user.id + '.json';
+    var urlBase = $location.path() + '.json';
     var glossop = {};
 
     glossop.getUser = function () {
@@ -133,6 +133,7 @@ scenic.directive('helloworld', function($http) {
 scenic.run(['$rootScope','$state','$location','Auth', function ($rootScope, $state, $location, Auth) {
 
   $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState) {
+    console.log($location.path())
 
     var shouldLogin = toState.data !== undefined
     && toState.data.requireLogin 

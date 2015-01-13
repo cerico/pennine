@@ -9,11 +9,12 @@
           <div class="sidebar">
             <ul><li>{{user.name.split(" ")[0]}}</li>
              <li>Hiked: {{distance.toFixed(1)}} Miles</li>
-             <li>Ranked (2)</li>
-             <li>Ave Rating: 8.6</li>
+     <!--         <li>Ranked (2)</li>
+             <li>Ave Rating: 8.6</li> -->
              <li ng-click="changeBookmarkView('added')" class="seeadded">{{user.trails.length}} Added <i class="fa fa-upload blue"></i></li>
              <li ng-click="changeBookmarkView('completed')" class="seecompleted">{{(user.bookmarks|filter: {completed:true}).length}} Completed <i class="fa fa-check circle green"></i></li>
              <li ng-click="changeBookmarkView('faved')" class="seefaved current">{{(user.bookmarks|filter: {favourited:true}).length}} Favourited <i class="fa fa-heart red"></i></li>
+             <li ng-click="showNotifications()">{{notifications}}</li>
           </ul>
                   
 

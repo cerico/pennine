@@ -115,6 +115,7 @@ count = 0
 
   $scope.makeMap = function() {
     uiGmapGoogleMapApi.then(function(maps) {
+       $scope.count = 1
       $scope.map = { 
 
        center: { latitude:$scope.trail.lat, longitude: $scope.trail.lng }, 
@@ -129,32 +130,39 @@ count = 0
                    events: {
                
         click: function (model, event, params) {   
+
  if ($scope.administrating){
-  count = 0
-          console.log($scope.map.Markers)
-          var marker = {
+          $scope.newmarker = {
             latitude: params[0].latLng.lat(),
             longitude: params[0].latLng.lng(),
-            id: count += 1
+            id: $scope.count += 1
           }
           
           $scope.lat = params[0].latLng.lat();
           $scope.lng = params[0].latLng.lng();
             //scope apply required because this event handler is outside of the angular domain
           
-              $scope.map.Markers.splice(0, $scope.map.Markers.length);
-               $scope.$apply();
-            $scope.map.Markers.push(marker)
+   
+             $scope.$apply();
+            $scope.map.Markers.push($scope.newmarker)
+              $scope.$apply();
+            $scope.map.Markers.splice(0, $scope.map.Markers.length);
+            $scope.$apply();
+
+ }
           
-           
- console.log($scope.map.Markers)
-          }
           }
         },
 
      };
 
-     var bounds = new maps.LatLngBounds()
+ 
+ 
+
+
+    
+    if ($scope.trail.points.length > 1){
+          var bounds = new maps.LatLngBounds()
 
      for (var i=0;i<$scope.trail.points.length;i++){
 
@@ -164,14 +172,6 @@ count = 0
 
 
     }
-
-    $scope.map.visible = true
-    console.log($scope.trail.photos)
-    $scope.loading = false;
-    $scope.whenready = true
-
-    
-    if ($scope.trail.points.length > 1){
       var deregister = $scope.$watch('map.getGMap', function (getGMap) {     
         if (getGMap) {
           deregister();
@@ -182,6 +182,10 @@ count = 0
         }
       });
     }
+        $scope.map.visible = true
+    console.log($scope.trail.photos)
+    $scope.loading = false;
+    $scope.whenready = true
 
 
   });
@@ -191,6 +195,15 @@ count = 0
 
 
 }
+
+
+
+
+
+
+
+
+
 
 $scope.getTrailInfo()
 
@@ -388,7 +401,9 @@ $scope.administrateview = function(admin){
     $scope.deleteGPX = true
     $scope.makeFirstPic = true
     $scope.editName = true
+    $scope.mapInfo = true
     $scope.changeLoc = true
+    $scope.locationSaved = false
     $scope.administrating = true
     $scope.trailowner = false
     
@@ -399,6 +414,10 @@ $scope.administrateview = function(admin){
     $scope.editName = false
     $scope.changeLoc = false
     $scope.administrating = false
+     $scope.mapInfo = false
+    $scope.locationSaved = false
+    $scope.changedMainPhoto = false
+    $scope.trailnamesaved = false
     $scope.trailowner = true
         $scope.deletingMainPic = false
   }
@@ -422,6 +441,7 @@ $scope.makeMain = function (photo){
   $http.put('/photos/' + photo.id + '.json', {trailid:photo.trail_id}).success (function(){
     console.log(photo)
     $scope.trail.mainphoto = photo
+    $scope.changedMainPhoto = true
 
 })
 
@@ -434,6 +454,7 @@ $scope.editname  = function(){
 
   $http.put($location.path() + '.json', newtrailname).success (function(){
   $scope.trail.name = $scope.newtrailname
+  $scope.trailnamesaved = true
 })
 }
 
@@ -444,10 +465,12 @@ $scope.deletegpx = function(){
 $scope.editmap = function(){
   console.log($scope.map.Markers)
   var newloc = {}
-  newloc.lat = $scope.map.Markers[0].latitude
-  newloc.lng = $scope.map.Markers[0].longitude
+  newloc.lat = $scope.newmarker.latitude
+  newloc.lng = $scope.newmarker.longitude
   $http.put($location.path() + '.json', newloc).success (function(){
     console.log(newloc)
+    $scope.locationSaved = true
+    $scope.mapInfo = false
   })
 }
 

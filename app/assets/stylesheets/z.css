@@ -219,7 +219,7 @@ margin-top: 25px;
 
 
 
-.supplylocation {
+.supplylocation, .photochanged {
 margin-left: 80px;
 display: inline;
 font-size: 16px;
@@ -230,6 +230,14 @@ font-family: 'raleway';
 margin-top: -1px;
 margin-bottom: 2px;
 text-transform: uppercase;
+background: transparent;
+color: black;
+font-weight: 900;
+}
+
+.photochanged{
+  margin-left:0px;
+  display:inline-block;
 }
 
 
@@ -609,7 +617,7 @@ margin-left: 8px;
 .edit, .editphotos, .editlocation, .editgpx {
 background: rgb(88, 140, 176);
 display:inline;
-width: 121px;
+width: 70px;
 margin-left: 4px;
 color: white;
 line-height: 103%;
@@ -716,12 +724,13 @@ margin-left:-25%;
 
 .sidebar li.admin, .sidebar li.admin2 {
 background: rgb(88,140,176);
-border: 2px solid white;
+border-bottom: 1px solid rgb(88,140,176);
 color: white;
 border-radius: 3px;
 padding: 9px;
 text-transform: uppercase;
-font-weight: 700;
+font-weight: 300;
+width:48px;
 }
 
 .sidebar li.admin{
@@ -733,20 +742,32 @@ background: rgb(10, 110, 38);
 
 }
 
-.makemain, .editingmap{
+.makemain, .editingmap, .deletephoto{
 float: left;
-font-size: 16px;
+font-size: 1.2vw;
 background: rgb(88, 140, 176);
 color: white;
 padding: 7px;
 font-family: 'raleway';
 margin-top: -1px;
-margin-bottom: 2px;
+
 text-transform: uppercase;
 }
 
+.makemain{
+  width:70%;
+  padding: 3%;
+}
+.deletephoto{
+  background:red;
+  width:18%;
+  padding: 3%;
+}
+
+
+
 .editingmap{
- margin-right: 6%;
+ margin-right: 1%;
 float: right;
 margin-top:-10px;
 }
