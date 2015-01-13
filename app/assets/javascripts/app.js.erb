@@ -16,7 +16,7 @@ scenic.factory('Auth',function() {
 
 
     scenic.factory('glossop', ['$http','$location', function($http,$location) {
-
+console.log($location.path())
     var urlBase = $location.path() + '.json';
     var glossop = {};
 
@@ -133,8 +133,8 @@ scenic.directive('helloworld', function($http) {
 scenic.run(['$rootScope','$state','$location','Auth', function ($rootScope, $state, $location, Auth) {
 
   $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState) {
-  
-    console.log(toState.name)
+
+    console.log(toState)
     if (toState.name === 'login'){
       $(".header").css("visibility","hidden")
     }else {

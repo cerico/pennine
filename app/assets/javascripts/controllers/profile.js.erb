@@ -1,8 +1,10 @@
 scenic.controller("ProfileController", [ '$scope','$location','$http','glossop', function($scope,$location,$http,glossop) {
 
     function getUser() {
-        glossop.getUser()
+
+        $http.get($location.path() + '.json')
             .success(function (data) {
+
                     $scope.user = data
                     console.log($scope.user.name)
     $scope.bookmarkchoice = "showfaved"
