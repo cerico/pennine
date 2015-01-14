@@ -4,8 +4,12 @@ scenic.controller("LayoutController", [ '$scope','$location','$http','uiGmapGoog
 	$scope.onThePhone = function (phone){
 		if (phone === 'on'){
 		$scope.phonemenu = true
+		$('.header').css('background-color','rgba(0,0,0,0.74)')
+		$('.main').css('visibility','hidden')
 }else{
 	$scope.phonemenu = false
+		$(header).css('background-color','transparent')
+		$(main).css('visibility','visible')
 }
 		
 	}

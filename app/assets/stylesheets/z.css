@@ -295,6 +295,10 @@ padding-bottom: 0px;
 border-radius: 0px 0px 11px 0px;
 }
 
+a.nodots {
+  border-right: 0px
+}
+
 
 /* phonestuff */
 
@@ -1359,7 +1363,7 @@ margin-right: -43%
   }
 
   .phonemenu .phonelinks a .primary {
-    font-size: 45px;
+    font-size: 8vw;
     color: #e5e7e1;
     text-transform:uppercase;
     letter-spacing: 3px;
@@ -1445,7 +1449,7 @@ a.btn-navbar.dark.hamActive {
 }
 
 .phonemenu .phonelinks a .secondary {
-  font-size: 12px;
+  font-size: 3vw;
   color: #5ba542;
   margin-bottom: 18px;
   letter-spacing: 2px;
@@ -1456,7 +1460,7 @@ a.btn-navbar.dark.hamActive {
 .phonemenu .phonelinks {
   text-align: center;
   display: block;
-  background-color: rgba(0,0,0,1);
+  background-color: rgba(0,0,0,0.74);
   margin-top:-7px;
   height:100%;
 }

@@ -74,9 +74,9 @@
       <li class="toplink"><a ng-class="{'active':selectedLink === 'profile'}" ng-click="selectedLink = 'profile'" ng-href="#users/<%=current_user.id%>"><div class="z"><%=current_user.name.split[0]%>'s profile</div></a></li>
       <% end %> 
       <% if user_signed_in? %>
-        <li class="toplink"><div class="z"><%= link_to "sign out", destroy_user_session_path, :method => :delete %></div></li>
+        <li class="toplink"><div class="z"><%= link_to "sign out", destroy_user_session_path, :method => :delete, :class =>"nodots" %></div></li>
       <% else %>     
-        <li class="toplink"><a ng-href="/#login"><div class="z">Sign in</div></a></li>
+        <li class="toplink"><a class="nodots" ng-href="/#login"><div class="z nodots">sign in</div></a></li>
       <% end %> 
    </ul>
 
