@@ -23,57 +23,60 @@
   <div class="background">
    <div class="header">
     <div class="navleft" ><!-- for tablets-->
-      <a class="btn-navbar dark" href="#" class="hamburger hamInactive">
+      <a class="btn-navbar dark" class="hamburger hamInactive" ng-click="onThePhone('on')">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <div class="phonemenu inactive">
+      <div class="phonemenu" ng-show="phonemenu">
         <nav class="phonelinks" > 
 
-          <div class="primary"><%= link_to "new", new_trail_path %></div>
+          <a ng-click="onThePhone('off')" ng-href="/#new">
+          <div class="primary">new</div>
           <div class="secondary">Upload your own trail to the site</div>
+          </a>
           
-          <a href="map.html">
-            <div class="primary">Map</div>
+            <a ng-click="onThePhone('off')" ng-href="/#map">
+            <div class="primary">map</div>
             <div class="secondary">Systemwide trail map</div>
-          </a>
+         </a>
           
-          <div class="primary"><%= link_to "trails", trails_path, :class => "active" %></div>
+         <a ng-click="onThePhone('off')" ng-href="/#trails">
+         <div class="primary">trails</div>
           <div class="secondary">All available trails</div>
-          
-          <a href="profile.html">
-            <div class="primary">My Profile</div>
+          </a>
+         <% if user_signed_in? %> 
+       <a ng-click="onThePhone('off')" ng-href="#users/<%=current_user.id%>">
+       <div class="primary">profile</div>
             <div class="secondary">Bookmarks, Completed and Uploaded Trails</div>
-          </a>
-          <a href="index.html">
-            <div class="primary">Home</div>
-            <div class="secondary">Back to home page</div>
-          </a>
-          <a href="logout.html">
-            <div class="primary">Logout</div>
-          </a>
+        </a>
+<%end%>
+          <% if user_signed_in? %>
+        <li class="primary"><%= link_to "sign out", destroy_user_session_path, :method => :delete %></li>
+      <% else %>     
+        <li class="primary"><a ng-href="/#login">Sign In</a></li>
+      <% end %> 
         </nav><!-- close of links -->
       </div><!-- close of nav-menu max-width isActive-->
     </div><!-- close of navleft-->
 
-
+    <div class="toptitle">scen.ic </div>
     <ul class="toplinks" ng-init="selectedLink = 'trails'">
 
-      <li class="toptitle">scen.ic </li>
+  
 
 
       <!-- <li class="toplink"><ng-class="{'active':selectedLink === 'new'}" ng-click="selectedLink = 'new'" ng-href="/#new">add a new trail</a></li> -->
-        <li class="toplink"><a ng-class="{'active':selectedLink === 'new'}" ng-click="selectedLink = 'new'" ng-href="/#new">add a new trail</a></li>
-      <li class="toplink"><a ng-class="{'active':selectedLink === 'map'}" ng-click="selectedLink = 'map'" ng-href="/#map">Map</a></li>
-      <li class="toplink"><a ng-class="{'active':selectedLink === 'trails'}" ng-click="selectedLink = 'trails'" ng-href="/#trails">discover</li>
+        <li class="toplink"><a ng-class="{'active':selectedLink === 'new'}" ng-click="selectedLink = 'new'" ng-href="/#new"><div class="z">add new trail</div></a></li>
+      <li class="toplink"><a ng-class="{'active':selectedLink === 'map'}" ng-click="selectedLink = 'map'" ng-href="/#map"><div class="z">map</div></a></li>
+      <li class="toplink"><a ng-class="{'active':selectedLink === 'trails'}" ng-click="selectedLink = 'trails'" ng-href="/#trails"><div class="z">discover</div></a></li>
       <% if user_signed_in? %>      
-      <li class="toplink"><a ng-class="{'active':selectedLink === 'profile'}" ng-click="selectedLink = 'profile'" ng-href="#users/<%=current_user.id%>"><%=current_user.name.split[0]%>'s profile</a></li>
+      <li class="toplink"><a ng-class="{'active':selectedLink === 'profile'}" ng-click="selectedLink = 'profile'" ng-href="#users/<%=current_user.id%>"><div class="z"><%=current_user.name.split[0]%>'s profile</div></a></li>
       <% end %> 
       <% if user_signed_in? %>
-        <li class="toplink"><%= link_to "sign out", destroy_user_session_path, :method => :delete %></li>
+        <li class="toplink"><div class="z"><%= link_to "sign out", destroy_user_session_path, :method => :delete %></div></li>
       <% else %>     
-        <li class="toplink"><a ng-href="/#login">Sign In</a></li>
+        <li class="toplink"><a ng-href="/#login"><div class="z">Sign in</div></a></li>
       <% end %> 
    </ul>
 

@@ -1,4 +1,14 @@
 scenic.controller("LayoutController", [ '$scope','$location','$http','uiGmapGoogleMapApi', function($scope,$location,$http,uiGmapGoogleMapApi) {
+	$scope.phonemenu = false
+
+	$scope.onThePhone = function (phone){
+		if (phone === 'on'){
+		$scope.phonemenu = true
+}else{
+	$scope.phonemenu = false
+}
+		
+	}
 
  $scope.john = "kol"
     // $http.get('/trails.json').success (function (data){
