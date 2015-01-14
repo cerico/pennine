@@ -1,5 +1,6 @@
 scenic.controller("NewController", [ '$scope','$location','uiGmapGoogleMapApi','Auth', function($scope,$location,uiGmapGoogleMapApi,Auth) {
    $scope.loading = true;
+
 $(".uploadingspinner").hide()
     $scope.auth = Auth;
     if ($scope.auth.isLoggedIn){
@@ -40,7 +41,10 @@ $(".uploadingspinner").hide()
 
     });
 
-  
+  $scope.acknowledge = function(){
+    $(".picuploaderror").hide();
+  }
+
 
 
   Dropzone.autoDiscover = false
@@ -91,12 +95,14 @@ $(".uploadingspinner").hide()
      this.on("successmultiple", function(files, response) {
        console.log(files)
        console.log(response.id)
+     
        window.location.href = '#trails/' + response.id;
        // Gets triggered when the files have successfully been sent.
        // Redirect user or notify of success.
      });
      this.on("errormultiple", function(files, response) {
-      console.log(files)
+      console.log(response)
+      $(".picuploaderror").show();
        // Gets triggered when there was an error sending the files.
        // Maybe show form again, and notify user of error
      });

@@ -55,7 +55,7 @@
 <!--      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden"> -->
 
      <BR><BR>
-      <div class="picuploaderror">PLEASE ATTACH AT LEAST ONE PHOTO!</div>
+      <div class="picuploaderror" ng-click="acknowledge()">A trail cannot be submitted without a name, co-ordinates from the map, and at least one photo!</div>
        <div class="dropzone-previews"></div> <!-- this is were the previews should be shown. -->
 
        <button class="newtrailbutton" type="submit">Upload Trail!</button>
