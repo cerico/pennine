@@ -213,7 +213,8 @@ border-radius: 0px 0px 0px 11px;
 .z{
   padding-top:15px;
   font-weight: lighter;
-font-size: 1.6vw
+font-size: 1.6vw;
+font-family: brandon-grotesque,Helvetica neue,Arial,sans-serif;
 }
 
 .toptitle {
@@ -257,7 +258,7 @@ font-weight: 900;
 
 .toplinks a, .correction {
   display: block;
-
+font-family: brandon-grotesque,Helvetica neue,Arial,sans-serif;
   /*text-transform: uppercase;*/
 /*  border-right:1px solid rgb(104, 120, 140);*/
  color: #9b9b9b;
@@ -267,7 +268,7 @@ font-weight: 900;
 color: #ffffff;
 font-size: 1.6vw;
  color: #9b9b9b;
-
+font-weight:lighter;
 border-right: 1px dashed #535353;
 margin-left:-10px;
 }
@@ -296,7 +297,8 @@ border-radius: 0px 0px 11px 0px;
 }
 
 a.nodots {
-  border-right: 0px
+  border-right: 0px;
+  font-family: brandon-grotesque,Helvetica neue,Arial,sans-serif;
 }
 
 
@@ -698,7 +700,16 @@ margin-left:-25%;
 
 .trailnamewhite {
   color:white;
-  font-size:20px;
+  font-size:55px;
+  font-family:"ff-din-web-pro-1", "ff-din-web-pro-2", sans-serif;
+font-family:"raleway";
+font-family:"Montserrat";
+font-weight:lighter;
+ font-family: minion-pro,Georgia,Times new roman,serif; 
+
+ font-family: brandon-grotesque,Helvetica neue,Arial,sans-serif; 
+ padding-bottom:29px;
+
 }
 
 .trailnamescenic{
